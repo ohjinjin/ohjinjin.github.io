@@ -110,7 +110,7 @@ Naive Bayes의 특징
 
 k-NN 포스트에서도 작성했듯이 훈련용 데이터는 892개, 테스트 데이터는 417개였습니다.<br/>
 Naive Bayes모델 역시 지도학습 모델로서 활용되었는데요,<br/>
-아래 사진은 훈련용 데이터셋인 train.csv를 엑셀로 열어 캡쳐한 것입니다. 저 열 중에서 저희는 survived를 0 또는 1로 예측하는 모델을 만드는 것입니다.<br/>
+데이터셋의 필드 중에서 저희는 survived를 0 또는 1로 예측하는 모델을 만드는 것입니다.<br/>
 k-NN때와 마찬가지로 정답 레이블이 주어진 것이죠.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200112NaiveBayes/finalDataCapture.JPG" alt=""> {% endraw %}
@@ -128,10 +128,7 @@ Naive Bayes 모델의 성능평가 결과로 78.78의 score를 확인할 수 있
 
 이번에도 마찬가지로 실습 데이터를 표로 표현해보았습니다.<br/>
 Naive Bayes 특징에서 소개되었 듯 모수추정 기반으로 훈련용 데이터셋으로부터 클래스의 확률 추정치는 미리 계산해줍니다.<br/>
-survived|평균(pclass)|분산(pclass)|평균(sex)|분산(sex)|평균(age)|분산(age)|평균(fare)|분산(fare)|평균(cabin)|분산(cabin)|평균(embarked)|분산(embarked)|평균(title)|분산(title)|평균(familysize)|분산(familysize)
----|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---:
-0|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla
-1|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla|bla
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200112NaiveBayes/chartCapture.JPG" alt=""> {% endraw %}
 
 정말로 각 평균과 분산을 계산할 자신은 없어서 blah로 대체하겠습니다ㅎ ㅎ<br/>
 
