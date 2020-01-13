@@ -18,7 +18,7 @@ toc: true
 Environments \> base(root)의 화살표 버튼 클릭 \> Open Terminal<br/>
 를 실행합니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200113anacondaNavigator/capture1.JPG" alt=""> {% endraw %}
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200113anacondaNavigator/capture1.jpg" alt=""> {% endraw %}
 
 가상환경이란 하나의 독립적인 통이라고 볼 수 있습니다.<br/>
 그리고 아나콘다는 base(root)라는 기본 가상환경을 가지고 있습니다.<br/>
