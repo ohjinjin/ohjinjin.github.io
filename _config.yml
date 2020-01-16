@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "default", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -108,10 +108,10 @@ analytics:
 # Site Author
 author:
   name             : "Ohjinjin"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/ohjinjin.JPG"
   bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  location         : "22 Suncheon Hyang-ro, Asan, South Chungcheong Province"
+  email            : "ohjinjin0408@naver.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
