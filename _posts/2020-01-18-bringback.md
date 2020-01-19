@@ -12,8 +12,8 @@ git을 사용하면서 특정 커밋 시점으로 되돌리는 방법에 대해 
 
 아래 명령어를 순차적으로 입력하면 됩니다.<br/>
 
->git reset --hard [게시물번호]
->git push [저장소 별칭] +master
+>git reset --hard [게시물번호]<br/>
+>git push [저장소 별칭] +master<br/>
 
 아주 간단한 이 방법은 **특정 commit 이후는 전부 다 삭제**되는 방식이니 사용 시 주의할 필요가 있습니다.<br/><br/>
 
