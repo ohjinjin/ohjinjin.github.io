@@ -1,5 +1,5 @@
 ---
-title: "GIT brignback"
+title: "GIT bringback"
 categories: 
   - blogging
 last_modified_at: 2020-01-19T23:00:00+09:00
