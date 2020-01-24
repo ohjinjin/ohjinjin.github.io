@@ -25,7 +25,7 @@ toc: true
 
 ## Career & Activities
 ---
-* 2019.03 ~ 2019.08 manager of LikeLion7th@SCH<br/>
+* <pre>2019.03 ~ 2019.08</pre> manager of LikeLion7th@SCH<br/>
 * <pre>2019.08 ~        </pre> Representative of LikeLion7th@SCH<br/>
 * <pre>2019.09 ~        </pre> member of DSC@SCH<br/>
 
