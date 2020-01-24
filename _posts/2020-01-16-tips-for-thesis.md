@@ -1,7 +1,7 @@
 ---
 title: "Tips for writing your first thesis"
 categories: 
-  - blogging
+  - etc
 last_modified_at: 2020-01-16T15:00:00+09:00
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Analyzing kNN model with titanic data of kaggle"
 categories: 
-  - blogging
+  - MachineLearning
 last_modified_at: 2019-11-28T13:00:00+09:00
 toc: true
 ---

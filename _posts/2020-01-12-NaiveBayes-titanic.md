@@ -1,7 +1,7 @@
 ---
 title: "Analyzing NaiveBayes model with titanic data of kaggle"
 categories: 
-  - blogging
+  - MachineLearning
 last_modified_at: 2020-01-12T02:00:00+09:00
 toc: true
 ---
