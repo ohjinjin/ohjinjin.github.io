@@ -1,7 +1,7 @@
 ---
 title: "How to install 3rd party librarys on ANACONDA"
 categories: 
-  - MachineLearning
+  - Anacodna
 last_modified_at: 2020-01-13T12:00:00+09:00
 toc: true
 ---
