@@ -1,0 +1,53 @@
+---
+title: "How to apply favicon on minimal-mistake theme"
+categories: 
+  - blog
+last_modified_at: 2020-01-29T20:00:00+09:00
+toc: true
+---
+
+[minimal-mistake 테마를 이용한 깃페이지 블로그 구축하기 ]: (https://ohjinjin.github.io/blog/blog/)
+<br/><br/>
+제 블로그는 minimal-mistake 테마를 이용하여 구축하였습니다.<br/>
+블로그를 운영하던 중에 기존의 이 개성없는 파비콘에서<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200130favicon/origin_favicon.JPG" alt=""> {% endraw %}
+<br/>
+저만의 상징적인 파비콘을 띄우고싶었어요!<br/>
+
+자신만의 일러스트를 제작하고 .ico확장자로 변환만하면 끌어다 쓸수 있을 것 같지만 그렇지 않습니다.<br/>
+일일이 .html파일들에 써줘야하는데 이 테마는 ruby 프레임워크 기반의 gem, Jekyll등이 적용되어 만들어져 포스팅할 때에도 마크다운 문법을 보통 사용하고있잖아요? 그렇다면 이 테마에는 어떻게 전반적으로 적용하면 될런지 테마를 제공한 곳에서 독스를 뒤져보고 정리해보았습니다.<br/><br/>
+
+
+1. 파비콘 파일 생성<br/>
+파비콘으로 사용할 이미지 파일(.png 나 .jpg 등)을 [https://realfavicongenerator.net/](https://realfavicongenerator.net/)에 업로드하여 전체 파비콘 파일에 대한 zip파일을 다운로드 받습니다.<br/>
+
+2. 압축해제<br/>
+내 홈페이지 프로젝트의 최상위 폴더에 압축을 해제합니다. <br/>
+로컬에서 진행하고 커밋하시길 추천드립니다.<br/>
+
+3. 위 url로부터 제공받은 코드를 홈페이지의 <head>에 추가<br/>
+저와 같은 블로그를 구축하신 경우에는 파비콘 생성기에 의해 _includes폴더 내 head 폴더 내 custom.html에 코드를 넣어주기만 하면 자동으로 링크가 생성됩니다. 그렇기 때문에 해당 파일에 코드를 복사하여 붙여넣기 해주시면 됩니다.<br/>
+
+
+다시 한 번 정리하자면<br/>
+favicon generator를 통해 favicon 생성을 시도하면 이와 같은 화면을 만날수 있을 겁니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200130favicon/capture1.JPG" alt=""> {% endraw %}
+<br/>
+저는 저 3번 항목에 있는 코드를 복사해서 <br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200130favicon/capture2.JPG" alt=""> {% endraw %}
+<br/>
+이렇게 붙여넣었습니다.<br/>
+<br/>
+자세한 코드는 [여기](https://github.com/ohjinjin/ohjinjin.github.io/blob/master/_includes/head/custom.html)를 확인해주세요.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200130favicon/new_favicon.JPG" alt=""> {% endraw %}
+<br/>
+이렇게 바뀌었습니다!<br/>
+
+###### <span style="color:lightslategray"> 제 파비콘은 참고로 ㅎㅎ MS파워포인트에서 제공되는 아이콘 두개를 합쳐 만들었습니다.<br/>
+상징적인걸 하고 싶은데 고민하다보니까 스스로를 존재감 없는 사람이라고 느낀적이 없었는데 대표하는 이미지를 말하자니 영 어려운게 참 특색없는 사람이구나 ㅠㅠ 하는 생각이 들었습니다.<br/>
+그래서 그냥 제 이름을 무작정쓰고 배경에 있는 화살표는 제 실력이나 능력이 지수함수 그래프 트렌드로 증가했으면 좋겠다하고 ㅎㅎ 둬봤어용 ㅎ  ㅎ 화살표 색도 한참 고민했습니다 </span><br/>
+<br/>
+
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
