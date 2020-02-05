@@ -18,13 +18,11 @@ JDK 설치 링크 : [http://www.oracle.com/technetwork/java/javase/downloads/jdk
 
 <br/>다운로드를 위해서는 Oracle 로그인이 필요하도록 바뀐 것 같습니다.<br/>
 
-<br/>저는 시스템 드라이브 여유가 없어 HDD 드라이브에 설치경로를 바꾸어 저장했습니다.<br/><br/>
 
 Android Studio 설치
 ------
 Android Studio 설치 링크 : [https://developer.android.com/studio?hl=ko](https://developer.android.com/studio?hl=ko)
 <br/>
-마찬가지로 Android Studio와 SDK 설치 장소 역시 D드라이브로 설치 경로를 바꾸어 저장하였습니다.<br/>
 
 <br/>설치가 완료되면 Android Studio를 최초 실행하시면서 에디터 테마 등을 설정하시면 됩니다.<br/>
 
