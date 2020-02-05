@@ -15,7 +15,7 @@ toc: true
 * Name : JinSeon, Oh(ohjinjin)<br/>
 * Incharge : Image Processing LAB, Bachelor of dept.Computer Science Engineering @ Univ.SoonCheonHyang<br/>
 
-## Current Interset
+## Current Interest
 ---
 * Artifitial Intelligence<br/>
 * Machine Learning<br/>
