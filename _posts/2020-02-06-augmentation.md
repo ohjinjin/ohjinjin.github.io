@@ -2,7 +2,7 @@
 title: "How to increase datas, Data Augmentation"
 categories: 
   - MachineLearning
-last_modified_at: 2020-02-06T11:02:00+09:00
+last_modified_at: 2020-02-06T20:00:00+09:00
 toc: true
 ---
 
@@ -31,3 +31,48 @@ data augmentation은 과거 진행했던 화상 인식 대회인 ILSVRC에서 �
 
 ImagedataGenerator() 응용
 ------
+
+[이 블로그](https://tykimos.github.io/2017/06/10/CNN_Data_Augmentation/)를 참고하여 <br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture1.JPG" alt=""> {% endraw %}
+
+<br/>이렇게 빠르게 살짝만 바꿔 임시로 테스트 코드를 작성했는데요,<br/>
+
+중요한 부분에 대해서만 소스코드를 설명하도록 하겠습니다.<br/>
+
+먼저 ImageDataGenerator()의 인수들을 살펴봅시다.<br/>
+1. rescale<br/>
+- 원본 영상은 0-255의 RGB 계수로 구성되는데, 이같은 입력 값은 통상적인 학습률을 사용할 경우에 모델을 효과적으로 학습시키기엔 너무 큰 수입니다. 따라서 이 수를 1/255배로 스케일링하여 0-1사이의 범위로 표시할 수 있도록 변환해줍니다.<br/>
+- 제일 먼저 적용되는 변형이지요.<br/>
+2. rotation_range<br/>
+- 0~지정각도 범위 내에서 임의로 원본 이미지를 회전시킵니다.<br/>
+3. width_shift_range<br/>
+- 전체 너비에 대해 지정 비율만 큼 수평 방향으로 원본이미지를 이동시킵니다.<br/>
+- 예를 들어 전체 너비가 100이며, 이 값이 0.1이라면 0~10픽셀 내외로 이동됩니다.<br/>
+4. height_shift_range<br/>
+- 전체 너비에 대해 지정 비율만 큼 수직 방향으로 원본이미지를 이동시킵니다.<br/>
+5. shear_range<br/>
+- 밀림 변형으로 지정된 값만큼의 라디안 내외로 시계 반대 방향으로 밀림이 적용됩니다.<br/>
+6. zoom_range<br/>
+- 지정된 값만 큼 1에서 빼거나 더한 비율의 범위 사이에서 확대가 되거나 축소됩니다.<br/>
+7. horizontal_flip<br/>
+- True일 경우 50%의 확률로 수평방향 뒤집기가 적용됩니다.<br/>
+8. vertical_flip<br/>
+- True일 경우 50%의 확률로 수직방향 뒤집기가 적용됩니다.<br/>
+9. fill_mode<br/>
+- 이미지를 변형시키면서 생기게 되는 공간을 채우는 방식을 정합니다.<br/>
+10. 여기엔 안쓰여있지만 class_mode<br/>
+- 라벨 분류 방식에 대해 지정합니다.<br/>
+11. 기타등등 많습니다.<br/>
+
+flow()함수의 경우 Generator를 이용하여 변형된 이미지에 이상한 점이 없는지 확인해주는 함수입니다.<br/>
+
+위 코드를 실행시키게되면 아래와 같은 결과를 얻게 됩니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture2.JPG" alt=""> {% endraw %}
+
+자신의 모델에 맞게 부적절하거나 불필요한 변형은 빼고 파라미터들을 조정해서 데이터를 알맞게 부풀려보도록 합니다.<br/>
+
+자세한 코드는 [여기](https://github.com/DSC-SCH/sign_language_translator/blob/master/Image%20Augmentation.ipynb)에 작성되어있습니다.<br/>
+
+
+(수정중)
