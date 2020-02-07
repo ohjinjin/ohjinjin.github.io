@@ -2,7 +2,7 @@
 title: "How to increase datas, Data Augmentation"
 categories: 
   - MachineLearning
-last_modified_at: 2020-02-06T20:00:00+09:00
+last_modified_at: 2020-02-07T15:21:00+09:00
 toc: true
 ---
 
@@ -38,6 +38,10 @@ ImagedataGenerator() 응용
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture1.JPG" alt=""> {% endraw %}
 
 <br/>이렇게 빠르게 살짝만 바꿔 임시로 테스트 코드를 작성했는데요,<br/>
+
+참고로 제 포스트들을 순서대로 쭉 따라했을 경우에 이미지를 읽어들이기 위해 pillow 라이브러리를 추가적으로 설치해야할 필요가 있었습니다.<br/>
+> conda install pillow<br/>
+가상환경이 활성화 된 상태에서 위 명령어를 cmd에서 입력하게되면 정상적으로 설치됩니다.<br/>
 
 이 코드는 파일로 이미지를 읽어들여 데이터 증식 후 또 다시 파일로 저장해주는 코드입니다.<br/><br/>
 중요한 부분에 대해서만 소스코드를 설명하도록 하겠습니다.<br/>
