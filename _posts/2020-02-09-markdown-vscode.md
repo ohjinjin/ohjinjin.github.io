@@ -14,4 +14,13 @@ toc: true
 <br/>
 예상과 다르게 마크다운 문법이 적용되지 않아 불필요하게 자주 commit을 했던 것을 방지할 수 있어 좋습니다.<br/>
 
+VSCODE 설치
+------
+[https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+<br/>
+
+확장프로그램 설치
+------
+[https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview](https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview)
+<br/>
 (수정중)
