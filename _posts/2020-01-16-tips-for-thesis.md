@@ -82,6 +82,19 @@ toc: true
 
 이 순서대로 진행하면 (서론, 본론, 관련 연구 까지) 최종 데드라인 한 달 전에 일차 드래프트는 나올 수 있도록 기한을 정하는 것이 좋습니다.<br/><br/>
 
+관련연구 작성시 참고문헌 인용이 빈번히 발생하는데, 참고 문헌 부분을 작성할 때에 DOI(Document Object Identifier)가 존재할 경우 이를 함께 작성해주기를 보통 권장합니다.<br/>
+DOI를 검색하는 방법을 짧게 설명하자면 아래와 같습니다.<br/>
+1. https://www.crossref.org/guestquery/ 접속 후 “Search on article title” 항목에서 제1저자 성(surname)과 논문제목(Article Title)입력 후 “Search” 클릭 [주로 국외문헌]<br/>
+2. https://www.kci.go.kr 또는 http://www.ndsl.kr/index.do 에서 검색 [주로 국내문헌]<br/>
+3. http://www.google.com 에서 “논문제목” 검색<br/>
+**DOI 표기 형식–DOI:https://dx.doi.org/해당doi 또는 DOI:https://doi.org/해당doi**
+<br/>
+
+DOI를 확인하는 과정에서 인용한 문헌이 학술지인지, 학술대회 게재논문인지, 단행본인지, 학위논문인지도 함께 확인하실 수 있을 겁니다.<br/>
+또 논문 이름으로 검색할 때에 영문 제목과 한글 제목을 모두 검색해보아야한다는 점도 기억해주세요.<br/>
+
+<br/><br/>
+
 결론
 ----------
 결론과 초록은 위에까지 완료가 된 상태라면 큰 무리 없이 작성이 가능합니다.<br/>
@@ -126,13 +139,13 @@ etc
 1번 내용을 자세히 작성해보겠습니다.<br/>
 
 * 모든 windows 기반 프로그램을 종료시킵니다.<br/>
-* 윈도우 검색 기능을 이용하여 *실행*을 입력합니다.<br/>
-* 팝업된 윈도우 창에 regedit 입력합니다.<br/>
+* 윈도우 검색 기능을 이용하여 **실행**을 입력합니다.<br/>
+* 팝업된 윈도우 창에 **regedit**을 입력합니다.<br/>
 * 사용중인 파워포인트 버전에 따라 레지스트리 하위 키를 찾습니다. 저의 경우 2016버전으로 **HKEY_CURRENT_USER \\Software\\Microsoft\\Office\\16.0\\PowerPoint\\Options**에서 확인할 수 있었습니다.<br/>
 * 옵션 하위 키를 선택한 상태에서 **편집 \> 새로만들기 \> DWORD값**을 클릭합니다.
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture1.JPG" alt=""> {% endraw %}
 <br/>
-* ExportBitmpResolution을 입력하고 enter키를 누릅니다.<br/>
+* **ExportBitmpResolution**을 입력하고 enter키를 누릅니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture2.JPG" alt=""> {% endraw %}
 <br/>
 * 조금 전 생성한 ExportBitmapResolution이 선택된 상태에서 **편집 \> 수정**을 클릭합니다.<br/>
@@ -140,13 +153,13 @@ etc
 <br/>
 * DWORD 값 편집 대화상자에서 10진수를 선택하고 원하는 해상도를 **값 데이터**에 입력한 후 확인 버튼을 누릅니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture4.JPG" alt=""> {% endraw %}
-<br/>
+<br/>아래는 참고하시라고 올려드립니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture6.JPG" alt=""> {% endraw %}
 * **파일 \> 끝내기**를 선택하여 레지스트리 편집기를 종료합니다.<br/>
 <br/><br/>
-여기까지 설정을 완료하셨다면, 파워포인트에서 슬라이드 프레젠테이션을 열고 다른이름으로 저장한 후 저장된 파일의 속성을 확인해보시면 300dpi로 설정이 되었음을 확인하실 수 있을 겁니다.<br/>
+여기까지 설정을 완료하셨다면, 파워포인트에서 슬라이드 프레젠테이션을 열고 **다른이름으로 저장**한 후 저장된 파일의 속성을 확인해보시면 300dpi로 설정이 되었음을 확인하실 수 있을 겁니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture5.JPG" alt=""> {% endraw %}
 <br/>
-
+<br/>
 
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
