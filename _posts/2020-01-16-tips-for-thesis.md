@@ -108,14 +108,45 @@ toc: true
 
 etc
 ----------
-사진파일을 삽입할 경우에 그 사진파일은 300dpi 이상일 것을 논문 양식에서 보통 요구합니다. 하지만 windows 캡처도구는 96dpi, ppt 저장형식의 경우 96dpi로 알고 있어요. 실제로 많이 깨지는걸 확인할 수 있습니다.ㅠㅠ<br/>
+사진파일을 삽입할 경우에 그 사진파일은 300dpi 이상일 것을 논문 양식에서 보통 요구합니다. 하지만 windows 캡처도구는 96dpi, 제가 자주 사용하는 ppt 저장형식의 경우 96dpi로 알고 있어요. 실제로 많이 깨지는걸 확인할 수 있습니다.ㅠㅠ<br/>
 
 그래서 여러 방법을 찾아보고 있다가 ppt에서 tiff 형식으로도 내보내봤는데 150dpi로 저장되더군요.. 시스템 레지스트리에 들어가서 저장할 때 최대 해상도를 307dpi까지로 변경할 수 있다고 하지만.. 예전에 시스템 잘못건들여서 포맷 전까지 한동안 고생했던 기억이 있는 저로서는 별로 그러고 싶질 않더라고요.. ㅎㅎ..<br/>
+하지만 일러스트레이터를 당장 구매해 사용하기엔 고민이 살짝되서 결국 이 방법으로.. 선택했습니다.<br/>
 
-그래서 그냥 알아낸 건. ppt에서 pdf로 저장할 때 그림 압축 설정을 원본 유지로 설정한 후 저장하고, print screen shot을 이용해 해당 pdf를 켠 다음에 캡처해서 일러스트로 옮기는 방법이었습니다.
+제가 알아본 방법들을 정리하자면 아래와 같습니다.<br/>
 
-한 pc에서 일러스트 작업까지도 할 수 있다면 그냥 클립보드에 해당 이미지가 복사되어 있는 상태로 바로 일러스트로 옮기면 되구요!
+1. ppt 레지스트리 변경하여 저장시 최대 해상도를 변경하는 방법<br/>
 
-더 좋은 방법이 있다면 좋겠지만 전 여기까지.. 알 수 있었습니다! ㅎㅎ<br/>
+2. ppt에서 pdf로 저장할 때 그림 압축 설정을 원본 유지로 설정한 후 저장하고, 포토샵이나 일러스트레이터에서 해당 파일을 불러들여 해상도를 설정하고 저장하는 방법
+
+3. ppt에서 작업하면서 저장 전 클립보드로 복사->포토샵이나 일러스트레이터에서 붙여넣기 하고 해상도를 설정하고 저장하는 방법
+
+3번의 경우에는 한 pc에서 일러스트 작업까지 다이렉트로 할 수 있는 경우에 가능하겠지요!
+
+1번 내용을 자세히 작성해보겠습니다.<br/>
+
+* 모든 windows 기반 프로그램을 종료시킵니다.<br/>
+* 윈도우 검색 기능을 이용하여 *실행*을 입력합니다.<br/>
+* 팝업된 윈도우 창에 regedit 입력합니다.<br/>
+* 사용중인 파워포인트 버전에 따라 레지스트리 하위 키를 찾습니다. 저의 경우 2016버전으로 **HKEY_CURRENT_USER \\Software\\Microsoft\\Office\\16.0\\PowerPoint\\Options**에서 확인할 수 있었습니다.<br/>
+* 옵션 하위 키를 선택한 상태에서 **편집 \> 새로만들기 \> DWORD값**을 클릭합니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture1.JPG" alt=""> {% endraw %}
+<br/>
+* ExportBitmpResolution을 입력하고 enter키를 누릅니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture2.JPG" alt=""> {% endraw %}
+<br/>
+* 조금 전 생성한 ExportBitmapResolution이 선택된 상태에서 **편집 \> 수정**을 클릭합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture3.JPG" alt=""> {% endraw %}
+<br/>
+* DWORD 값 편집 대화상자에서 10진수를 선택하고 원하는 해상도를 **값 데이터**에 입력한 후 확인 버튼을 누릅니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture4.JPG" alt=""> {% endraw %}
+<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture6.JPG" alt=""> {% endraw %}
+* **파일 \> 끝내기**를 선택하여 레지스트리 편집기를 종료합니다.<br/>
+<br/><br/>
+여기까지 설정을 완료하셨다면, 파워포인트에서 슬라이드 프레젠테이션을 열고 다른이름으로 저장한 후 저장된 파일의 속성을 확인해보시면 300dpi로 설정이 되었음을 확인하실 수 있을 겁니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200116tipsforthesis/capture5.JPG" alt=""> {% endraw %}
+<br/>
+
 
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
