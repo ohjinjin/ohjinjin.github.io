@@ -1,8 +1,8 @@
 ---
 title: "How to create new organization on github"
 categories: 
-  - MachineLearning
-last_modified_at: 2020-02-11T19:41:00+09:00
+  - git
+last_modified_at: 2020-02-12T16:16:00+09:00
 toc: true
 ---
 
