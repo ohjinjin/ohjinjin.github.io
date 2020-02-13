@@ -77,9 +77,22 @@ flow()함수의 경우 Generator를 이용하여 변형된 이미지에 이상�
 위 코드를 실행시키게되면 아래와 같은 결과를 얻게 됩니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture2.JPG" alt=""> {% endraw %}
 
-자신의 모델에 맞게 부적절하거나 불필요한 변형은 빼고 파라미터들을 조정해서 데이터를 알맞게 부풀려보도록 합니다.<br/>
+자신의 모델에 맞게 부적절하거나 불필요한 변형은 빼고 파라미터들을 조정해서 데이터를 알맞게 부풀려보도록 합니다.<br/><br/>
 
-제 자세한 코드는 [여기](https://github.com/DSC-SCH/sign_language_translator/blob/master/Image%20Augmentation.ipynb)에 작성되어있습니다.<br/>
+저의 경우 아래와 같이 변경했습니다.<br/>{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture4.JPG" alt=""> {% endraw %}
+
+
+우선 제 데이터셋은 아래와 같이 객체별로 구분하여 디렉토리에 넣어뒀습니다!<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200206augmentation/capture3.JPG" alt=""> {% endraw %}
+
+그래서 위 테스트 코드는 단 한가지 사진에 대해서만 30여가지의 변형을 적용한 것이기 때문에 전체 객체별 전체 사진에 대해서 4번정도의 변형을 적용해 최소 180장 이상의 데이터를 얻도록 변경했습니다.<br/>
+
+또한 위 아래가 뒤집힐 경우 서로 다른 의미의 지문자가 될 우려가 있어 좌우반전은 적용시키되 상하반전은 적용하지 않았답니다.<br/>
+
+그런데 이 코드를 돌려놓고 좀 지나고 보니 메모리 에러가 나더라구용..!
+그 부분은 아직 수정중입니다!<br/>
+
+제 변경된 자세한 코드는 [여기](https://github.com/DSC-SCH/sign_language_translator/blob/master/Image%20Augmentation.ipynb)에 작성되어있습니다.<br/>
 
 
 (수정중)
