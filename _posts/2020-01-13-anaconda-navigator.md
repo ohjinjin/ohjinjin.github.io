@@ -2,7 +2,7 @@
 title: "How to install 3rd party librarys on ANACONDA"
 categories: 
   - Anaconda
-last_modified_at: 2020-01-13T12:00:00+09:00
+last_modified_at: 2020-02-19T19:09:00+09:00
 toc: true
 ---
 
@@ -17,7 +17,8 @@ toc: true
 순서대로 <br/>
 **Environments \> base(root)의 화살표 버튼 클릭 \> Open Terminal**<br/>
 를 실행합니다.<br/>
-
+(사실 이렇게 터미널을 켜서 커맨드라인을 입력하게 되면 navigator를 켠 이유가 없겠지만 ㅎㅎ.. GUI로 필요한 패키지들을 간편하게 설치할 수 있답니다!)<br/>
+<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200113anacondaNavigator/capture1.jpg" alt=""> {% endraw %}
 
 가상환경이란 하나의 독립적인 통이라고 볼 수 있습니다.<br/>
