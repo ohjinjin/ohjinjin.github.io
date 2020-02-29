@@ -2,11 +2,12 @@
 title: "Smart Video Phone using TTS and FaceDetection"
 categories: 
   - projects
-last_modified_at: 2020-02-27T22:27:00+09:00
+last_modified_at: 2020-02-29T19:10:00+09:00
 toc: true
 ---
 
 독거 여성을 위한 스마트 비디오폰<br/>
+(프레젠테이션 수정 예정)<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200227smartvideophone/1.JPG" alt=""> {% endraw %}<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200227smartvideophone/2.JPG" alt=""> {% endraw %}<br/>
@@ -57,4 +58,5 @@ toc: true
 Git Repo URL_server : [https://github.com/ohjinjin/SmartVideoPhone_Server](https://github.com/ohjinjin/SmartVideoPhone_Server)
 <br/>Git Repo URL_hardware : [https://github.com/ohjinjin/SmartVideoPhone_HW](https://github.com/ohjinjin/SmartVideoPhone_HW)
 <br/>Git Repo URL_Android : [https://github.com/ohjinjin/SmartVideoPhone_Android](https://github.com/ohjinjin/SmartVideoPhone_Android)
-<br/>Video of execution : (수정중)<br/>
+<br/>Video of execution : https://youtu.be/wLMCrnUK-1c
+<br/>
