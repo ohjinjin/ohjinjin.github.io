@@ -58,5 +58,5 @@ toc: true
 Git Repo URL_server : [https://github.com/ohjinjin/SmartVideoPhone_Server](https://github.com/ohjinjin/SmartVideoPhone_Server)
 <br/>Git Repo URL_hardware : [https://github.com/ohjinjin/SmartVideoPhone_HW](https://github.com/ohjinjin/SmartVideoPhone_HW)
 <br/>Git Repo URL_Android : [https://github.com/ohjinjin/SmartVideoPhone_Android](https://github.com/ohjinjin/SmartVideoPhone_Android)
-<br/>Video of execution : https://youtu.be/wLMCrnUK-1c
+<br/>Video of execution : [https://youtu.be/wLMCrnUK-1c](https://youtu.be/wLMCrnUK-1c)
 <br/>
