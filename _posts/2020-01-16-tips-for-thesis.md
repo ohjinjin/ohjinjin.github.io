@@ -2,7 +2,7 @@
 title: "Tips for writing your first thesis"
 categories: 
   - etc
-last_modified_at: 2020-01-31T12:23:00+09:00
+last_modified_at: 2020-03-01T22:54:00+09:00
 toc: true
 ---
 
