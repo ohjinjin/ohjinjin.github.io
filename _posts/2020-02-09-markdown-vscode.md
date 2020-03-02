@@ -2,7 +2,7 @@
 title: "How to write Markdown files with VisualStudioCode and Extensions"
 categories: 
   - blog
-last_modified_at: 2020-02-09T20:16:00+09:00
+last_modified_at: 2020-03-02T21:53:00+09:00
 toc: true
 ---
 
@@ -23,4 +23,15 @@ VSCODE 설치
 ------
 [https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview](https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview)
 <br/>
-(수정중)
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200209markdown/capture1.JPG" alt=""> {% endraw %}
+
+캡처 화면처럼 VS code를 열어 해당하는 확장프로그램을 설치해주세요.<br/>
+
+설치 이후에는 바로 아래와 같이 미리보기 화면을 확인하실 수 있습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200209markdown/capture2.JPG" alt=""> {% endraw %}
+
+<br/>
+md 파일 에디터로 atom도 많이 사용들하시던데, IDE 자체가 무겁다고해서 저는 vs code와 그 extension을 사용하기를 추천받았어요!
+<br/><br/>
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
