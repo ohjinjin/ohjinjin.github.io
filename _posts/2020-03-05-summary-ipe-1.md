@@ -2,7 +2,7 @@
 title: "Summary for written test of Information Processing Engineer(1)"
 categories: 
   - IPE
-last_modified_at: 2020-03-716T02:56:00+09:00
+last_modified_at: 2020-03-18T20:51:00+09:00
 toc: true
 ---
 

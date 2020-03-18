@@ -1,8 +1,8 @@
 ---
-title: "DataStructure_traverse_1991"
+title: "DataStructure_traverse tree_1991"
 categories: 
   - BaekJoon
-last_modified_at: 2020-03-17T00:16:00+09:00
+last_modified_at: 2020-03-18T20:39:00+09:00
 toc: true
 ---
 백준 자료구조의 1991번 문제 트리 순회를 풀이해보도록 하겠습니다.<br/>
