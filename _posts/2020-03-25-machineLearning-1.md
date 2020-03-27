@@ -2,7 +2,7 @@
 title: "Machine Learning(1)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-03-25T15:08:00+09:00
+last_modified_at: 2020-03-27T15:17:00+09:00
 toc: true
 ---
 
@@ -13,6 +13,8 @@ Intro
 기존에 수강했던 인공지능과목을 통해서나 혼자 공부했던 내용이 있지만 거기에 머신러닝 수업을 들어서 보충하고 싶어서 수강하게 되었습니다.<br/>
 
 gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습하는 내용도 함께 기록하려고 합니다.<br/>
+
+[원격 실습환경구축 따라하기](https://ohjinjin.github.io/git/gitlab/)
 
 이번 주제는 theory 개요입니다.<br/>
 <br/>
