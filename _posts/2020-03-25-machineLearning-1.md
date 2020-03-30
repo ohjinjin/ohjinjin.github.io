@@ -2,7 +2,7 @@
 title: "Machine Learning(1)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-03-29T19:03:00+09:00
+last_modified_at: 2020-03-30T20:20:00+09:00
 toc: true
 ---
 
@@ -141,6 +141,8 @@ No Free Lunch는 모든 것에 최선인 알고리즘은 없다라는 컨셉이�
 1. Accuracy<br/>
 Accuracy = 1 - Error<br/>
 에러함수는 1부터 n까지의 실제값과 예측값 사이의 Loss 함수값의 합 * 1/n으로 Loss함수의 값은 정답인경우 0, 오답일 경우 1로 정의됩니다.<br/>
++ accuracy를 다르게 정의하면 (TP+TN)/ALL로 정의할 수 있습니다.<br/>
+그러다보니, accuracy의 단점을 보완하는 성능 척도가 Precision과 Recall, 또는 ROC curve와 AUC입니다.<br/>
 
 2. Precision, Recall, F1 score<br/>
 F1 = 2*1/(1/recall + 1/precision) = 2*(precision*recall)/(precision+recall)<br/>
@@ -164,7 +166,24 @@ recall = TP/(FN+TP) = 범인이라 예측했는데 진짜 범인인 수 / 진짜
 그래서 이 예제문제의 경우 F1 score=6 입니다.<br/>
 
 3. ROC curve에서의 Area Under the Curve(AUC)값<br/>
-(독학하라하셨는데 독학 후 업데이트 예정입니다.)<br/>
+ROC curve는 보통 binary classification이나 medical application에서 많이 쓰이는 성능 척도입니다.<br/>
+ROC(Receiver Operating Characteristic) curve는 False Positive Rate(FPR=1-TNR, 이때 TNR=specificity)을 원인축, True Positive Rate(TPR=recall, 이때 TPR=sensitivity)을 결과축으로 놓은 그래프를 말하며, ROC 커브의 아래 면적을 AUC(Area Under the Curve)라고 부릅니다.<br/>
+
+ROC curve에서는 AUC 면적이 1에 가까울수록 성능이 좋다고 평가합니다.<br/>
+이를 해석하기 위해서는 민감도(sensitivity)와 특이도(specificity)를 이해해야 합니다.<br/>
+
+예를들자면, 암이다 아니다를 판단하는 모델의 경우 민감도가 높다면 아주 조금의 징후만 보이더라도 암이라고 진단할 것이며 특이도는 아닐땐 아니라고 가려낼 수 있는 능력을 말한다고 보면 됩니다.<br/>
+
+일반적으로 민감도와 특이도의 관계는 민감도를 높이게되면 특이도는 떨어지는 trade-off 관계입니다.<br/>
+
+특이도TNR가 1일때 민감도TPR은 0, 특이도가 0일때 민감도는 1이되는 비율이 ROC AUC가 0.5인 상태로, 정확하게 trade off 관계라고 볼 수 있으며 두 값의 합은 항상 1이 됩니다.<br/>
+
+이런식으로 상호 변화에 대해서 민감도와 특이도간의 비율을 그래프로 그린 것이 바로 ROC curve입니다.<br/>
+
+원인축이 1-TNR이기 떄문에 특이도가 높아지더라도 민감도가 낮아지는 정도가 완만하며, 민감도가 높아지더라도 특이도가 낮아지는 정도 역시 완만한 그래프가 바로 AUC가 1에 가까운 curve라는 것을 알 수 있습니다.<br/>
+
+참고로 TPR+TNR이 최대가 되는 지점으로 설정하면 되겠다고 생각할 수 있지만, 실제로는 모델이 수행하는 태스크의 도메인 지식과 관련하여 TNR이 조금 낮더라도 괜찮은 경우도 있을 수 있고, TPR이 조금 낮을 때 오히려 좋은 실적을 낼 수도 있을 겁니다.<br/>
+
 
 4. BLEU metric(score):BiLingual Evaluation Understudy<br/>
 BLEU의 경우 자동번역 문장에 대한 평가를 할 때 많이 사용되곤 합니다.<br/>
