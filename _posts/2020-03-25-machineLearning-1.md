@@ -2,7 +2,7 @@
 title: "Machine Learning(1)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-03-30T20:20:00+09:00
+last_modified_at: 2020-04-01T13:42:00+09:00
 toc: true
 ---
 
@@ -17,6 +17,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 [원격 실습환경구축 따라하기](https://ohjinjin.github.io/git/gitlab/)
 
 이번 주제는 theory 개요입니다.<br/>
+
+[Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)
 <br/>
 
 theory 개요
@@ -232,6 +234,9 @@ ML 공학도로서 모델 성능평가를 보고 좋다 좋지않다 정도는 �
 
 다시 정리하자면 모델 complexity가 너무 높아지면 오히려 overfitting이 될 확률이 커집니다. 참고로 모델의 complexity는 모델의 feature가 많으면 높아지죠.<br/>
 
+variance가 큰 모델의 경우는 overfitting이 의심되는 상황으로 데이터개수를 늘리거나 데이터 feature를 낮춰 모델을 경량화하는 방법이 있습니다.<br/>
+bias가 큰 모델의 경우는 underfitting을 의미하며, 이럴 때는 모델의 복잡도를 상향시키는 등의 대책이 필요합니다.<br/>
+
 몇가지 용어를 추가로 정리합니다.<br/>
 
 Generalization : unseen data에 대해서도 잘 동작하는가? 그렇다면 그 모델은 generalization이 잘되었다고 표현할 수 있습니다.<br/>
@@ -280,8 +285,36 @@ Loss is a part of cost which is a type of objective..<br/>
 
 ... etc
 
+Data
+---
+요리에 데이터사이언스분야를 비유하여 표현해보겠습니다.<br/>
+* Data = 재료<br/>
+* Feature engineering = 재료손질(데이터 마이닝)<br/>
+* Algorithm = 요리방법<br/>
+* Evaluation = 시식<br/>
 
-(수정중)
+데이터를 바탕으로 기계학습 알고리즘의 파라메터들이 학습되는 것이죠!<br/>
+
+현업에 나가게되면 잘 정리된 데이터를 만지는 경우도 있을 수 있지만 그렇지 못한 경우가 훨씬 많습니다. 가장 많이 맞딱뜨릴 상황은 아마 아래의 경우일 것 입니다.<br/>
+
+Q.데이터가 부족하거나 분포가 너무 치우쳐져(biased) 있을 땐 어떻게 할까?<br/>
+1. Sampling<br/>
+* down-sampling: 비율이 많은 데이터를 적게 채택<br/>
+* up-sampling: 비율이 적은 데이터를 더 많이 채택<br/>
+
+Distant supervision의 경우엔 학부 레벨에선 자주 다루는 방식은 아니긴하나 소개해주셨습니다.<br/>
+2. Distant Supervision<br/>
+* semi-supervised 방식<br/>
+* '가정'을 바탕으로 데이터 label 이 있다고 취급<br/>
+예) 머리카락 길이가 30cm 이상이면 girl이라고 레이블링을 해버리고 그렇게 데이터를 곧바로 쓰겠다는 것<br/>
+
+Bagging방식은 가방에 담는다고 이해하면 편해요<br/>
+3. Bagging(Bootstrap aggregating)<br/>
+* samples (with replacement) for multiple bags<br/>
+전체데이터에서 샘플링을 해서 (=가방에 담아서) 학습하고 테스트하고를 여러번 반복합니다.<br/><br/>
+
+\+ML 공부를 할때 이론도 좋지만 프로젝트 중심으로 실질적인 문제를 풀어보는 것이 좋다는 조언을 자주 듣습니다.<br/>
+
 <br/>
 <br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
