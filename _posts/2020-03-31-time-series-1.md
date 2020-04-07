@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-03-31T20:13:00+09:00
+last_modified_at: 2020-04-08T03:30:00+09:00
 toc: true
 ---
 
@@ -14,4 +14,5 @@ Intro
 
 실습 환경 구축으로는 R 스튜디오 설치 정도가 있겠습니다.<br/>
 
+[실습 과제 1 보러가기](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/Lab1_convert_the_frequency.ipynb)<br/>
 (수정중)
