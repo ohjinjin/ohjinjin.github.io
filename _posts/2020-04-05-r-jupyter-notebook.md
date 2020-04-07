@@ -2,7 +2,7 @@
 title: "How to use R in jupyter notebook"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-07T23:41:00+09:00
+last_modified_at: 2020-04-08T03:25:00+09:00
 toc: true
 ---
 
@@ -34,7 +34,33 @@ Jupyter notebook이 켜졌다면, R언어용 새 notebook파일을 생성해주�
 <br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200407r_jupyter/capture4.JPG" alt=""> {% endraw %}
 
-끝입니다! <br/>
-아래 링크를 참고해 작성한 포스트입니다.<br/>
+여기까지는 아래 링크를 참고해 작성한 포스트입니다.<br/>
 [https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/](https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/)<br/>
-(수정중)
+
+여기서 설치가 끝난 것이 아닙니다. 각종 R 패키지들의 사용을 위해서는 명령프롬트를 통해 설치해줘야할 것이 몇가지 더있는데요,<br/>
+기존에 설치해 사용하셨던 R과 R studio에서는 이상없이 설치되는 패키지가 Anaconda Jupyter notebook 환경에서는 에러가 되는 상황을 맞이하게됩니다.<br/>
+그 이유는 jupyter notebook이 r자바경로와 설정되지 않아서라고 합니다.<br/>
+
+콘솔을 켜 R을 입력해 대화형 쉘을 실행시키고 아래 명령어를 입력해주세요.<br/>
+
+> install.packages('devtools')<br/>
+
+저는 국내 seoul 1이라는 CRAN 저장소를 선택했습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200407r_jupyter/capture5.JPG" alt=""> {% endraw %}
+
+그 다음은 IRkernel을 설치합니다.<br/>
+이것이 R과 jupyter notebook을 연동시켜줄겁니다.<br/>
+
+> devtools::install_github('IRkernel/IRkernel')<br/>
+
+성공적으로 설치를 했다면 아래 명령어로 설치가 잘 되었는지 확인해주세요.<br/>
+
+> IRkernel::installspec()<br/>
+
+정상적으로 설치가 되었다면 jupyter notebook으로 R을 확인해볼겁니다.<br/>
+R 쉘에서 나와 jupyter notebook을 실행시켜주세요.<br/>
+
+그럼 정상적으로 실행이 될겁니다!<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200407r_jupyter/capture6.JPG" alt=""> {% endraw %}
