@@ -1,8 +1,8 @@
 ---
-title: "Machine Learning(2)"
+title: "Decision Tree_Machine Learning(2)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-01T15:14:00+09:00
+last_modified_at: 2020-04-08T15:11:00+09:00
 toc: true
 ---
 
@@ -14,8 +14,9 @@ Intro
 
 gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습하는 내용도 함께 기록하려고 합니다.<br/>
 
-[원격 실습환경구축 따라하기](https://ohjinjin.github.io/git/gitlab/)
-[Machine Learning(1) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-1/)
+* [원격 실습환경구축 따라하기](https://ohjinjin.github.io/git/gitlab/)<br/>
+* [Machine Learning(1) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-1/)<br/>
+
 이번 주제는 Decision tree에 대한 theory입니다.<br/>
 <br/>
 
@@ -95,7 +96,40 @@ Information Gain의 개념이 여기서 나옵니다.<br/> IG는 부모노드의
 그래서 모델의 학습시 초기에 각 feature별로 IG를 전부 계산하고 order에 따라 트리의 결정노드로서 먼저 생성되는 것이지요.<br/>
 (최적의 해를 구할 것이라고 보장을 할수는 없지만요.)
 
+Decision Tree 심화
+---
+위에도 썼지만 Decision Tree는 어떤 가설(IG가 큰쪽이 좋을것이다) 하에 알고리즘이 만들어진 것이지 최적의 해를 구할수 있는 것은 아닙니다.<br/>
 
+이 모델은 현업에서도 많이 사용되는 모델로 이 알고리즘을 확실히 이해하고 넘어가야 합니다.<br/>
+
+여태까지 본 데이터는 categorical feature로 yes-no 두 가지로만 분기가 되었습니다.<br/>
+그런데 우리에게 주어진 feature가 만약 real-value라면 어떻게 해야할까요?<br/>
+
+여러 방법이 있지만, 본 수업에서는 bin을 이용합니다.<br/>
+bin 방법은 특정 root노드로부터 모종의 분기를 맞이해야하는데 그 value가 0~255까지 있다고 합시다.<br/>
+첫번째 자식노드는 [0,32) 구간에 해당하는 경우, 두번째 자식노드는 [32,64) 구간에 해당하는 경우, ... , 여덟번째 자식노드는 [224,255] 구간에 해당하는 경우로 나누는 것입니다.<br/>
+참고로 열린구간은 '[ | ]'로, 닫힌 구간은 '( | )'로 표기합니다.<br/>
+
+여기서 잠시 tree 모양에 따른 용어를 알아보겠습니다.<br/>
+균형이 잡힌 이진트리는 balanced tree, 높이가 높은 트리의 경우는 deep tree, 옆으로 넓게 퍼진 모양새의 트리는 bushy tree, 한쪽으로만 편향된 트리는 left | right skewed tree라고 부릅니다.<br/>
+
+지금 당장은 이런 용어를 알아두는게 큰 의미가 없다고 생각할 수 있지만, 그래프나 트리 등으로 표현되는 알고리즘이나 모델들은 edge에 화살표 존재 유무도 구분해서 받아들여야합니다!<br/>
+
+다시 Decision Tree로 돌아와서, Decision Tree는 Overfitting 되기가 쉽습니다.<br/>
+Decision Tree는 학습하는 순간에 이미 overfitting이 되는가가 이미 정해집니다.<br/>
+feature별 IG를 따져 위에서부터 정해져 내려오는데 국부적으로 최적으로 보이는 feature를 먼저 취함으로써 마치 나비효과처럼 첫단추부터 잘못끼우는 셈이 되는 것이죠.<br/>
+그러면 이후에는 학습데이터에 과하게 맞추게될 가능성이 높습니다.<br/>
+그렇기 때문에 Decision Tree 모델의 복잡성은 트리의 높이와 깊은 연관이 있습니다.<br/>
+
+보통 데이터 마이닝 시 feature 값들을 0~1 사이의 값을 갖도록 normalization을 하는 과정을 거치기도 하는데, Decision Tree에서는 그럴 필요가 없습니다.<br/>
+왜냐하면 해봤자 어차피 똑같은 노드형태를 취할 것이기 때문이죠.<br/>
+
+Decision Tree는 구현이나 이해가 비교적 쉬운 모델입니다.<br/>
+모델이 뱉어낸 결과도 사람이 보고 직관적으로 이해할 수 있으며 설명이 가능하다는 장점을 갖습니다.[WhiteBox]<br/>
+여러 모델들을 배우다보면 이런 모델들이 흔치가 않답니다.<br/>
+
+하지만 쉬운만큼 아주 powerful한 모델은 아닙니다. 그러다보니 아주 조금만 복잡한 문제를 해결하려해도 성능이 훅 떨어진다는 단점이 있습니다.<br/>
+예를 들어 비선형 문제의 대표적인 문제인 XOR 문제의 경우에도 Decision boundary를 잘그려내지 못합니다.
 <br/>
 <br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>

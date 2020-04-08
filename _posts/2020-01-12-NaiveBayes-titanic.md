@@ -2,7 +2,7 @@
 title: "Analyzing NaiveBayes model with titanic data of kaggle"
 categories: 
   - MachineLearning
-last_modified_at: 2020-01-12T02:00:00+09:00
+last_modified_at: 2020-04-8T15:27:00+09:00
 toc: true
 ---
 
@@ -29,7 +29,7 @@ Naive Bayes는 **조건부 확률**을 채용한 머신러닝 모델입니다. �
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200112NaiveBayes/bayes_expr2.JPG" alt=""> {% endraw %}
 
 
-이항하여 식을 정리해보면 위와 같은 식이 성립됨을 알 수 있습니다. 이 때 P(B\|A)를 사전확률, P(A\|B)를 사후 확률이라고도 합니다.<br/>
+이항하여 식을 정리해보면 위와 같은 식이 성립됨을 알 수 있습니다. 이 때 P(A)를 사전확률, P(A\|B)를 사후 확률이라고도 합니다.<br/>
 
 베이즈 정리를 이 쯤 이해했다면 본격적으로 Naive Bayes에 대해서도 알아보도록 합시다.<br/>
 우선 Naive 는 '순진하다'라는 뜻을 갖는 단어라고합니다. 이는 Naive Bayes 모델에 입력될 데이터셋의 모든 필드들이 동등하며 또 **독립적**이어야한다는 특성으로부터 착안된 것이 아닐까 개인적으로 생각합니다.<br/>
