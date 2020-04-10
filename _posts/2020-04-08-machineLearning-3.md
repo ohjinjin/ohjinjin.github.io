@@ -1,8 +1,8 @@
 ---
-title: "Naive Bayes_Machine Learning(2)"
+title: "Naive Bayes_Machine Learning(3)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-08T15:24:00+09:00
+last_modified_at: 2020-04-10T15:03:00+09:00
 toc: true
 ---
 
@@ -20,7 +20,7 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)<br/>
 
-이번 주제는 Naive Bayes에 대한 theory입니다.<br/>
+이번 주제는 학습시간도 테스트시간도 빠르기로 유명한 Naive Bayes에 대한 theory입니다.<br/>
 <br/>
 과거 이 모델에 대해 스스로 정리한 적이 있었는데 함께 [여기](https://ohjinjin.github.io/machinelearning/NaiveBayes-titanic/)에 링크를 걸어두겠습니다.<br/>
 <br/>
@@ -95,7 +95,109 @@ Naive Bayes Classfier의 구현 시 매우 중요한 Assumption이 있습니다.
 지금까지는 P(X|Class)를 단순히 빈도수에만 기반하여 계산했지만, 특정 분포를 따른다고 가정을 할 수 있습니다.<br/>
 분포에 기반하여 결과값을 얼버무리는 것이죠!<br/>
 
-Gaussian Naive Bayes Classifier를 구현할 때에는 Gaussian 분포를 가정합니다.<br/>
-(수식 이미지)
 
-(수정중)
+Gaussian Naive Bayes
+---
+feature가 독립적이라는 것을 가정하고 naive bayes로 문제를 해결하려했어도 발생했던 문제가 무엇이었냐면, 기존 학습데이터에 한 번도 본적이 없던 데이터가 들어오면 빈도수 기반이었기 때문에 0이라는 값을 얻게되는 문제가 있었습니다.<br/>
+
+Gaussian Naive Bayes Classifier를 구현할 때에는 Gaussian 분포를 가정합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture1.JPG" alt=""> {% endraw %}
+<br/>
+뮤값이랑 스탠다드데리베이션으로 가우시안 모형의 형태를 정할 수 있습니다.<br/>
+
+GNB classifier의 **학습** 과정은 아래와 같습니다.<br/>
+k번째의 레이블에 대해서 얼마나 그럼직한가에 대해 probability를 빈도수에 기반해 측정하는데, 모든 feature에 대해 mean값과 스탠다드데리베이션을 미리 계산합니다.<br/>
+
+어떻게 계산할까요? 이걸 설명하기 전에 GNB classifier의 **테스트**도 확인해봅시다.<br/>
+
+새로운 데이터 X에 대해 label Y를 예측하는데, 각 feature에 대해 likelihood를 전부 product(곱)합니다.<br/>
+P(newX0 | Y=yk) * P(newX1 | Y=yk) * ...<br/>
+이렇게요.<br/>
+하나라도 0이 나온다면 당연히 결과값도 0이 나올거에요. 이렇게 되면 우리가 앞서 논의했던 Naive Bayes 분류기의 문제점을 만나는 것입니다.<br/>
+
+여기까지 구한 값에 레이블 k일 확률(Prior)을 곱해줍니다.<br/>
+각 레이블마다 이걸 다 구해보고 이 최종 결과값이 최대가 되게 하는 레이블 k를 구하면 됩니다.<br/>
+
+여기까지는 본래의 빈도수 기반인 NB 방식입니다.<br/>
+수식으로 표현하자면 아래와 같습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture2.JPG" alt=""> {% endraw %}
+<br/>
+여기에서는 P(Y=yk)는 그대로지만, likelihood들의 곱을 구할때 Normal distribution(즉 Gaussian)을 적용시켜 그 값을 다 곱하도록 하는 것이 바로 GNB입니다.<br/>
+그저 GNB 모델에서는 likelihood를 구할 때 분포를 기반으로 하는 것 뿐입니다.<br/>
+
+참고로 테스트시 y의 label 개수가 N개라고하면, estimate해야하는 P(Y|newX)의 실제 개수는 몇 개만 하면 될까요?<br/>
+최소 N-1개겠죠! 어차피 확률은 다 더해서 1일테니까요.<br/>
+
+그렇다면 학습 때, mean/variance 값들을 estimate 하는 방법은 뭘까요?<br/>
+
+MLE(Maximum Likelihood Estimates)라는 방법을 이용합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture5.JPG" alt=""> {% endraw %}
+<br/>
+소문자 k번째 y라는 것은 k값이 레이블을 구분하는 번호라고 보시면 됩니다.<br/>
+i번째 x라는 것은 i값이 feature들을 구분하는 번호라고 보시면 됩니다.<br/>
+i번째 feature랑 k번째 label에 대해 분포가 다 각각 따로따로 존재하는 거에요!<br/>
+아주 많은 경우가 있겠죠.<br/>
+
+k에 대한 feature i에 대한 평균(뮤)을 구하는 과정은 아래와 같습니다.<br/>
+참고로 모종의 함수δ는 j번째 레이블이 k번째 레이블과 같으면 1, 그렇지 않으면 0을 반환하게됩니다.<br/>
+
+> 1/(k 레이블을 가진 데이터들의 개수)*(모든 k레이블 데이터 중에서 i라는 feature들만의 값을 모두 더한 값)<br/>
+
+즉 말 그대로 평균값을 구한 것입니다.<br/>
+
+표준편차를 구할때도 마찬가지로 수식을 이해하면됩니다.<br/>
+각각의 레이블과 feature에 대해 구한 mean값으로부터 \+ | \- 얼마나 떨어져있는지 그 거리만을 나타내기 위해 제곱해서 이용하면 되겠습니다.<br/>
+
+학습시 이렇게 파라미터들을 각각 다 구하게 될겁니다.<br/>
+
+그래서 각 feature에 대해서만 따로 스탠다드 데리베이션을 주는 방법도 있고, i번째 feature에 독립적으로 각 레이블마다 스탠다드데리베이션을 주는 방법도 있습니다. 아예 둘다 빼버리고 모든 feature와 label에 대해 단 하나의 스탠다드데리베이션을 적용시키는 방법도 있습니다.<br/>
+
+이런 vairance를 가정하게되면 파라미터 수가 매우 줄어들겠죠!<br/>
+
+어쨌든 이렇게 학습되어진 GNB의 decision boundary의 모양은 어떨까요?<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture6.JPG" alt=""> {% endraw %}
+<br/>
+probability distribution 모양에 따라 boundary 모양이 바뀌는 것을 볼 수 있습니다.<br/>
+하지만 XOR과 같이 비선형 패턴의 문제를 해결할 때도 잘 찾아낼 수 있을까요? 그렇지 못합니다.<br/>
+
+왜냐하면 가우스 분포모형(probability distribution )을 3차원으로 사상시켜보면 그렇게 생겼기 때문이에요.<br/>
+타원에 동그라미하나 있는 생김새입니다. 학습에 실패하면서 그 모양을 끝까지 따라간 것 입니다.<br/>
+
+Bayesian Networks
+---
+Bayesian Network는 랜덤 변수의 집합과 방향성 비순환 그래프를 통하여 그 집합을 조건부 독립으로 표현하는 확률의 그래픽 모델입니다.<br/>
+베이지안 네트워크의 한 가지 이점은 복잡한 결합 분포(complete joint distribution)보다 직접적인 의존성(a sparse set of direct dependecies)과 지역 분포(local distribution)를 사람이 이해하는데 직관적이라는 것입니다.<br/>
+[출처:https://ko.wikipedia.org/wiki/%EB%82%98%EC%9D%B4%EB%B8%8C_%EB%B2%A0%EC%9D%B4%EC%A6%88_%EB%B6%84%EB%A5%98](https://ko.wikipedia.org/wiki/%EB%82%98%EC%9D%B4%EB%B8%8C_%EB%B2%A0%EC%9D%B4%EC%A6%88_%EB%B6%84%EB%A5%98)
+<br/>
+
+Bayesian Network로 NB를 표현할 수도 있으며 보다 general한 모델이라고 볼 수 있겠습니다.<br/>
+
+Bayesian Network를 보다 쉽게 설명하자면, "내 짐작에 저 데이터는 이런 방식으로 생겨 났을 꺼야" 라는 가정을 통해 접근을 해 모델을 학습 시켜 가장 잘 부합되는 네트워크를 찾는 것입니다.<br/>
+무엇인지 자세히 알아봅시다.<br/>
+
+feature A와 feature B로부터 영향을 받은 feature C를 수식으로 표현하면 아래와 같습니다.<br/>
+> p(A,B,C) = p(C|A,B)p(A)p(B)<br/>
+
+그리고 그림으로 표현하면 서로 독립된 A노드와 B노드가 C노드를 가리키는 모양입니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture3.JPG" alt=""> {% endraw %}
+<br/>
+이런 것을 Bayesian Network, Belief network, Causal network라고도 부릅니다.<br/>
+
+다시 정리하자면 방향이 있는 간선의 경우 direct dependence를 뜻하고, 간선이 없다면 조건부독립을 뜻합니다.<br/>
+
+베이지안 네트워크를 이해하기위해서는 6가지 기본 규칙을 먼저 알아야합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture4.JPG" alt=""> {% endraw %}
+<br/>
+왼쪽부터 상단부터 오른쪽 하단 순서대로 1~6번이라 칭하겠습니다.<br/>
+또 이 그래프를 볼때 참고로 아셔야할 것이 있는데 색칠이 된 것은 값이 주어졌다는 뜻 입니다!<br/>
+
+1번 규칙에서 보면 c가 주어져있지 않기 때문에 c에 대한 marginalizing out으로 a와 b가 독립이 아니다라는 것을 말합니다.<br/>
+(cf) 마지널라이징 아웃=c가 안정해진 상황을 고려하는 것)<br/>
+
+2번 규칙은 c가 정해졌다면 a와 b는 상호독립이라는 것을 말합니다.<br/>
+3번 규칙은 a에 의해 c가 결정되며, c에 의해 b가 결정이 되므로 b값을 좌우하기때문에 a와 b가 독립이 아니라고 말합니다.<br/>
+4번 규칙은 c값이 일단 정해지면 a와 b는 독립이라고 설명합니다.<br/>
+5번 규칙은 상호 독립이던 a와 b가 c에 대한 결정에 영향은 주겠지만 말 그대로 a와 b는 독립이라고 말하며,<br/>
+6번 규칙은 c가 결정이 되었을 경우로, explaining away에 의해서 독립이 아니라고 설명합니다. explaining away는 c의 값에 대한 당위성을 설명하기 위해 서로 연관없는 a와 b가 애쓰는 상황을 말합니다.<br/>
+(다음 수업 이어서..!)
