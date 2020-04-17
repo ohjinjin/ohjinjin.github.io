@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-17T23:54:00+09:00
+last_modified_at: 2020-04-18T00:00:00+09:00
 toc: true
 ---
 
@@ -66,7 +66,7 @@ Loss = (y-y')^2, Cost = Mean-Squared-Error라고 하면, total loss와 total cos
 * total loss = (5-3)^2+(7-2)^2+(9-1)^2+(11-0)^2=214<br/>
 * total cost = 214/4=53.5<br/>
 
-당연히 loss와 cost는 낮아야 좋겠죠? 그래서 우리는 cost를 최소화시키는 방향으로 갱신해줘야 합니다.<br/>
+당연히 loss와 cost는 낮아야 좋겠죠? 그래서 우리는 cost를 최소화시키는 방향으로 파라메터를 갱신해줘야 합니다.<br/>
 
 3. 갱신<br/>
 Gradient Descent를 적용하여, MSE가 가장 작은 a,b,c를 찾아갑니다.<br/>
