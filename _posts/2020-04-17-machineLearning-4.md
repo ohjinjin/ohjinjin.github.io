@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-18T00:00:00+09:00
+last_modified_at: 2020-04-18T00:05:00+09:00
 toc: true
 ---
 
@@ -47,7 +47,7 @@ X가 feature vector, 베타는 파라메터들, y는 예측값입니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture11.JPG" alt=""> {% endraw %}
 
-iterative한 방법으로 학습을 하는 방법도 있습니다.<br/>
+최적화 하는 부분에 있어서 위수식만으로 계산이 안되기 때문에 대안으로 사용하는 iterative한 방법으로 학습을 하는 방법도 있습니다.<br/>
 예제를 보겠습니다.<br/>
 
 * 데이터<br/>
