@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-16T15:20:00+09:00
+last_modified_at: 2020-04-17T00:18:00+09:00
 toc: true
 ---
 
@@ -244,7 +244,9 @@ R의 forecast 패키지의 ses함수를 이용해서 실습도 해보겠습니�
 F는 예측값 Z는 관측값이라고 보시면 됩니다.
 
 이제 바로 위 데이터를 가지고 R로 실습해봅시다.
-(노트북 레포 url걸어주기)
+
+* 실습 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/simple_exponential_smoothing_exmaple.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/simple_exponential_smoothing_exmaple.ipynb)
+<br/>
 
 단순지수평활법에 해당하는 ses()를 호출할 때 인수들로는 가장 중요한 alpha값을 0.2를 포함해 ts 객체와 초기값 그냥 그대로 가져오는 simple설정을 함께 넘겨줍니다.
 
@@ -260,7 +262,6 @@ F는 예측값 Z는 관측값이라고 보시면 됩니다.
 24페이지까지 실습해볼것
 fb 데이터 가지고 이동평균, 선형이동평균, 가중이동평균 엑셀로 분석하고 각 평활법 별 차트그려주시
 월요일전까지..
-
 
 
 (수정중)

@@ -2,7 +2,7 @@
 title: "Naive Bayes_Machine Learning(3)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-10T22:08:00+09:00
+last_modified_at: 2020-04-17T23:46:00+09:00
 toc: true
 ---
 
@@ -33,14 +33,14 @@ Naive Bayes
 Naive bayes 모델을 이해하기 위해서는 bayes rule을 선수지식으로 알고 있어야 합니다.<br/>
 베이즈정리(Bayes Rule)는 아래와 같습니다.<br/>
 e는 event 또는 evidence, H는 Hypothesis를 말합니다.<br/>
-P(H|e) = (P(e|H)*P(H))/P(e)<br/>
+P(H\|e) = (P(e\|H)*P(H))/P(e)<br/>
 
-식을 설명하자면, P(e|H)는 Likelihood입니다. 이게 주어진 상태를 가정하지요, 반대로 P(H|e)는 사후확률, Posterior로, 얼마나 이 가설이 그럼직한가에 대한 값입니다.<br/>
+식을 설명하자면, P(e\|H)는 Likelihood입니다. 이게 주어진 상태를 가정하지요, 반대로 P(H\|e)는 사후확률, Posterior로, 얼마나 이 가설이 그럼직한가에 대한 값입니다.<br/>
 P(H)는 사전확률, Prior라고 부르며 evidence와는 전혀 상관없이 가설 자체의 확률을 말합니다.<br/>
-P(e)는 Marginal이라고 부르며, 모든 i에 대해 P(e|Hi)*P(Hi)값의 합을 뜻합니다. 모든 가능한 가설 하에 새로운 사건 e가 일어날 확률인것이죠.<br/>
+P(e)는 Marginal이라고 부르며, 모든 i에 대해 P(e\|Hi)*P(Hi)값의 합을 뜻합니다. 모든 가능한 가설 하에 새로운 사건 e가 일어날 확률인것이죠.<br/>
 
 왜 이 정리가 필요할까요?<br/>
-간단합니다. P(H|e)를 바로 구할 수 없기 때문이죠.<br/>
+간단합니다. P(H\|e)를 바로 구할 수 없기 때문이죠.<br/>
 하지만 우변에 있는 모든 값들은 저희가 알아낼 수 있습니다.<br/>
 
 문제를 하나 봅시다.<br/>
@@ -52,15 +52,15 @@ P(e)는 Marginal이라고 부르며, 모든 i에 대해 P(e|Hi)*P(Hi)값의 합�
 이렇게 뽑았을 때 그 공이 빨간공이었는데 첫번째 바구니에서 나온 공일 확률을 구해봅시다.<br/>
 
 빨간공일 사건을 e로두고 첫번째 바구니일 확률을 H라고 합시다.<br/>
-그럼 P(H|e)라는 조건부확률을 구해야하는 것이 우리가 해야할 일인데, 바로 구하기 어렵기 때문에 베이지 정리를 이용해서 우회해서 풀어내는 것이죠.<br/>
+그럼 P(H\|e)라는 조건부확률을 구해야하는 것이 우리가 해야할 일인데, 바로 구하기 어렵기 때문에 베이지 정리를 이용해서 우회해서 풀어내는 것이죠.<br/>
 
-p(e|H) = 첫번째 바구니에서 꺼냈는데 그공이 빨간색일 확률 = 1/2 (첫번째 바구니의 빨간색 비율이 50/100이니까)<br/>
+p(e\|H) = 첫번째 바구니에서 꺼냈는데 그공이 빨간색일 확률 = 1/2 (첫번째 바구니의 빨간색 비율이 50/100이니까)<br/>
 P(H) = 첫번째 바구니를 선택할 확률 = 1/2<br/>
-p(e) = 빨간공일 확률 = p(e|H)*p(H) + p(e|H')*p(H') = 1/2*1/2 + 3/10*1/2 = 2/5<br/>
+p(e) = 빨간공일 확률 = p(e\|H)*p(H) + p(e\|H')*p(H') = 1/2*1/2 + 3/10*1/2 = 2/5<br/>
 
-혹시 p(e|H)를 (저처럼ㅎㅎ) 1/4라고 구한분이 계시다면.. 너무 자연스럽게 p(e|H)*p(H) 즉, 왼쪽 바구니를 선택하고 동시에 빨간공일확률을 구해버렸던 것입니다.<br/>
+혹시 p(e\|H)를 (저처럼ㅎㅎ) 1/4라고 구한분이 계시다면.. 너무 자연스럽게 p(e\|H)*p(H) 즉, 왼쪽 바구니를 선택하고 동시에 빨간공일확률을 구해버렸던 것입니다.<br/>
 
-P(H|e) = (P(e|H)*P(H))/P(e) = (1/2 * 1/2)/(2/5) = 1/4 / 2/5 = 5/8<br/>
+P(H\|e) = (P(e\|H)*P(H))/P(e) = (1/2 * 1/2)/(2/5) = 1/4 / 2/5 = 5/8<br/>
 
 3/8이 두번쨰 바구니에서 빨간공을 꺼낼 확률입니다.<br/>
 
@@ -70,11 +70,11 @@ P(H|e) = (P(e|H)*P(H))/P(e) = (1/2 * 1/2)/(2/5) = 1/4 / 2/5 = 5/8<br/>
 너무 지엽적이니 여기에서는 더 다루지 않습니다.<br/>
 
 주요 수식을 다시 한 번 기억합시다.<br/>
-P(A|B) = P(A,B)/P(B) = (P(B|A)*P(A))/P(B)<br/>
+P(A\|B) = P(A,B)/P(B) = (P(B\|A)*P(A))/P(B)<br/>
 
 Bayes Classifier의 구현은 매우 간단해보입니다.<br/>
 ~~~
-if P(B|A)*P(A) > P(B|A')*P(A'):
+if P(B\|A)*P(A) > P(B\|A')*P(A'):
     x = A사건에 해당
 ~~~
 이게 전부죠.<br/>
@@ -87,12 +87,12 @@ Naive Bayes Classfier의 구현 시 매우 중요한 Assumption이 있습니다.
 
 독립적이라면 P(A,B,C)=P(A)*P(B)*P(C)가 성립하기 때문입니다.<br/>
 이는 feature간에 상호 커플링 등의 관계가 있다면 성립되지 않습니다.<br/>
-그래서 P(feature1,feature2|A)P(A) = P(feature1|A)P(feature2|A)P(A)가 성립되어 풀어낼 수 있어집니다.<br/>
+그래서 P(feature1,feature2\|A)P(A) = P(feature1\|A)P(feature2\|A)P(A)가 성립되어 풀어낼 수 있어집니다.<br/>
 
 하지만 여전히 예측확률값이 0이 나올 수도 있다는 risk가 존재합니다. 그래서 normalization을 적용해 이를 해소하기도 합니다.<br/>
 분포를 이용하는 것이지요.<br/>
 그 방법론이 바로 Gaussian Naive Bayes 입니다.<br/>
-지금까지는 P(X|Class)를 단순히 빈도수에만 기반하여 계산했지만, 특정 분포를 따른다고 가정을 할 수 있습니다.<br/>
+지금까지는 P(X\|Class)를 단순히 빈도수에만 기반하여 계산했지만, 특정 분포를 따른다고 가정을 할 수 있습니다.<br/>
 분포에 기반하여 결과값을 얼버무리는 것이죠!<br/>
 
 
@@ -111,7 +111,7 @@ k번째의 레이블에 대해서 얼마나 그럼직한가에 대해 probabilit
 어떻게 계산할까요? 이걸 설명하기 전에 GNB classifier의 **테스트**도 확인해봅시다.<br/>
 
 새로운 데이터 X에 대해 label Y를 예측하는데, 각 feature에 대해 likelihood를 전부 product(곱)합니다.<br/>
-P(newX0 | Y=yk) * P(newX1 | Y=yk) * ...<br/>
+P(newX0 \| Y=yk) * P(newX1 \| Y=yk) * ...<br/>
 이렇게요.<br/>
 하나라도 0이 나온다면 당연히 결과값도 0이 나올거에요. 이렇게 되면 우리가 앞서 논의했던 Naive Bayes 분류기의 문제점을 만나는 것입니다.<br/>
 
@@ -126,7 +126,7 @@ P(newX0 | Y=yk) * P(newX1 | Y=yk) * ...<br/>
 여기에서는 P(Y=yk)는 그대로지만, likelihood들의 곱을 구할때 Normal distribution(즉 Gaussian)을 적용시켜 그 값을 다 곱하도록 하는 것이 바로 GNB입니다.<br/>
 그저 GNB 모델에서는 likelihood를 구할 때 분포를 기반으로 하는 것 뿐입니다.<br/>
 
-참고로 테스트시 y의 label 개수가 N개라고하면, estimate해야하는 P(Y|newX)의 실제 개수는 몇 개만 하면 될까요?<br/>
+참고로 테스트시 y의 label 개수가 N개라고하면, estimate해야하는 P(Y\|newX)의 실제 개수는 몇 개만 하면 될까요?<br/>
 최소 N-1개겠죠! 어차피 확률은 다 더해서 1일테니까요.<br/>
 
 그렇다면 학습 때, mean/variance 값들을 estimate 하는 방법은 뭘까요?<br/>
@@ -147,7 +147,7 @@ k에 대한 feature i에 대한 평균(뮤)을 구하는 과정은 아래와 같
 즉 말 그대로 평균값을 구한 것입니다.<br/>
 
 표준편차를 구할때도 마찬가지로 수식을 이해하면됩니다.<br/>
-각각의 레이블과 feature에 대해 구한 mean값으로부터 \+ | \- 얼마나 떨어져있는지 그 거리만을 나타내기 위해 제곱해서 이용하면 되겠습니다.<br/>
+각각의 레이블과 feature에 대해 구한 mean값으로부터 \+ \| \- 얼마나 떨어져있는지 그 거리만을 나타내기 위해 제곱해서 이용하면 되겠습니다.<br/>
 
 학습시 이렇게 파라미터들을 각각 다 구하게 될겁니다.<br/>
 
@@ -177,7 +177,7 @@ Bayesian Network를 보다 쉽게 설명하자면, "내 짐작에 저 데이터�
 무엇인지 자세히 알아봅시다.<br/>
 
 feature A와 feature B로부터 영향을 받은 feature C를 수식으로 표현하면 아래와 같습니다.<br/>
-> p(A,B,C) = p(C|A,B)p(A)p(B)<br/>
+> p(A,B,C) = p(C\|A,B)p(A)p(B)<br/>
 
 그리고 그림으로 표현하면 서로 독립된 A노드와 B노드가 C노드를 가리키는 모양입니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture3.JPG" alt=""> {% endraw %}
@@ -211,4 +211,37 @@ Bayesian network 는 나의 hypothesis 에 기반해서 '설계'한 것일 뿐�
 
 가령, a -> c -> b 라고 설계를 했어도, c 가 주어진 상황에서 a와 b 를 예측하는 문제를 풀수도 있어지는 것이지요.<br/>
 
-(다음 수업 이어서..!)
+Baysesian Network는 앞에 주어진 현상 또는 지식, 가설을 기반으로 generative하게 설계를 하는거에요.<br/>
+많은 문제를 풀수 있어요 당연히 classificaition 문제도 풀 수 있습니다.<br/>
+각각의 feature들의 관계를 edge로 표현을 하고 call해가며 각각의 확률을 보는거죠.<br/> 
+아래 그림은 클래스 C에 대한 관측을 그린 것 입니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture9.JPG" alt=""> {% endraw %}
+
+Posterior는 likelihood에 prior를 곱한것과 비례한다고 말하고 있습니다.<br/>
+
+NB분류기를 구현할때는 label로부터 각 observation이 영향받는다는 가정하에, 각 feature(observation)들이 서로 독립적이라고 가정하에 그려줍니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture7.JPG" alt=""> {% endraw %}
+
+베이지안네트워크는 굉장히 자유도가 높은 네트워크입니다.<br/>
+사실 NB로는 풀 수 없는 문제가 있어요, 앞에서 잠시 봤었는데 바로 XOR 문제였죠.<br/>
+
+각각의 0,1 x값들이 feature들이 되며, Y 값이 즉 label이 class라고 보시면됩니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture8.JPG" alt=""> {% endraw %}
+
+NB로 이 문제를 해결하려고하면 결정장애를 겪게 될 겁니다 ㅎㅎ.<br/>
+
+> P(x1, x2, y) = P(x1)P(x2)P(y\|x1,x2)
+이 BN수식을 이렇게도 쓸수 있을까요?<br/>
+
+> P(x1, x2, y) = P(x1)P(x2)P(y\|x1)P(y\|x2)
+
+x1의 2가지 경우, x2의 2가지경우 총 네 가지경우로 모 나눠서 볼 게 아니라 두 가지경우로만 볼 수 있을까하는 문제인데, 하지만 위 그림에 주어진 예제의 경우에는 불가능합니다.<br>
+왜냐하면 P(x1,x2\|y) != P(x1\|y)P(x2\|y)이기 때문이죠.<br/>
+우리가 배웠던 규칙 6번에 의해서 y값이 주어져있으면 x1과 x2 feature는 각각 독립이 아니기 때문에 저 수식이 성립하지 않는 것입니다.<br/>
+explaining away 상황이 발생하기 때문이라고 배웠지요!<br/>
+<br/>
+
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
