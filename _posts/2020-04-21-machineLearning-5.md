@@ -2,7 +2,7 @@
 title: "Decision Tree LAB_Machine Learning(5)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-21T01:59:00+09:00
+last_modified_at: 2020-04-21T02:08:00+09:00
 toc: true
 ---
 
@@ -33,7 +33,7 @@ Decision Tree LAB1
 
 데이터 디스크립션 읽어보고 data folder에 들어가서 diagnosis.data를 다운받아주세요!<br/>
 
-1.데이터를 로컬의 data/에 담고 git add/commit/push 실습<br/>
+1. 데이터를 로컬의 data/에 담고 git add/commit/push 실습<br/>
 
 데이터를 먼저 다운로드 받습니다.<br/>
 저는 아래 캡처화면과 같이 리눅스의 wget 명령어를 통해 url로부터 호스팅되어있는 diagnosis 데이터를 다운로드 받았습니다.<br/>
