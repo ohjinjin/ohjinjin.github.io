@@ -2,7 +2,7 @@
 title: "SVD_Machine Learning(6)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-22T19:38:00+09:00
+last_modified_at: 2020-04-22T22:18:00+09:00
 toc: true
 ---
 
@@ -43,6 +43,16 @@ Linear Algebra 배경지식
 행렬 A에 대해서 Ax = 람다 x를 만족할때
 람다는 고유값(scalar), x는 고유벡터입니다.<br/>
 우리는 고유값과 고유벡터를 사용함으로써 해당 기저의 고유공간에서 확대/축소, 회전 등의 변환을 할 수 있습니다.<br/>
+
+벡터v에 대해 어떤 transformation을 적용해서 나온 결과 벡터 v를 람다v라고 표현하고 있네요.<br/>
+예제를 들어 한번 설명해보겠습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture27.JPG" alt=""> {% endraw %}
+
+
+아래 그림처럼 결과행렬은 고유값과 고유벡터로 표현해낼 수 있는 것입니다.<br/>
+3은 우리가 구하는 첫번째 고유값이 됩니다.<br/>
+우리가 곧 배울 SVD, EVD, PCA, spectral clustering, Eigenface 등 많은 곳에서 응용될 것이기 때문에 기초적으로 알고 계셔야합니다.<br/>
+
 
 3. Rank<br/>
 * Column Rank : 선형독립인 열 벡터의 최대개수<br/>
