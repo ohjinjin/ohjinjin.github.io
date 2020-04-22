@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-18T00:05:00+09:00
+last_modified_at: 2020-04-23T19:31:00+09:00
 toc: true
 ---
 
@@ -20,7 +20,7 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)<br/>
 
-* [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
+* [Machine Learning(3) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
 
 이번 주제는 Linear Regression에 대한 theory입니다.<br/>
 <br/>
@@ -117,3 +117,49 @@ Ridge regression은 L2 norm으로써 파라메터가 커지는 것을 제한합�
 아래 이미지에서 ridge regression의 마지막 항이 그에 해당하며 이것 때문에 제한이 생기는 것 입니다!<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture15.JPG" alt=""> {% endraw %}
+
+linear regression의 식을 보면 오차 제곱을 최소화 시켜주는 아규먼트 베타를 찾아주겠다는 뜻입니다.<br/>
+
+rigde regression 식을 보면 오차는 그대로 있고 람다에 베타 제곱을 곱한 항도 더해주잖아요?<br/>
+이건 쉽게 설명하자면 베타의 값도 최소화시켜주려고하는 겁니다!<br/>
+참고로 람다가 클수록 제한이 강해집니다.<br/>
+이렇게 제한을 두는 과정을 정규화라고도 합니다!<br/>
+
+lasso regression도 비슷합니다. L1 norm으로써 제한하는 모델입니다.<br/>
+베타의 크기(절대값)만을 고려해준뒤 람다를 곱한 항을 더해주는데, 마찬가지로 그 최종값이 최소가 되도록하는 베타를 구합니다.<br/>
+근데, 절대값함수는 미분이 안되므로 미분이 아닌 다른 여러기법을 적용해서 최적화시켜줘야하는 이슈가 있다는 것을 기억해주세요.<br/>
+또한 제곱이 아닌 절대값을 이용하기 때문에 Ridge에 비해서 Lasso가 더 타이트하게 감소시켜줍니다.<br/>
+(더공부중)
+
+
+Linear Classification
+---
+logistic regression을 이용한 linear classification을 봅시다.<br/>
+
+저희는 여태까지 XB와 같은 선형합을 구하는 방법으로 regression을 배웠습니다.<br/>
+그런데 이러한 함수를 채용하여 classification에도 적용을 시킬 수 있답니다.<br/>
+기존의 회귀문제를 맞출때 그 답은 label이 아니라 어떤 real number가 결과로 나왔었지만, classification 문제에 적용하기 위해서는 선형합에 대한 임의의 함수를 적용하여 **확률값**을 생성해줄 필요가 있습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture24.JPG" alt=""> {% endraw %}
+
+확률값을 생성해주는 함수가 바로 logistic function입니다.<br/>
+이 함수의 인자 범위는 -무한대~ +무한대까지이며, 함수값의 범위는 0~1사이의 값을 갖게됩니다.<br/>
+
+그럼 logistic function이 만들어진 motivation을 살펴볼까요?<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture25.JPG" alt=""> {% endraw %}
+
+로그함수는 모노토닉 함수중 대표적인 함수입니다.<br/>
+odds ratio에 로그까지 씌우면 -무한대 ~ +무한대 까지의 모든 값을 생성해 낼 수 있습니다.<br/>
+
+설명이 잘 되어있어 위 사진대로 이해해주시면 될 것 같습니다!<br/>
+
+확률값을 구하도록 logistic funcion을 이용하지 않더라도 꼼수로 classifier를 구현할 수는 있습니다.<br/>
+
+바로 multi response linear regression이라는 방법인데요, 각 클래스별로 Regression 모델을 적용해 대소비교를 함으로써 구해내는 방법입니다.<br/>
+아래에 참고자료를 첨부해드리도록 하겠습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture26.JPG" alt=""> {% endraw %}
+
+<br/><br/>
+
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
