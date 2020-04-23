@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-23T19:31:00+09:00
+last_modified_at: 2020-04-23T20:03:00+09:00
 toc: true
 ---
 
@@ -128,8 +128,24 @@ rigde regression 식을 보면 오차는 그대로 있고 람다에 베타 제�
 lasso regression도 비슷합니다. L1 norm으로써 제한하는 모델입니다.<br/>
 베타의 크기(절대값)만을 고려해준뒤 람다를 곱한 항을 더해주는데, 마찬가지로 그 최종값이 최소가 되도록하는 베타를 구합니다.<br/>
 근데, 절대값함수는 미분이 안되므로 미분이 아닌 다른 여러기법을 적용해서 최적화시켜줘야하는 이슈가 있다는 것을 기억해주세요.<br/>
-또한 제곱이 아닌 절대값을 이용하기 때문에 Ridge에 비해서 Lasso가 더 타이트하게 감소시켜줍니다.<br/>
-(더공부중)
+또한 Ridge에 비해서 Lasso가 더 타이트하게 감소시켜줍니다.<br/>
+
+그 이유는 왜 일까요?<br/>
+위에 잠시 말한 것 처럼 Lasso는 regularization term이 절대값이므로, 절댓값함수는 첨점이 존재하는 함수로서 미분불가합니다.<br/>
+
+반짤라서 0보다 크거나같을때, 0보다 작을때로 각각 나누어 gradient를 구해 그 값을 최소화시키는 베타를 찾는데 그 과정에서, 즉, '베타'에 대한 최적값 수식을 전개해보면 '람다'가 분자 부분에 위치하게 됩니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture29.JPG" alt=""> {% endraw %}
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture31.JPG" alt=""> {% endraw %}
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture30.JPG" alt=""> {% endraw %}
+
+이는 그라디언트 하강법 식 전개시 람다가 분모에 위치하여 아주 미미한 feature 하나하나를 학습 끝까지 결국 놓지 못하고 여지를 남겨두는 ridge regression와는 다릅니다.<br/>
+
+분자에 람다값이 위치한다는 것은 '람다'의 값에 의해 '베타'값이 0이 될 수 있는 가능성이 열리게 된다는 말이며, 쉽게 말하면 신경안써도 되는 애들(0이 된 애들)을 걸러버릴 수 있다는 효과를 가진다는 말이 됩니다.<br/>
+우리는 그 특징을 바로 feature selection이라고 부릅니다.<br/>
+그래서 더 제한이 강하다고 말할 수 있는 것입니다.<br/>
+
+보통의 경우 신경쓸부분에만 신경쓰니까 베타 최적화에 더 유리해져 linear, ridge보단 성능이 높게 나오지만, 단점으로는 크게 보면 필요했을 수 있는 정보를 손실할 위험이 있어 또다른 대안책들이 있기도 합니다.<br/>
 
 
 Linear Classification
