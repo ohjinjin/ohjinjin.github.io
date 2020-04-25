@@ -1,8 +1,8 @@
 ---
 title: "Time-Series Analysis(1)"
 categories: 
-  - MachineLearning
-last_modified_at: 2020-04-23T23:00:00+09:00
+  - Data Analysis
+last_modified_at: 2020-04-25T19:28:00+09:00
 toc: true
 ---
 
@@ -84,7 +84,7 @@ ex) 단순지수
 단순총합지수(simple aggregative index) : 기준시점에서의 
 단순평균지수(simple :
 dd
-(이미지1)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture1.JPG" alt=""> {% endraw %}
 
 
 개별지수 예제
@@ -95,8 +95,10 @@ dd
 종합지수의 예인 단순지수 예제
 아래는 어느 도시의 주요 식료품 소매가격에 대한 자료이다. 2005년을 기준으로한 각 연도별 단순총합지수와 2010년의 단순평균지수를 계산하시오.
 
-이미지2
-이미지3
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture2.JPG" alt=""> {% endraw %}
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture3.JPG" alt=""> {% endraw %}
+
 
 
 시계열자료의 예측방법
@@ -113,7 +115,7 @@ ARIMA에 0.4의 가중치를 두고 ML 모델에 0.6의 가중치를 둬서 섞�
 
 질적예측방법
 ---
-저눈가의 견해를 기반으로 예측합니다.
+전문가의 견해를 기반으로 예측합니다.
 
 
 예측의 평가
@@ -145,8 +147,8 @@ time series는 랜덤으로 sample을 뽑으면 안됩니다.
 시계열분석의 가장 큰목적은 결국 미래에 대한 **예측**
 
 고전적인 시계열 모형의 경우는 주어진 데이터를 얼마만큼 잘 설명할 수 있는가일 수 있지만 그래도 궁극적으로는 예측이 목적
-
-(이미지4,4-1설명)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture4.JPG" alt=""> {% endraw %}
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture4-1.JPG" alt=""> {% endraw %}
 
 시계열자료의 예측방법
 과거의 패턴은 미래에서도 지속된다는 가정
@@ -158,6 +160,7 @@ time series는 랜덤으로 sample을 뽑으면 안됩니다.
 
 시계열모형은 생성과정이라는 표현을 쓰는데, 
 t번째 Y값은 t-1번째 Y로부터 영향을 받아 생성된다 하는 정도로 해석하면 되겠습니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture5.JPG" alt=""> {% endraw %}
 
 둘을 간단히 구분할 수 있습니다.
 
@@ -175,8 +178,7 @@ t번째 Y값은 t-1번째 Y로부터 영향을 받아 생성된다 하는 정도
 정확도를 예측하는 분류모델 (ex)accuracy)도 train, test 둘다에 대한 에러텀을 계산함으로서 나오는거에요.
 
 모형의 일반화가 어려운 모델은 좋은 모델이라고 하기 어렵습니다
-
-(이미지6)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture6.JPG" alt=""> {% endraw %}
 
 사실 고전적방법은 잘 안쓸건데, 모델 비교 평가를 할때나 쓰겠네요
 
@@ -185,12 +187,13 @@ t번째 Y값은 t-1번째 Y로부터 영향을 받아 생성된다 하는 정도
 계절성 불규칙성을 제거하여 전반적인 추세 파악 가능
 가장 최근 m- 기간 동안의 자료들의 단순평균을 다음 기간의 예측값으로 추정하는 방법으로 m은 분석자에 의해 사전적으로 결정되며, m이 크면 장기 패턴, 작으면 단기 패턴을 진단합니다.
 
-(이미지7)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture7.JPG" alt=""> {% endraw %}
+
 우리는 지금 이동평균평활법의 단순이동평균법을 적용해 예측하는 과정을 보고있습니다.
 이동평균 기간 m이라는 파라미터는 관측기간 내에서의  MSE를 최소로 하는 값으로 결정하는 것이 좋습니다.
 MSE를 적용해볼거라한다면, 아래와 같은 식이 되겠습니다.
 
-(이미지8)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture8.JPG" alt=""> {% endraw %}
 
 예제를 풀어봅니다.
 
@@ -210,19 +213,19 @@ m은 이동평균 계수 값
 14번 슬라이드의 예제는 t=6일때의 값을 예측하고자한 것입니다. 한번 연습을 해보세요..
 
 페이스북주식가격을 바탕으로 평활화하기
-(url 놓침) ㅠㅠ
-
 단순이동평균법은 계수 m개를 가지고 평균을 계산하죠 동등하게!
 가중이동평균법은 최근 데이터에 0.5를 곱하고 과거로 갈수록 0.3을 곱하고 0.2를 곱하고... 이렇게 하는겁니다. 원데이터에 가중치를 곱하고 다 더합니다. 가중치는 한번 정했으면 고정입니다.
-(이미지9)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture9.JPG" alt=""> {% endraw %}
+
 
 엑셀로 분석 합니다. fb 데이터가지고 실습할거에용..
-https://finance.yahoo.com/quote/FB/history?period1=1337299200&period2=1586995200&interval=1d&filter=history&frequency=1d
-(이미지13)
+[https://finance.yahoo.com/quote/FB/history?period1=1337299200&period2=1586995200&interval=1d&filter=history&frequency=1d](https://finance.yahoo.com/quote/FB/history?period1=1337299200&period2=1586995200&interval=1d&filter=history&frequency=1d)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture13.JPG" alt=""> {% endraw %}
 
 
 단순이동평균법은 계절성, 불규칙성을 제거하여 전반적인 추세 파악이 가능하다고 배웠습니다.
-(이미지10)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture10.JPG" alt=""> {% endraw %}
+
 원데이터의 경우는 어떤 패턴이 있습니다. 
 계절성은 어느정도 드러나지만 m=12까지 갔을때를 보면 어떤 추세만이 드러난다는 것을 알 수 있습니다.
 
@@ -239,9 +242,11 @@ R의 forecast 패키지의 ses함수를 이용해서 실습도 해보겠습니�
 
 단순지수 평활법은 시계열 관측값들에 대한 전체적 가중평균인 평활값으로 미래의 관측값을 예측합니다.
 단순이동평균법과는 달리 최근 자료에 더 많은 가중값을 부여하는 방식으로 0~1사이의 값을 갖는 알파라는 평활상수에 의해 지수적으로 과거로 갈수록 그 값이 미미해지게됩니다.
-(이미지11)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture11.JPG" alt=""> {% endraw %}
+
 식을 전개해 적용하다보면 아실거에요!
-(이미지12)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture12.JPG" alt=""> {% endraw %}
+
 
 F는 예측값 Z는 관측값이라고 보시면 됩니다.
 
@@ -331,7 +336,8 @@ m=120인 경우가 장기패턴, m = 60인 경우가 중기패턴, m = 5인경�
 다시 정리해봅시다.<br/>
 홀트의 선형지수평활법은 **자료의 평활**과 **추세의 평활**로 구성됩니다. <br/>
 자료의 평활만 보면 단순지수평활이랑 거의한데, 거기에 추세의 평활이 더해진 것 뿐 입니다!<br/>
-(이미지23)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture14.JPG" alt=""> {% endraw %}
+
 
 2개의 최적 알파와 베타를 추정하게되는데, SSE(sum of squared error)로 추정합니다.<br/>
 
