@@ -1,7 +1,7 @@
 ---
 title: "Time-Series Analysis(1)"
 categories: 
-  - Data Analysis
+  - dataAnalysis
 last_modified_at: 2020-04-28T18:45:00+09:00
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "How to use R in jupyter notebook"
 categories: 
-  - Data Analysis
+  - dataAnalysis
 last_modified_at: 2020-04-28T21:12:00+09:00
 toc: true
 ---
