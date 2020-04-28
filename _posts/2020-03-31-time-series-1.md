@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - Data Analysis
-last_modified_at: 2020-04-25T19:28:00+09:00
+last_modified_at: 2020-04-28T18:45:00+09:00
 toc: true
 ---
 
@@ -378,5 +378,93 @@ forecast 패키지를 이용한 실습에서 사용하는 함수로는 hw라고 
 * 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/Holt-Winters'%20seasonal%20method.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/Holt-Winters'%20seasonal%20method.ipynb)<br/>
 
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/Holt-Winters'%20seasonal%20method2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/Holt-Winters'%20seasonal%20method2.ipynb)<br/>
+
+(2020-04-28)
+어떤 모형이 더 낫나를 판단할 때 그 판단에 대한 측도는 무엇일까요? 우리가 배운 측도는 RMSE와 MSE 밖에 없었어요!
+참고로 어느 모형이 더 적합한지, 예측력이 높은지는 서로 다른 측도로 평가합니다.
+
+신뢰구간은 정규분포에 기반합니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture15.JPG" alt=""> {% endraw %}
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture16.JPG" alt=""> {% endraw %}
+
+h값에 따라 시간이 흐르면 흐를수록 점점 더 예측력이 흐려지게 될 것입니다.
+
+시뮬레이션 기능이 있어서 수천번 돌려보면 어떻게 나오는가를 확인해볼 수 있어요. 어쨌든 중요한 것은 뭐냐면 신뢰구간과 예측력은 상관없다는거죠.
+그래서 평가 측도는 RMSE로 평가하면 되는데, RMSE는 잔차 제곱들의 평균에 루트 씌운거잖아요? 이 때 잔차는 실제값(y)-예측값(y피햇)이구요.
+그런데 사실.. 신뢰구간에는 y피햇(예측값)만이 존재합니다.
+실제값이 얼만지 알수가 없기 때문에 좋다 안좋다 말하기 어렵습니다.
+통계적 측정모델로서 RMSE 값을 보고 어느 모형이 더 나을지 보는 것이 최선이죠.
+다시 말해 잔차분석이 최선이라는 뜻입니다.
+잔차에 어떤 패턴이 남아있으면 그 모형은 잘 적합되지 않았다고 말할 수 있는 셈입니다.
+우리는 이 수업을 통해 잔차들에 대한 그래프를 여러 번 그려볼건데 그 그림에서 패턴이 남아있다면 적절한 모형을 쓰지 않았다는 것이 된다는 점을 알아야합니다.
+
+홀트윈터스에서 세 공식들이 있었지만 이 커리큘럼 내에서는 그 식들을 다루지 않았어요.
+
+상태 방정식을 확인하려면
+fit_aust_add$model$states
+fit_aust_multi$model$states
+등의 코드를 통해 확인하실 수 있습니다.
+
+ETS(Error, Trend, Seasonal)
+---
+오늘은 잔차나 에러텀이 없는 여태까지 배운 모형들과 다르게 확률적 시계열 분석법을 배웁니다.
+우리가 알고 있는 선형회귀모형식에는 입실론이 들어가죠?
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture17.JPG" alt=""> {% endraw %}
+
+이전까지는 잔차를 사용하지 않고 파란부분까지만 계산했다면
+전시점데이터랑 예측사이의 잔차에 대한 새로운 텀을 추가해주는 것입니다!
+
+이전에 배운 모형들을 기반으로 조합하여 정리하면 아래처럼 아홉가지 메소드가 나오게 되는데요,
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture18.JPG" alt=""> {% endraw %}
+
+이 아홉개중에 대표적으로 많이 사용하는게 아래 표에 정리되어있습니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture19.JPG" alt=""> {% endraw %}
+
+맨 마지막 모형을 빼고선 다 실습에서 다뤄봤지요!
+
+오늘은 ETS(Error, Trend,Seoasonal) 모형을 배웁니다.
+ETS(A,N,N)은 배웠던 단순지수 평활법에 error 텀을 더해준 것입니다. Simple exponenetail smoothing with additive errors라고 말할 수 있어요
+확률적인 통계기법이 모형에 들어간다고 말할 수 있어집니다.
+그렇다고 해서 무조건적으로 좋은건 없답니다. 어느 모형이 이 데이터에 적합한가는 비교해서 보아야 합니다!
+RMSE를 비교해본다던지 하는 방법으로요..
+
+* 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_example.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_example.ipynb)
+<br/>
+
+위 실습 내용을 확인하셨다면, ZZZ로 설정했을 경우 무슨 값을 기준으로 최적 모형을 자동으로 찾아주게 될까요?
+정보손실 기준이라고하는 AIC, AICC, BIC를 기준으로 찾아주게 됩니다.
+이 값들이 작을수록 해당 모형이 선택될 확률이 큽니다.
+이 커리큘럼에서 이내용을 학습하지는 않지만 보통 이 세 값이 작으면 RMSE도 작은 경우도 많습니다.
+
+우리가 ETS를 이해하기 위해서는 기존까지 저희가 배웠던 모형에서 에러텀을 추가하는 형식으로 식을 변형하여 이해할 필요가 있습니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture20.JPG" alt=""> {% endraw %}
+
+위 식대로라면 
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture21.JPG" alt=""> {% endraw %}
+이렇게도 되겠지요?
+똑같은 식인데 표현을 바꿔본거라고 보시면 됩니다.
+
+에러텀은 아래와 같이 정의됩니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture22.JPG" alt=""> {% endraw %}
+
+NID 또는 IID라고도 부릅니다
+'평균은 0이고 분산이 일정한 형태를 갖는다'고 이해하면 됩니다.
+여기까지는 가법모형에 해당하는 형태이구요,
+
+승법모형도 보겠습니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture23.JPG" alt=""> {% endraw %}
+
+R의 forecast패키지에서 제공하는 ETS()의 model 매개변수의 첫째 자리는 에러텀을 승법(M)으로 할것이냐 가법(A)으로 할것이냐를 말하며, 나머지 두자리는 그전에 배운 것들로 나뉘어요!
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture24.JPG" alt=""> {% endraw %}
+
+ets모형은 forecast()를 별도로 호출해야 예측을 합니다.
+accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.
+에러텀이 있고, 없고의 차이를 보이며, 그러기 위해 Training set과 test set을 따로 두어 성능 평가를 진행하는 두 번째 실습예제의 링크를 걸어드리겠습니다.
+
+* 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb)<br/>
 
 (수정중)
