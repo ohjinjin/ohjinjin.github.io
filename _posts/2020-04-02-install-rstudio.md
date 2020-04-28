@@ -2,7 +2,7 @@
 title: "How to install R and R Studio"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-06T22:58:00+09:00
+last_modified_at: 2020-04-28T21:12:00+09:00
 toc: true
 ---
 

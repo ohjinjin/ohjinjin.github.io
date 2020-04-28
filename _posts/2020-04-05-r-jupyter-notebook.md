@@ -1,8 +1,8 @@
 ---
 title: "How to use R in jupyter notebook"
 categories: 
-  - MachineLearning
-last_modified_at: 2020-04-08T03:25:00+09:00
+  - Data Analysis
+last_modified_at: 2020-04-28T21:12:00+09:00
 toc: true
 ---
 
