@@ -2,7 +2,7 @@
 title: "MLE & MAP_Machine Learning(7)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-30T18:13:00+09:00
+last_modified_at: 2020-05-01T17:54:00+09:00
 toc: true
 ---
 
@@ -89,6 +89,10 @@ likelihood의 값이 log함수의 인수로 들어가는 것인데, 이 인수�
 만약 (log)likelihood가 음수로 나온다면 이건 말이 되는 결과일까요? log likelihood가 음수라는 것은 어떤 의미일까요? <br/>
 게다가 likelihood 역시 또 하나의 확률이니 0과 1사이의 값만을 취해야 할 텐데 로그함수는 1보다 작은 인수에서는 함수값이 음수가 나오니 말입니다.<br/>
 (질문 답 기다리는중)
+
+log는 대표적인 모노토닉 함수입니다.<br/>
+단순히 증가만 하기때문에 최대값을 구한다는 특성이 바뀌지 않게되지요.<br/>
+다만 음수로 나오게된다는 것은 최대값을 구하려던 문제가 최소값을 구하는 문제로 바뀐다는 것을 의미합니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture58.JPG" alt=""> {% endraw %}
 

@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-23T20:03:00+09:00
+last_modified_at: 2020-05-01T19:57:00+09:00
 toc: true
 ---
 
@@ -177,5 +177,8 @@ odds ratio에 로그까지 씌우면 -무한대 ~ +무한대 까지의 모든 �
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture26.JPG" alt=""> {% endraw %}
 
 <br/><br/>
+
+참고사항: Cost 함수가 convex 모양이어야 최소값(최적위치)을 찾을 수 있습니다.<br/>
+그렇지 않다면 Global 최소값을 구하기 어렵겠지요. 보장도 되지 않을 꺼고요.<br/>
 
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
