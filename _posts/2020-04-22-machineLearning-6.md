@@ -2,7 +2,7 @@
 title: "SVD & PCA & LDA_Machine Learning(6)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-30T18:13:00+09:00
+last_modified_at: 2020-05-01T20:03:00+09:00
 toc: true
 ---
 
@@ -184,13 +184,14 @@ PCA(Principal Component Analysis)
 ---
 한국어로는 **주성분 분석**이라고 합니다.<br/>
 데이터의 분포에 대한 주성분을 찾는 것입니다.<br/>
-여태 공부했던것처럼 핵심 '축'을 찾는거에요.<br/>
+여태 공부했던것처럼 핵심 '축'을 찾는 것으로부터 가능해집니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture39.JPG" alt=""> {% endraw %}
 
 조금 더 고급지게 표현하자면, 데이터의 패턴을 잘 표현해주는 최적의 feature, 또는 성분만의 조합을 찾는 것입니다.<br/>
 
 그래서 PCA는 featur selection 혹은 feature dimension reduction을 위해 사용되곤 합니다.<br/>
+어느 feature가 효율적일지 골라낼 능력이 있기 때문이지요!<br>
 
 PCA 구하는 방법을 살펴봅시다.<br/>
 1. 데이터들의 평균(중심)으로 원점을 가정<br/>
