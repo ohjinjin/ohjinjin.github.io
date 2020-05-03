@@ -2,7 +2,7 @@
 title: "Install Docker Toolbox"
 categories: 
   - Server
-last_modified_at: 2020-05-02T21:54:00+09:00
+last_modified_at: 2020-05-03T11:29:00+09:00
 toc: true
 ---
 
@@ -48,7 +48,7 @@ windows 버전이 windows7 이상이어야하며, 하드웨어 자원이 가상�
 centOS 검색 결과에서 첫번째 인덱스의 CREATE 버튼을 클릭해주세요.<br/>
 
 이미지 다운로드가 완료되면 CentOS 이미지의 컨테이너가 자동 생성되며 실행됩니다.<br/>
-(이미지 4)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200502docker/capture4.JPG" alt=""> {% endraw %}
 
 exec를 클릭하여 선택한 컨테이너에 콘솔로 접속합니다.<br/>
 
