@@ -2,7 +2,7 @@
 title: "Install Docker Toolbox"
 categories: 
   - Server
-last_modified_at: 2020-05-03T11:29:00+09:00
+last_modified_at: 2020-05-03T19:47:00+09:00
 toc: true
 ---
 
@@ -50,7 +50,10 @@ centOS 검색 결과에서 첫번째 인덱스의 CREATE 버튼을 클릭해주�
 이미지 다운로드가 완료되면 CentOS 이미지의 컨테이너가 자동 생성되며 실행됩니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200502docker/capture4.JPG" alt=""> {% endraw %}
 
-exec를 클릭하여 선택한 컨테이너에 콘솔로 접속합니다.<br/>
+실행이 완료되면, exec를 클릭하여 선택한 컨테이너에 콘솔로 접속합니다.<br/>
+
+아래는 콘솔을 통해 컨테이너를 활성화한 모습입니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200502docker/capture5.JPG" alt=""> {% endraw %}
 
 <br/>
 <br/>
