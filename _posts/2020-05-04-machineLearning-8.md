@@ -2,7 +2,7 @@
 title: "Perceptron_Machine Learning(8)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-04T21:19:00+09:00
+last_modified_at: 2020-05-04T21:50:00+09:00
 toc: true
 ---
 
@@ -90,5 +90,11 @@ W0을 bias라고 하고 W1~Wn을 n-dimensional input이라고 가정합시다.<b
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture64.JPG" alt=""> {% endraw %}
 
-feed-forward라는 점에서 generative하다고 말할 수 있으며, 같은 층끼리는 간선이 있을 수 없다는 점이나, 기본적으로 설명이 불가능하다는 점에서 둘은 연관된 것처럼 보입니다.<br/>
+Bayesian network는 bayesian prior knowledge를 반영할 수 있는 generative network를 말합니다. 주로 확률모델로서 정의되며, 각 노드는 generative process의 임의의 변수를 의미하게 됩니다.
 
+반면, Neural network는 neuron 구조를 본떠서 만들었고 각 노드는 (같은 층의 다른 노드와 '독립적'으로, 즉 같은 층끼리는 간선이 존재X) 주로 0~1 사이의 값으로써 출력값을 생성합니다. 즉, 각 노드에서 생성되는 값은 별도 처리를 하지 않는 한, possibility일 뿐 확률값이 아니게 됩니다.
+
+<br/><br/>
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
+
+<br/><br/>
