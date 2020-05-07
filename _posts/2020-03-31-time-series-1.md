@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-04-28T18:45:00+09:00
+last_modified_at: 2020-05-07T18:45:00+09:00
 toc: true
 ---
 
@@ -177,7 +177,7 @@ t번째 Y값은 t-1번째 Y로부터 영향을 받아 생성된다 하는 정도
 관측가능기간이 train단계, 예측기간이 test단계라고 보심 될 것같아요.
 정확도를 예측하는 분류모델 (ex)accuracy)도 train, test 둘다에 대한 에러텀을 계산함으로서 나오는거에요.
 
-모형의 일반화가 어려운 모델은 좋은 모델이라고 하기 어렵습니다
+모형의 일반화가 어려운 모델은 좋은 모델이라고 하기 어렵습니다.
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture6.JPG" alt=""> {% endraw %}
 
 사실 고전적방법은 잘 안쓸건데, 모델 비교 평가를 할때나 쓰겠네요
@@ -409,15 +409,23 @@ fit_aust_multi$model$states
 ETS(Error, Trend, Seasonal)
 ---
 오늘은 잔차나 에러텀이 없는 여태까지 배운 모형들과 다르게 확률적 시계열 분석법을 배웁니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture6.JPG" alt=""> {% endraw %}
+
+여기에는 ets 모형이 표기 안되어있지만 확률적방법에서 시간영역에 포함될수 있겠습니다.
+
 우리가 알고 있는 선형회귀모형식에는 입실론이 들어가죠?
+
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture17.JPG" alt=""> {% endraw %}
 
 이전까지는 잔차를 사용하지 않고 파란부분까지만 계산했다면
-전시점데이터랑 예측사이의 잔차에 대한 새로운 텀을 추가해주는 것입니다!
+전시점데이터랑 예측사이의 잔차에 대한 새로운 텀을 추가해주는 것입니다! 입실론(에러)텀이 추가됩니다.
 
 이전에 배운 모형들을 기반으로 조합하여 정리하면 아래처럼 아홉가지 메소드가 나오게 되는데요,
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture18.JPG" alt=""> {% endraw %}
+
+추세에는 multi는 없어요 원래 만들 수 있긴한데 댐프드만 있답니다.
 
 이 아홉개중에 대표적으로 많이 사용하는게 아래 표에 정리되어있습니다.
 
@@ -460,6 +468,8 @@ NID 또는 IID라고도 부릅니다
 
 R의 forecast패키지에서 제공하는 ETS()의 model 매개변수의 첫째 자리는 에러텀을 승법(M)으로 할것이냐 가법(A)으로 할것이냐를 말하며, 나머지 두자리는 그전에 배운 것들로 나뉘어요!
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture24.JPG" alt=""> {% endraw %}
+아까damped만있구 multiplicative없다고 했었죠? 그래서 ets()의 가운데 인수는 M으로 둘 수 없습니다 .(이론상으로 만들 수 있긴한데, 모형이 잘 드러맞지 않아서 사용을 안한다고 합니다.).
+또 첫번째 인수(error term)역시 N으로 둘 수 없습니다.
 
 ets모형은 forecast()를 별도로 호출해야 예측을 합니다.
 accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.
@@ -467,4 +477,16 @@ accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.
 
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb)<br/>
 
+
+우리는 ses이용과 ets 이용을 하여 시뮬레이션까지 돌려보고 비교해볼 것입니다.<br/>
+
+주식 시장에서도 몬테카를로 시뮤레이션이라는 통계적 기법을 활용해서 수만번 시뮬레이션을 해보고 예측에 사용합니다.<br/>
+
+* 실습 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ses_vs_ets.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ses_vs_ets.ipynb)<br/>
+
+여기까지 배우게 되면 ETS까지 추가적으로 배우긴 했지만 우리 커리에서 다루는 고전적 모형은 다 배운 것입니다.
+이동평균을 제외하고 우리가 배웠던 분해분석쪽의 지수 평활법들과 ETS를 최종 비교해보는 실습을 해봅시다.
+
+* 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb)<br/>
+* 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb)<br/>
 (수정중)
