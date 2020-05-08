@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-09T01:07:00+09:00
+last_modified_at: 2020-05-09T01:18:00+09:00
 toc: true
 ---
 
@@ -142,7 +142,7 @@ Weight Matrix and Bias
 
 <br/><br/>
 
-ANN 학습 : Backpropagation
+Backpropagation
 ---
 관측가능한 값은 모델 특성상 Input, Output layer에만 존재하므로, 먼거리(?)에 놓인 이 두 개의 Layer 사이의 Co-occurrence 를 기반으로 weight matrix, bias들을 학습할 방법이 필요합니다.<br/>
 
@@ -201,7 +201,7 @@ Cost function
 두 개의 별개의 네트워크의 output layer가 아래와 같다고 가정합니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture80.JPG" alt=""> {% endraw %}
 
-첫 번째 데이터에 대한 결과물로 output레이어에 노드가 세 개 있었는데 c0.3 b0.3 a0.4나온거야<br/>
+첫 번째 데이터에 대한 결과물로 output레이어에 노드가 세 개 있었는데 c0.3 b0.3 a0.4로 나왔습니다.<br/>
 정답은 c0b0a1이라는 one-hot vector로 표현하고 있어요.<br/>
 그렇다면 어쨌든 a가 가장 그럼직하니까 정답은 맞은 거죠?<br/>
 
@@ -220,7 +220,8 @@ Cost function
 이는 다시 말해 CSE는 “정답”에 해당하는 노드만 바라보게 된다는 특징을 갖는다고 말할 수 있습니다. <br/>
 좋다, 나쁘다는 지금 평가할 수 있는 것은 아니에요.<br/>
 
-ANN의 학습에 대해서 볼 겁니다.<br/>
+Training
+---
 이해를 용이하게 하기 위하여 은닉층 없이 두 레이어 사이의 오류 전파를 보겠습니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture81.JPG" alt=""> {% endraw %}
