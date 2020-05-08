@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-09T00:57:00+09:00
+last_modified_at: 2020-05-09T01:07:00+09:00
 toc: true
 ---
 
@@ -315,7 +315,9 @@ ANN 전처리 & 초기값
 
 He 초기화 방법이 많이 사용됩니다.<br/>
 
-Learning rate가 너무 작으면 과적합 우려가 있으며 너무 크면 파라메터 값들이 최적으로 수렴되질 않고 발산해버려 학습에 실패할 수 있습니다.<br/>
+Learning rate는 보폭이라고 생각하시면 편합니다 너무 보폭이 작으면 학습이 지나치게 오래걸리며, 경우에 따라 과적합 우려가 있으며 너무 크면 파라메터 값들이 최적으로 수렴되질 않고 발산해버려 학습에 실패할 수 있습니다.<br/>
+
+적당한 값을 찾아줄 필요가 있지요.<br/>
 
 ANN의 하이퍼 파라미터로는 각 층에서의 노드 개수 등이 있는데요, 이를 잘 결정함으로써 모델의 복잡도를 결정할 수 있으며, 오버피팅을 예방하는 효과를 갖습니다.<br/>
 Hyper parameter 튜닝 방법으로는 무식하게는 Grid search 부터 Random search, 그리고 자동으로 네트워크를 만들어줄 수 있는 Neural architecture search 등이 있습니다.<br/>
