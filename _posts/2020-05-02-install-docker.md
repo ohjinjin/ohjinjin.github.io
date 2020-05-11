@@ -2,7 +2,7 @@
 title: "Building a server development environment using Docker Toolbox"
 categories: 
   - Server
-last_modified_at: 2020-05-11T22:12:00+09:00
+last_modified_at: 2020-05-11T22:19:00+09:00
 toc: true
 ---
 
@@ -11,14 +11,13 @@ Intro
 프로젝트를 하다보면 전 보통 센트럴 서버 파트를 맡곤하는데요,<br/> 기존까지는 서브넷 환경을 구축해놓고 서버 클라이언트 패러다임의 통신 따위를 구현해왔었지만, COVID19 사태로 인해 함께 모여서 작업하는게 쉽지가 않다보니 공통된 개발환경을 구축해 배포해 이를 해결하기로 했습니다.<br/>
 
 그나마 익숙한 VB도 있었지만 현업에서도 많이 사용된다는 docker와 CentOS를 이 기회에 사용해보려고 합니다.<br/>
-docker 컨테이너에 centOS를 올리고 APM 환경까지 구축해 배포해주는게 1차적인 목표인데요, centOS 설치까지의 과정을 기록하려고 합니다.<br/>
 
 docker는 컨테이너를 기반으로하는 오픈소스 가상화 플랫폼입니다.<br/>
 docker는 다양한 프로그램이나 실행환경 등을 컨테이너로 추상화하고 동일한 인터페이스를 제공하여 프로그램의 배포하거나 관리하는 것을 단순하게 해줍니다.<br/>
 제 경우처럼 데이터베이스 서버 뿐만 아니라 여러 백엔드 프로그램, 메시지 큐등 어떤 프로그램도 컨테이너로 추상화할 수 있으며 조립PC, AWS, Azure, Google cloud등 어디에서든 실행할 수 있다는 큰 장점을 갖습니다.<br/>
 
 제 PC의 OS는 windows10 pro 미만입니다. ㅠ.ㅠ<br/>
-그래서 본 글에서는 비록 성능은 좋지않다하지만 docker toolbox로 windows10 Home에 설치하고 centOS 이미지를 올린 뒤 그 안에 Nginx와 python, MySQL을 설치한 컨테이너를 생성하는 과정에 대해 기록합니다.<br/>
+그래서 본 글에서는 비록 성능은 좋지않다하지만 docker toolbox로 windows10 Home에 설치하고 centOS 이미지를 올린 뒤 그 위에 Nginx와 python, MySQL을 설치한 컨테이너를 생성하는 과정에 대해 기록합니다.<br/>
 
 dockerToolBox로 설치를 하게 되면 virtual Box 기반으로 동작하는 docker를 실행할 수 있습니다.<br/>
 Windows 10 pro 사용자는 Docker Desktop for Windows 로 설치하면 되고, BIOS 설정에서 Hyper-V를 enabled로 설정해주면 됩니다.<br/>
