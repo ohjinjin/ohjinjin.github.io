@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-05-07T18:45:00+09:00
+last_modified_at: 2020-05-12T18:20:00+09:00
 toc: true
 ---
 
@@ -466,14 +466,16 @@ NID 또는 IID라고도 부릅니다
 승법모형도 보겠습니다.
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture23.JPG" alt=""> {% endraw %}
 
-R의 forecast패키지에서 제공하는 ETS()의 model 매개변수의 첫째 자리는 에러텀을 승법(M)으로 할것이냐 가법(A)으로 할것이냐를 말하며, 나머지 두자리는 그전에 배운 것들로 나뉘어요!
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture24.JPG" alt=""> {% endraw %}
-아까damped만있구 multiplicative없다고 했었죠? 그래서 ets()의 가운데 인수는 M으로 둘 수 없습니다 .(이론상으로 만들 수 있긴한데, 모형이 잘 드러맞지 않아서 사용을 안한다고 합니다.).
-또 첫번째 인수(error term)역시 N으로 둘 수 없습니다.
+R의 forecast패키지에서 제공하는 ETS()의 model 매개변수의 첫째 자리는 에러텀을 승법(M)으로 할것이냐 가법(A)으로 할것이냐를 말하며, 나머지 두자리는 그전에 배운 것들로 나뉘어요!<br/>
 
-ets모형은 forecast()를 별도로 호출해야 예측을 합니다.
-accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.
-에러텀이 있고, 없고의 차이를 보이며, 그러기 위해 Training set과 test set을 따로 두어 성능 평가를 진행하는 두 번째 실습예제의 링크를 걸어드리겠습니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture24.JPG" alt=""> {% endraw %}
+
+아까damped만있구 multiplicative없다고 했었죠? 그래서 ets()의 가운데 인수는 M으로 둘 수 없습니다 .(이론상으로 만들 수 있긴한데, 모형이 잘 드러맞지 않아서 사용을 안한다고 합니다.).<br/>
+또 첫번째 인수(error term)역시 N으로 둘 수 없습니다.<br/>
+
+ets모형은 forecast()를 별도로 호출해야 예측을 합니다.<br/>
+accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.<br/>
+에러텀이 있고, 없고의 차이를 보이며, 그러기 위해 Training set과 test set을 따로 두어 성능 평가를 진행하는 두 번째 실습예제의 링크를 걸어드리겠습니다.<br/>
 
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ETS_vs_HW_example.ipynb)<br/>
 
@@ -489,4 +491,74 @@ accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.
 
 * 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb)<br/>
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb)<br/>
+
+<br/>
+<br/>
+분해법에 의한 시계열자료분석
+---
+시계열 데이터 분석의 예측 방법의 고전적 방법에는 앞서 배웠던 평활법과 분해분석법이 있습니다. <br/>
+이번 시간에는 분해분석법에 대해 학습합니다.<br/>
+
+평활법에 의한 예측방법의 경우 특정 패턴이 시계열에 내재되어 있을 때, 이 패턴은 원계열을 평활하여 불규칙변동을 제거함으로써 추정이 가능하다는 것이 전제되어 있습니다.<br/>
+
+분해법에 의한 예측방법의 경우엔 시계열의 패턴을 부분패턴으로 분해합니다.<br/>
+이를테면 패턴(혹은 변동요인)을 개별 성분으로 분해하여 시계열의 특성을 분석합니다.<br/>
+
+여기서 개별 성분은 앞서 배웠던 추세변동, 순환변동, 계절변동, 불규칙변동으로 구성됩니다.<br/>
+
+분해된 각 성분들을 개별적으로 예측한 후에 이들을 다시 결합시켜 예측을 실행합니다.<br/>
+
+참고로 순환변동은 장시간에 거쳐 확인할 수 있는 변동으로 추세변동과 합쳐서 함께 성분으로 두고 분해하곤 합니다.<br/>
+
+계절성분은 S로 표기하며, T는 추세순환성분, R은 불규칙성분입니다.<br/>
+
+분해법의 목적은 예측에도 사용될 수는 있지만 계절조정입니다.<br/>
+
+이 세 텀을 모두 더하여 타겟 변수 y를 계산한다면 가법 모형(additive decomposition)을 적용하는 것이며, 모두 곱하여 타겟 변수를 계산한다면 승법 모형(multiplicative decomposition)을 적용한 것입니다.<br/>
+
+Cf) 승법 모형에 로그변환을 하게 되면 로그함수 특성상 가법모형으로 전환이 가능합니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture25.JPG" alt=""> {% endraw %}
+
+<!--분해법의 목적은 예측도 있지만 계절조정에 사용되곤 합니다.
+계절조정은 연례적으로 반복되는 움직임을 원래의 시계열에서 제거하여 장기적인 추세나 경기순환의 움직임을 정확하게 분석 및 예측하고자 하는 것을 말합니다.
+분해법에는 추세모형에 의한 분해와 이동평균에 의한 분해가 있고 그 두 분해법을 통해서 계절조정을 할 수 있는데, 본 교과목의 커리큘럼에서는 이동평균법을 가지고 계절조정하는 방법만 볼 예정입니다.
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture26.JPG" alt=""> {% endraw %}
+-->
+
+시계열 데이터의 변동 성분들을 추세순환성분과 계절성분 불규칙 성분으로 나누기로 했는데, 이 중 이동평균방법을 활용해 추세순환성분을 추정합니다.<br/>
+
+평활법 배울 때 초기에 이동평균평활법을 배웠었죠? 불규칙 성분들을 제거하고 추세-순환성분을 추정하기 위해 사용했었습니다.<br/>
+
+시계열 분해를 위한 이동평균 역시 Order selection 기반인 것은 똑같습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture27.JPG" alt=""> {% endraw %}
+
+대칭이동평균은 m이 홀수인 경우에 사용하며
+중심화이동평균은 m이 짝수인 경우에 사용합니다.<br/>
+
+앞서 배웠던 이동평균과 어떤 차이점이 있는지 찾아봅시다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture28.JPG" alt=""> {% endraw %}
+
+3MA가 홀수인 경우(대칭이동평균)고 4MA와 2*4MA가 짝수인 경우(중심화이동평균)죠.<br/>
+
+참고로 2*4MA는 이중이동평균입니다.<br/>
+
+차이점은 바로 예측값을 작성하는 행의 위치차이입니다.<br/>
+
+3MA일경우 1,2,3의 평균을 t=4 행에 썼었는데 여기에서는 1,2,3의 평균을 t=2 행에 쓰네요.<br/>
+
+근데 짝수의 경우에는 저렇게 쩜오행에 써야하는 상황이 오는데 그럴 경우는 t가 몇 일때의 적합값이라고 말해야 할까요?<br/>
+그래서 이중이동을 해주는 겁니다.<br/>
+
+* 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb)<br/>
+* 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb)<br/>
+
+정리하면, 오늘 배운 이동평균이 여러 변동중에 추세-순환변동을 추정하기위해서 평활화하는 방법이고, 이후에 배울 다른 메소드들로도 계절성분을 추정해서 그들을 곱하거나 더하는(승|가법 모형) 것입니다.<br/>
+
+참고로 불규칙을 추정할 수 있는 메소드는 없습니다.<br/> 그러면 S구하고 T구하면 R은 어케 구할까요?<br/>
+
+실제값이 있으니까 거기서 빼면 R도 구할 수 있겠지요.<br/>
+
 (수정중)
