@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-05-12T18:20:00+09:00
+last_modified_at: 2020-05-12T19:05:00+09:00
 toc: true
 ---
 
@@ -494,7 +494,8 @@ accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.<br/>
 
 <br/>
 <br/>
-분해법에 의한 시계열자료분석
+
+분해법
 ---
 시계열 데이터 분석의 예측 방법의 고전적 방법에는 앞서 배웠던 평활법과 분해분석법이 있습니다. <br/>
 이번 시간에는 분해분석법에 대해 학습합니다.<br/>
@@ -551,6 +552,8 @@ Cf) 승법 모형에 로그변환을 하게 되면 로그함수 특성상 가법
 
 근데 짝수의 경우에는 저렇게 쩜오행에 써야하는 상황이 오는데 그럴 경우는 t가 몇 일때의 적합값이라고 말해야 할까요?<br/>
 그래서 이중이동을 해주는 겁니다.<br/>
+
+이동평균법을 이용한 추세\-순환성분 추정에 대한 실습을 진행해보았습니다.<br/>
 
 * 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb)<br/>
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb)<br/>
