@@ -2,7 +2,7 @@
 title: "Naive Bayes_Machine Learning(3)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-17T23:46:00+09:00
+last_modified_at: 2020-05-13T18:29:00+09:00
 toc: true
 ---
 
@@ -19,6 +19,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(1) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-1/)<br/>
 
 * [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)<br/>
+
+* [Machine Learning(4) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-4/)<br/>
 
 이번 주제는 학습시간도 테스트시간도 빠르기로 유명한 Naive Bayes에 대한 theory입니다.<br/>
 <br/>
@@ -106,7 +108,7 @@ Gaussian Naive Bayes Classifier를 구현할 때에는 Gaussian 분포를 가정
 뮤값이랑 스탠다드데리베이션으로 가우시안 모형의 형태를 정할 수 있습니다.<br/>
 
 GNB classifier의 **학습** 과정은 아래와 같습니다.<br/>
-k번째의 레이블에 대해서 얼마나 그럼직한가에 대해 probability를 빈도수에 기반해 측정하는데, 모든 feature에 대해 mean값과 스탠다드데리베이션을 미리 계산합니다.<br/>
+k번째의 레이블에 대해서 얼마나 그럼직한가에 대해 probability를 분포에 기반해 측정하는데, 그러기 위해서는 모든 feature에 대해 mean값과 스탠다드데리베이션을 미리 계산해둬야합니다.<br/>
 
 어떻게 계산할까요? 이걸 설명하기 전에 GNB classifier의 **테스트**도 확인해봅시다.<br/>
 
@@ -129,7 +131,7 @@ P(newX0 \| Y=yk) * P(newX1 \| Y=yk) * ...<br/>
 참고로 테스트시 y의 label 개수가 N개라고하면, estimate해야하는 P(Y\|newX)의 실제 개수는 몇 개만 하면 될까요?<br/>
 최소 N-1개겠죠! 어차피 확률은 다 더해서 1일테니까요.<br/>
 
-그렇다면 학습 때, mean/variance 값들을 estimate 하는 방법은 뭘까요?<br/>
+그렇다면 학습 때, 정규분포의 파라메터인 mean/variance 값들을 estimate 하는 방법은 뭘까요?<br/>
 
 MLE(Maximum Likelihood Estimates)라는 방법을 이용합니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture5.JPG" alt=""> {% endraw %}

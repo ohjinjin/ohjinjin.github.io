@@ -2,7 +2,7 @@
 title: "Decision Tree_Machine Learning(2)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-08T15:11:00+09:00
+last_modified_at: 2020-05-13T18:30:00+09:00
 toc: true
 ---
 
@@ -16,6 +16,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [원격 실습환경구축 따라하기](https://ohjinjin.github.io/git/gitlab/)<br/>
 * [Machine Learning(1) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-1/)<br/>
+
+* [Machine Learning(3) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
 
 이번 주제는 Decision tree에 대한 theory입니다.<br/>
 <br/>
