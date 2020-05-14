@@ -2,7 +2,7 @@
 title: "Linear Regression_Machine Learning(4)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-01T19:57:00+09:00
+last_modified_at: 2020-05-15T02:57:00+09:00
 toc: true
 ---
 
@@ -21,6 +21,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)<br/>
 
 * [Machine Learning(3) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
+
+* [Machine Learning(5) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-5/)<br/>
 
 이번 주제는 Linear Regression에 대한 theory입니다.<br/>
 <br/>
@@ -82,6 +84,9 @@ gradient는 우리가 고등학교 때 배웠던 미분입니다.<br/>
 왜냐하면 양의 기울기일때는 왼쪽으로 가야(음의 방향으로 가야) 최저점에 도달할 수 있으며, 반대로 음의 기울기일때는 오른쪽으로 가야(양의 방향으로 가야) 최저점에 도달할 수 있기 때문이지요.<br/>
 위 그림에서의 세번째 수식에 있는 알파값은 학습률이라고 부르며 갱신하는 보폭의 크기를 말합니다!<br/>
 너무 크면 최저점에 수렴은 커녕 발산해버릴 수 있으며, 너무 작으면 학습이 너무 오래, 한참 걸리게 될 것 입니다.(오버피팅의 우려도 존재)<br/>
+
+참고사항: Cost 함수가 convex 모양이어야 최소값(최적위치)을 찾을 수 있습니다.<br/>
+그렇지 않다면 Global 최소값을 구하기 어렵겠지요. 보장도 되지 않을 꺼고요.<br/>
 
 이 개념을 저희가 지금 배우고 있는 Linear Regression 에 적용해봅시다!<br/>
 
@@ -178,7 +183,5 @@ odds ratio에 로그까지 씌우면 -무한대 ~ +무한대 까지의 모든 �
 
 <br/><br/>
 
-참고사항: Cost 함수가 convex 모양이어야 최소값(최적위치)을 찾을 수 있습니다.<br/>
-그렇지 않다면 Global 최소값을 구하기 어렵겠지요. 보장도 되지 않을 꺼고요.<br/>
 
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!<br/><br/>
