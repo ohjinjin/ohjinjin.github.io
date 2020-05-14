@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-09T01:18:00+09:00
+last_modified_at: 2020-05-15T05:03:00+09:00
 toc: true
 ---
 
@@ -302,6 +302,9 @@ Loss의 형태가 우리가 원하는 이상적인 convex 모양이 아닌 것�
 
 항상 글로벌 옵티마를 구한다는 보장을 하는 알고리즘은 아직까지 구해지지 않았습니다.<br/>
 
+최적화 기법에 대한 자세한 정리가 실린 포스팅의 링크를 [여기](https://seamless.tistory.com/38)에 걸어드리겠습니다.<br/>
+<br/>
+
 ANN 전처리 & 초기값
 ---
 입력될 데이터의 각 Feature 값을 scaling합니다.<br/>
@@ -322,5 +325,6 @@ Learning rate는 보폭이라고 생각하시면 편합니다 너무 보폭이 �
 
 ANN의 하이퍼 파라미터로는 각 층에서의 노드 개수 등이 있는데요, 이를 잘 결정함으로써 모델의 복잡도를 결정할 수 있으며, 오버피팅을 예방하는 효과를 갖습니다.<br/>
 Hyper parameter 튜닝 방법으로는 무식하게는 Grid search 부터 Random search, 그리고 자동으로 네트워크를 만들어줄 수 있는 Neural architecture search 등이 있습니다.<br/>
+
 
 (수정중)
