@@ -2,7 +2,7 @@
 title: "MLE & MAP_Machine Learning(7)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-01T20:27:00+09:00
+last_modified_at: 2020-05-15T20:08:00+09:00
 toc: true
 ---
 
@@ -28,6 +28,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(5) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-5/)<br/>
 
 * [Machine Learning(6) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-6/)<br/>
+
+* [Machine Learning(8) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-8/)<br/>
 
 문제 해결 시 파라메트릭 메소드를 이용하게 될 경우 학습을 시키다는 것은 파라메터를 최적화시키는 것을 의미합니다.<br/>
 여러 방법이 존재하겠지만, 이 파트에서는 MLE와 MAP를 배웁니다.

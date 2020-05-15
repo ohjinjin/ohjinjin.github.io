@@ -2,7 +2,7 @@
 title: "Decision Tree LAB_Machine Learning(5)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-04-21T02:08:00+09:00
+last_modified_at: 2020-05-15T20:08:00+09:00
 toc: true
 ---
 
@@ -20,9 +20,11 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-2/)<br/>
 
-* [Machine Learning(2) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
+* [Machine Learning(3) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-3/)<br/>
 
-* [Machine Learning(3) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-4/)<br/>
+* [Machine Learning(4) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-4/)<br/>
+
+* [Machine Learning(6) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-6/)<br/>
 
 
 Decision Tree LAB1
