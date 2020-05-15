@@ -2,7 +2,7 @@
 title: "SVD & PCA & LDA_Machine Learning(6)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-01T20:03:00+09:00
+last_modified_at: 2020-05-15T20:03:00+09:00
 toc: true
 ---
 
@@ -26,6 +26,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(4) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-4/)<br/>
 
 * [Machine Learning(5) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-5/)<br/>
+
+* [Machine Learning(7) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-7/)<br/>
 
 이번 주제는 SVD에 대한 theory입니다.<br/>
 <br/>
@@ -351,8 +353,18 @@ PCA는 클래스를 구분 짓지 않고 그들을 잘 나타내는 축을 찾�
 
 둘다 feature selection을 찾는 것이 맞아요.<br/>
 
-하지만 LDA가 그렇다고 해서 PCA를분류기에 써먹을 수는 없어요 엄연히 다르답니다!<br/>
+참고사항) Linear Discriminant Analysis가 왜 feature selection ?<br/>
+우리가 수업때 배웠던 예제는 2차원 feature를 갖는 두 클래스에 대한 데이터에 대한 예제였습니다.<br/>
+각 feature는 저마다 한 차원씩을 갖게되는거고
+그래서 2차원 좌표로 그려낼 수 있었어요.<br/>
+이 때 만약 우리가 찾은 LDA 축의 방향이 x축쪽에 더 누워있으면 x라는 feature 가 y라는 feature보다 더 중요한 feature였다고 정의한셈이 됩니다.<br/>
+예를 들어 이렇게요.<br/>
 
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture86.JPG" alt=""> {% endraw %}
+
+반대로 y축하고 더 비슷한 기울기를 갖는다고하면 그 때는 y라는 feature가 두 클래스를 분류하는 것에 더 많은 영향을 주는 feature로서 고려되었다라고 볼 수 있습니다.<br/>
+
+PCA나 LDA는 기존의 feature와는 다른 '새로운 feature 축'을 찾아내는 것이므로 feature selection 기능이 있다고 말할 수 있습니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture57.JPG" alt=""> {% endraw %}
 
