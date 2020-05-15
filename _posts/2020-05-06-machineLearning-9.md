@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-15T05:03:00+09:00
+last_modified_at: 2020-05-15T20:09:00+09:00
 toc: true
 ---
 
