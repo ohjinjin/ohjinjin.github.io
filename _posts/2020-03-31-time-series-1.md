@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-05-12T19:05:00+09:00
+last_modified_at: 2020-05-15T23:54:00+09:00
 toc: true
 ---
 
@@ -557,11 +557,77 @@ Cf) 승법 모형에 로그변환을 하게 되면 로그함수 특성상 가법
 
 * 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component1.ipynb)<br/>
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/decomposition_ex1_MovingAverage_for_the_trend-cycle_component2.ipynb)<br/>
+* 실습3 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ma_for_decomposition.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/ma_for_decomposition.ipynb)<br/>
 
 정리하면, 오늘 배운 이동평균이 여러 변동중에 추세-순환변동을 추정하기위해서 평활화하는 방법이고, 이후에 배울 다른 메소드들로도 계절성분을 추정해서 그들을 곱하거나 더하는(승|가법 모형) 것입니다.<br/>
 
 참고로 불규칙을 추정할 수 있는 메소드는 없습니다.<br/> 그러면 S구하고 T구하면 R은 어케 구할까요?<br/>
 
 실제값이 있으니까 거기서 빼면 R도 구할 수 있겠지요.<br/>
+
+<!-- 중간고사 기존까지는 forecast
+Rw는 랜덤하게 예측
+Naïve는 전시점꺼 알파=1 때와같이 그리기
+Snaive는 seasonal-->
+
+불규칙은 추정이 사실상 불가능하고 그럼 계절성분과 추세순환성분을 어떻게 추정하느냐 문제인데, 어떻게 추정하냐에 따라서 조금씩 달라집니다. 그리고 이 수업에서는 추세순환성분을 추정할 때 이동평균법을 쓰는 것뿐입니다.<br/>
+계절성분뽑아낼 때 고전적인 방식으로 뽑아냈더니 연도별로 똑같이 나와버리는 문제점이 있어서 더 나은 모형을 적용시켜보며 발전해온 것입니다.<br/>
+
+1/2씩 더 곱해진다는 것을 알 수 있습니다.(13)<br/>
+M=홀수냐 짝수냐에 따라서 다른 방법을 적용해주어야하는데 월별/분기별이 아무래도 많습니다.<br/>
+
+이동평균을 이용하는 고전적 분해법 중 하나인 Classical decomposition을 학습합니다.<br/>
+승법과 가법으로 나뉩니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture31.JPG" alt=""> {% endraw %}
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture32.JPG" alt=""> {% endraw %}
+
+Seasonal 성분을 보면 2000년도에 Q1이 50, Q2가 60, Q3가 40, Q4가 50이었다면 2001년도의 Q1~Q4는 무엇일까요? 똑같습니다. <br/>
+2002년도에도 똑같습니다.<br/>
+Classical decomposition이라는 분해법이 그렇게 만들어줘요!<br/>
+추세 조정된 시계열을 바탕으로 주기별로 평균을 계산한 후 주기별 평균의 합이 0이 되도록 조정합니다. 그러면 저렇게 같게 나오게 됩니다.<br/>
+
+다시 한 번 정리해보겠습니다.<br/>
+MA로 적합 후 trend를 확인해보면 Ma의 특성상 앞뒤 정보를 손실한다는 문제점을 가지고 있습니다. 어쨌든 그렇게 구한 T가 있을거에요.<br/>
+그 다음 계절성분을 추정하는데, 전통적인 방법의 경우 추세조정된 계열(y-T)을 바탕으로 주기별로 평균을 계산한 후 주기별로 평균의 합이 0이되도록 조정하며 S를 구합니다.<br/>
+그러기 위해서는 주기별로 평균 계산한 것에서 주기별 평균의 평균 계산값을 빼주어(분산) 해당주기의 대표값으로 사용하게 되는데 그 주기별 대표값들을 다 더해보면 0이된다는 것을 알 수 있습니다.<br/>
+그 이후에는 y-T-S를 통해 불규칙성분인 R을 뽑아낼 수 있겠지요.<br/>
+이렇게 구한 T와 S와 R이 나오면 이들을 더했을 때 원본데이터가 되는 겁니다.<br/>
+이 문제는 잠시 말했던 것처럼 양 옆이 잘렸다는 것이죠. 그럼 랜덤을 뽑아내거나 할 때에도 문제가 있다는 것입니다.<br/>
+
+승법모형은 다 똑같은데 빼는게 아니라 나누는 것만 차이가 있어요.<br/>
+그래서 대표값들을 다 합쳤을 때 12가 됩니다.<br/>
+비율을 맞춰주는 것이죠.<br/>
+
+Classical decomposition 관련해서 실습을 진행한 내용에 대하여 링크를 걸어드리겠습니다.<br/>
+* 실습 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/classical_decomposition.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/classical_decomposition.ipynb)<br/>
+
+
+지금까지 배운 classical decomposition을 요약하자면 첫 번째로 추세순환 성분 추정시 MA를 이용하기때문에 양끝의 정보손실 문제가 있었습니다. 따라서 불규칙한 성분 추정 시에도 정보 손실이 발생합니다.<br/>
+두 번째로 급등 또는 급락하는 데이터 기간에 값이 크게 변화합니다. 이것이 평균을 사용하기 때문에 발생하는 이동평균법의 문제입니다.<br/>
+세 번째로는 계절성분의 값이 주기별로 일정하다는 단점을 갖습니다. 단기간의 계열인 경우에는 합리적일 수 있으나, 장기간의 데이터의 경우에는 적합하지 않습니다.<br/>
+그래서 이러한 한계점들을 바탕으로 다양한 분해법들이 개발되었는데요,<br/>
+계절 조정하는 여러 방법들이 소개된 사이트입니다.<br/>
+[여기](http://www.seasonal.website)에 링크를 걸어드리겠습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture26.JPG" alt=""> {% endraw %}
+
+다른 계절 조정방법들 몇 가지만 소개해 드릴텐데요, 미국 Census Bureau와 Statistics Canada에서 개발한 X11 decomposition입니다.<br/>
+분기와 월별데이터에 자주 사용되는 이 분해법은 앞서 정리한 전통적인 방법의 한계점들을 개선한 모형으로, 추세순환 성분 추정시 관측데이터를 모두 사용하며, 계절 성분이 시간에 걸쳐서 변화하게 됩니다.<br/>
+휴일 등도 고려하여 예측을 진행하게 됩니다.<br/>
+
+R에서는 X11 decomposition을 seasonal package로 제공합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture33.JPG" alt=""> {% endraw %}
+
+SEATS decomposition은 Seasonal Extraction in ARIMA Time Series의 줄임말로 The Bank of Spain에서 개발되었으며 분기와 월별 데이터만 사용이 가능합니다.<br/>
+마찬가지로 R에서 어떻게 사용하는지는 아래에 참고하실 수 있도록 이미지를 걸어두겠습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture34.JPG" alt=""> {% endraw %}
+
+STL decomposition은 Seasonal and Trend decomposition using Loess로 국소회귀를 사용해서 각 변동성분들을 찾는 메소드입니다.<br/>
+계절주기(월별, 분기 등) 상관없이 활용 가능한 모형입니다. 단 가법 모형에만 적용이 가능합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture35.JPG" alt=""> {% endraw %}
+
+지금 소개한 건 다 분해법이에요. 추세순환성분, 계절, 랜덤 성분들을 추정해서 예측하는 고전적 방법입니다. 추세 추출 때 이동평균을 썼어요, 근데 꼭 이동평균이아니어도 된답니다. <br/>
+Classical decompose라는 메소드는 이동평균을 쓴 것뿐이랍니다.<br/>
+이 모형은 추세순환 성분을 추정하고 추세순환계열로부터 계절성분 추정하고 불규칙성분까지 계산해내는 순서로 진행해줘야하는 것이고요.<br/>
+
 
 (수정중)
