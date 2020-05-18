@@ -21,7 +21,7 @@ docker에 centOS를 올리고 MySQL 설치까지 어떻게 해보았는데 syste
 위 포스팅을 참고하여 처음부터 다시 서버 환경을 구축하는 내용에 대해 기록합니다.<br/>
 
 
-Install centOS
+reInstall centOS
 ---
 기본 제공되는 정식 centOS가 아닌 Dockerfile 이라는 이름의 도커 파일을 직접 만들어줘야 합니다.<br/>
 파일의 내용은 아래와 같이 써주세요.<br/>

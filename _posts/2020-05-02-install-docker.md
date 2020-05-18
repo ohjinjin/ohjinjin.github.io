@@ -135,7 +135,16 @@ centOS의 패키지관리자로는 yum을 사용합니다.<br/>
 
 참고로 패키지 설치 시 RPM raw파일을 받아서 직접 설치할 수도 있지만 다운로드나 압축해제, 인스톨, 환경변수 셋업까지 자동화해주는 yum을 사용하는 것이 훨씬 편합니다.<br/>
 
+가장 먼저 레포지토리 저장을 먼저 해줍시다.<br/>
+~~~
+yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+~~~
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200502docker/capture11.JPG" alt=""> {% endraw %}
+
+혹시 epel 관련 오류가 난다면 epel을 설치해주시면 됩니다.<br/>
+[epel 설치 관련 링크1](https://www.tecmint.com/install-epel-repository-on-centos/)<br/>
+[epel 설치 관련 링크2](http://study.marearts.com/2019/11/yum-install-y-httpscentos7iuscommunityo.html)<br/>
 
 아래 명령어를 통해 파이선3을 설치합니다.<br/>
 
