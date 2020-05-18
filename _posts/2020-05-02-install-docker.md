@@ -2,9 +2,11 @@
 title: "Building a server development environment using Docker Toolbox"
 categories: 
   - Server
-last_modified_at: 2020-05-11T22:19:00+09:00
+last_modified_at: 2020-05-18T23:43:00+09:00
 toc: true
 ---
+MySQL 서버 구축을 하시려는 분들께서는 본 포스트를 따라 centOS를 올리다보면 오류 우려가 있으니 아래 링크를 참고해주시기 바랍니다.<br/>
+[Building a MySQL server development environment using Docker Toolbox](https://ohjinjin.github.io/server/install-docker-2/)
 
 Intro
 ---
