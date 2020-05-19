@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-05-15T23:54:00+09:00
+last_modified_at: 2020-05-19T16:56:00+09:00
 toc: true
 ---
 
@@ -629,5 +629,72 @@ STL decomposition은 Seasonal and Trend decomposition using Loess로 국소회�
 Classical decompose라는 메소드는 이동평균을 쓴 것뿐이랍니다.<br/>
 이 모형은 추세순환 성분을 추정하고 추세순환계열로부터 계절성분 추정하고 불규칙성분까지 계산해내는 순서로 진행해줘야하는 것이고요.<br/>
 
+
+Average method, Naive method, Seasonal naive method, Drift method
+---
+오늘은 예측하기 위한 기본적인 벤츠마크를 배웁니다.<br/>
+통계적 기법이나 머신러닝 기법이 아니라 아주 간단한 기법으로 금융이나 경제 분야에서 많이 사용합니다.<br/>
+머신러닝 기법이 통계적인 기법보다 좋다 나쁘다하는 총 4가지 기준모형에 대해 배우게 되는데요,<br/>
+아주 간단하지만, 어떤 때는 아주 막강한 메소드입니다.<br/>
+
+1.	Average method
+Meanf(y,h):y는 시계열, h는 미래 시점<br/>
+과거 시계열 자료들의 단순평균으로 예측합니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture36.JPG" alt=""> {% endraw %}
+
+기존까지 배웠던 모형들은 위와 같은 방식으로 예측을 해왔습니다.<br/>
+T 시점까지 데이터를 두고 그 다음부터는 미래를 예측하도록 했는데, 단순평균법의 경우에는 아래와 같습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture37.JPG" alt=""> {% endraw %}
+
+2.	Naïve method
+최근 데이터(관찰값)을 통해 미래를 예측합니다.<br/>
+Naïve(y,h) : y는 시계열, h는 미래시점<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture39.JPG" alt=""> {% endraw %}
+전시점을 기준으로 예측하게되는데요<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture40.JPG" alt=""> {% endraw %}
+
+그럼 모든 예측값들의 값이 똑같은데 의미가 있나요?<br/>
+의미가 있을 만한 데이터도 있습니다. 성능이 안좋을 것만 같은 느낌이 몹시 들더라도 이런 메소드들도 있다는 것을 배울 필요가 있습니다.<br/>
+ses에서 알파가 1일 때 그대로 한칸씩 밀어내는 방식과 동일해요.<br/>
+t시점으로부터 미래를 예측을하는데 한칸씩 밀어서 예측하는게 아니라 t시점으로부터 끌어오는 것 뿐입니다.<br/>
+
+3.	seasonal naïve method
+snavie(y,h) : y는 시계열, h는 미래 시점<br/>
+이전 계절값을 사용하는 것은 같으나, m은 계절 기간(the seasonal period)으로 k는 정수(=(h-1)/m)입니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture41.JPG" alt=""> {% endraw %}
+
+4.	Drift method
+Rwf(y,h,drift=TRUE) : y는 시계열, h는 미래 시점, drift는 추세<br/>
+시계열 데이터의 처음과 마지막 관찰값을 직선으로 연결하는 방법입니다. 즉, 이 메소드의 예측방법은 처음과 끝점을 잇는 직선이에요.<br/>
+참고로 드리프트 값이 FALSE이면 naïve method랑 같습니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture42.JPG" alt=""> {% endraw %}
+
+이들을 적용한 예를 살펴봅니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture43.JPG" alt=""> {% endraw %}
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture45.JPG" alt=""> {% endraw %}
+
+
+<br/>
+이들 메소드들도 이전까지 배웠던 메소드들과 동일하게 학습데이터에 적합시키고 테스트데이터로 예측하면됩니다.<br/>
+
+단 파라미터가 없을 뿐입니다.<br/>
+
+* 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/benchmark_1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/benchmark_1.ipynb)<br/>
+* 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/benchmark_2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/benchmark_2.ipynb)<br/>
+
+이렇게 예측율이 좋지 않은데도 이 메소드들을 사용하는 이유는 무엇일까요?<br/>
+
+처음에 소개할 때 썼던 말 "머신러닝 기법이 통계적인 기법보다 좋다 나쁘다하는 총 4가지 기준모형에 대해" 배운다고 했었습니다.<br/>
+
+어떤 모형이 좋다 나쁘다는 상대적이므로 적합된 모형 하나만 있을 때 이 모형의 성능이 좋다 나쁘다를 평가하기 어렵기 때문에 오늘 배운 메소드 따위들을 벤츠마크로서 활용하여 (예를 들어 경제데이터의 경우는 나이브모형으로 많이 사용) 적합시켰을때랑 내가 원래 적합시켜놓은 모형의 각자의 RMSE를 비교해주어 이 모형이 좋다 나쁘다를 판단하려는 목적으로 사용되는 것이지요.<br/>
+
+머신러닝에서 분류 모형의 기준 정확도는 보통 학습데이터의 종속변수 0, 1 개수로, 학습데이터의 1의 갯수가 90개 0의 개수가 10개라면 90 퍼센트가 기준이 되곤 합니다. 그래서 학습시킬 때 정확도 90 보다 높은 모델을 만들어야 합니다.<br/>
+
+비슷하지요?<br/>
+
+이처럼 오늘 학습한 방법들을 기준으로 즉 벤치마크로 두고 활용하시면 됩니다. 물론 이 기준 방법이 더 좋다면 예측모형으로 활용하면 됩니다.<br/>
 
 (수정중)
