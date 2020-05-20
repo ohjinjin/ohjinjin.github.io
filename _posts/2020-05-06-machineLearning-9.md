@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-20T21:31:00+09:00
+last_modified_at: 2020-05-20T21:59:00+09:00
 toc: true
 ---
 
@@ -32,6 +32,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(7) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-7/)<br/>
 
 * [Machine Learning(8) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-8/)<br/>
+
+* [Machine Learning(10) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-10/)<br/>
 
 이번 시간에는 지난 시간 배웠던 퍼셉트론을 기반으로 ANN, 인공신경망을 배웁니다.
 <br/>
