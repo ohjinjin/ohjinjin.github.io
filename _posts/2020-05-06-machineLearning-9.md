@@ -2,7 +2,7 @@
 title: "Artificial Neural Network_Machine Learning(9)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-15T20:09:00+09:00
+last_modified_at: 2020-05-20T21:31:00+09:00
 toc: true
 ---
 
@@ -279,7 +279,27 @@ n-3번째 층(은닉층)의 각 노드들의 **입력값**과 **n-2번째 층(�
 
 위 과정을 반복하여 계속해서 네트워크를 갱신시킵니다. <br/>
 그래서 iterative learning이라고 말합니다.<br/>
+
 그리고 이 때 갱신하는 데 사용될 최적화 알고리즘은 보통 Gradient Descent로 먼저 입문합니다.<br/>
+
+여기서 다시 한 번 전반적인 내용을 정리해봅시다.<br/>
+
+활성화함수로 선형함수를 사용해서는 안된다고했고 그래서 sigmoid를 배웠지만 reLU도 요즘 많이 사용됩니다.<br/>
+그리고 멀티레이블이 아닌 경우에는 끝층에 softmax가 많이 사용된다는 것을 배웠습니다.<br/>
+
+Naïve bayes에서의 파라미터는 뭐였죠? 바로 likelihood와 prior였죠.<br/>
+ANN에서의 파라메터는 weight죠.<br/>
+Feed forward로 신경망을 쭉 돌고나서 나온 예측값과 정답값 간의 loss를 정의해서 신경망의 가중치를 갱신시키죠. 그렇게가 한번의 epoch이 되는데 이렇게 하고 나서 끝이 아니라 다시 여러 번 반복해줘야 합니다.<br/>
+한 발자국 만에 산정상에서 나올 수 없으니까요.<br/>
+
+loss를 정의할 때 backpropagation에서 MSE나 CEE를 이용하는 경우가 많다고 배웠습니다.<br/>
+그리고 sigmoid 를 활성화함수로, MSE 를 손실함수로 두었을 때의 그라디언트 디센트에 의한 학습 예제를 살펴보았습니다.<br/>
+
+optimization이라는 것은 모델 자체에서의 최적화해야할 대상을 선정하고 우리의 목적에 맞게 최소화를 하거나 최대화를 하는 것을 말합니다.<br/>
+
+
+최적화 알고리즘도 여러가지가 있습니다.<br/>
+앞서 배웠던 GD의 경우는 Learning rate를 오차함수의 그라디언트에 곱해서 그만큼을 빼주어 개선하는 방식이었지만, 다른 최적화 알고리즘은 저마다의 방법이 있습니다.<br/>
 
 GD는 Batch GD와 Stochastic GD 등으로 나뉘며, 또 GD 말고도 여러 최적화 알고리즘이 있습니다.<br/>
 
@@ -292,8 +312,18 @@ GD는 Batch GD와 Stochastic GD 등으로 나뉘며, 또 GD 말고도 여러 최
 
 여기서 batch gd는 학습 data가 n개 있을 때 n개 전체에 대한 gradient를 적용하는 것을 말합니다.<br/>
 Stochastic gd는 학습 data n개 각각에 대한 gradient를 적용하는 것을 말하며, mini batch gd는 학습 data n개를 작은 mini batch들로 쪼개서 gradient를 적용하는 것을 말합니다.<br/>
+Stochastic GD는 데이터 개수만큼 각각에 대한 gradient를 적용하는 것이기 때문에 아주 오래걸립니다.<br/>
+전체 데이터 N개 데이터를 한번에 메모리에 올리려고한다면 자원이 모자를 수 있겠지요. 그래서 mini-batch를 많이 사용합니다.<br/>
 
-mini batch는 Batch gd와 조금 다른 결과를 낼 수 있지만 비교적 빠른 속도로 학습되며, 여러 iteration을 거치면 Batch GD와 유사한 결과를 낸다고 알려져 있어 실제로도 많이 쓰입니다!<br/>
+Batch 크기가 크다면 그만큼 빠르게 학습이 진행되겠지만 컴퓨팅 리소스가 부족하다면 batch를 적절히 조정해줘야겠지요.<br/>
+
+그렇다면 시간에만 차이가 있지 결과는 똑같을까요? 그렇지도 않습니다.<br/>
+
+mini batch는 Batch gd와 조금 다른 결과를 낼 수 있지만 비교적 빠른 속도로 학습되며, 여러 iteration을 거치면 Batch GD와 유사한 결과를 낸다고 알려져 있어 실제로도 많이 쓰이는 것입니다!<br/>
+
+Batch를 작게 해야 좋다하는 분들도 계시고 크게 해야 좋다는 분들도 계시며, 처음엔 크게하다가 뒤로가면 갈수록 batch크기를 작게 해줘야 한다라는 분들도 계십니다. 이에 대한 연구는 On going 상태에요.<br/>
+
+점점 작게해줘야한다라는 것을 learning rate decay라고 합니다.(weight decay와는 다릅니다)<br/>
 
 학습 데이터에서 학습이 잘 된다해서 test에서도 잘 될 거라는 보장이 없으므로 validation 데이터에 대해서도 똑같이 loss를 구해주어야 합니다.<br/>
 
@@ -302,7 +332,9 @@ Loss의 형태가 우리가 원하는 이상적인 convex 모양이 아닌 것�
 
 항상 글로벌 옵티마를 구한다는 보장을 하는 알고리즘은 아직까지 구해지지 않았습니다.<br/>
 
+Adagrad랑 adam’s optimizer는 많이 사용되니 알아둘 필요가 있습니다.<br/>
 최적화 기법에 대한 자세한 정리가 실린 포스팅의 링크를 [여기](https://seamless.tistory.com/38)에 걸어드리겠습니다.<br/>
+<br/>
 <br/>
 
 ANN 전처리 & 초기값
@@ -312,19 +344,130 @@ ANN 전처리 & 초기값
 * 표준화(standardization) : Normal 분포를 따르도록 변환하는 것을 말합니다.<br/>
 
 파라메터(layer간의 weight matrix) 초기값 설정에 관한 방법입니다.<br/>
-어떤 값으로 초기화하느냐에 따라 학습에 소요되는 시간이 달라질 테니까요.<br/>
+어떤 값으로 초기화하느냐에 따라 학습에 소요되는 시간도, 성능도 달라질 테니까요.<br/>
 
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture87.JPG" alt=""> {% endraw %}
+
+만약 저 곳이 초기값으로 주어졌다면 여러번의 epoch 후에는 아래와 같이 최적화가 될 것입니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture88.JPG" alt=""> {% endraw %}
+
+만약 아래와 같이 초기값으로 주어졌다면 여러번의 epoch 후에는 <br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture89.JPG" alt=""> {% endraw %}
+
+아래와 같이 최적화가 될 것입니다.<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture90.JPG" alt=""> {% endraw %}
+
+글로벌 최대값이라는 것을 찾지 못하기 때문에 그렇습니다.<br/>
+저 고개 너머에 어떤 곳이 있을지 알수가 없기 때문이에요.<br/>
+
+초기값을 선정하는 문제 역시 여러 방법이 있습니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture85.JPG" alt=""> {% endraw %}
 
-He 초기화 방법이 많이 사용됩니다.<br/>
+Normal(0,0.01^2) 방법의 문제점은 어렵게 써있는데, 쉽게 말하자면 학습이 진행됨에 따라 신경망에 한쪽만 영향을 많이 받고 그외의 쪽에는 입력층으로부터 얻어오는 정보가 매우 적어지는 이상결과를 갖고 올 수 있습니다. <br/>
+자비어나 He 초기화 방법이 많이 사용된다고 합니다.<br/>
+<br/>
 
+
+실전 학습 기법
+---
 Learning rate는 보폭이라고 생각하시면 편합니다 너무 보폭이 작으면 학습이 지나치게 오래걸리며, 경우에 따라 과적합 우려가 있으며 너무 크면 파라메터 값들이 최적으로 수렴되질 않고 발산해버려 학습에 실패할 수 있습니다.<br/>
 
 적당한 값을 찾아줄 필요가 있지요.<br/>
 
-ANN의 하이퍼 파라미터로는 각 층에서의 노드 개수 등이 있는데요, 이를 잘 결정함으로써 모델의 복잡도를 결정할 수 있으며, 오버피팅을 예방하는 효과를 갖습니다.<br/>
+ANN 모델에서도 오버피팅 문제가 발생할 수 있습니다.<br/>
+
+오버피팅이 무엇이었나요?<br/>
+데이터에 비해 모델이 복잡한 경우라고도 말할 수 있어요.<br/>
+그렇기 때문에 데이터를 늘려주거나 아님 모델 복잡도를 줄이거나 하는 등의 방법으로 해결을 할 수 있는데요, 모델을 줄이려면 어떻게 해야할까요?<br/>
+
+첫 번째로는 Feature를 줄여보는 것입니다. 두 번째로는 각 층의 노드개수나 층의 개수를 줄이는 방법도 있습니다.<br/>
+노드 개수 같은 것들은 ANN 모델에 있어서 hyper parameter인데, 이들을 적절히 결정해줌으로써 오버피팅을 막을 수 있다는 말입니다.
+<br/>또한 epoch 횟수도 너무 크면 오버피팅이 되는 경우도 있기 때문에 너무 오래 학습을 시키지 않아야하는 경우도 있습니다.<br/> 그럴 경우에는 엔지니어가 정해놓은 일정 threshold 이하로 cost가 떨어지면 학습이 중단되도록 코드를 짜면 됩니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture91.JPG" alt=""> {% endraw %}
+
 Hyper parameter 튜닝 방법으로는 무식하게는 Grid search 부터 Random search, 그리고 자동으로 네트워크를 만들어줄 수 있는 Neural architecture search 등이 있습니다.<br/>
 
+또 다른 오버피팅 예방법으로는 선형회귀 때 잠시 배웠던 **정규화**방법이 있습니다.<br/>
+L1과 L2 정규화가 batch GD의 수식에 사용될 수 있습니다.<br/>
 
-(수정중)
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture92.JPG" alt=""> {% endraw %}
+
+앞에서 먼저 배웠던 learning rate decay는 점점 갱신 보폭의 크기를 줄여나가는 것을 말하는 개념적인 용어이고, weight decay는 w가 너무 커져 overfitting을 예방하기 위해 곱해주는 상수값을 말합니다. L2 정규화를 하면 자연스럽게 weight decay 가 되는 거에요.<br/>
+
+L1은 L2처럼 식전개과정에서 weight decay는 나오진 않지만 w를 줄여주는 효과는 있습니다.(그래서 weight decay 효과를 가지고 있다고 말하기도 합니다.) L2가 아닌 다른 정규화기법에서도 weight decay가 나올수도 있습니다.<br/>
+<br/>
+
+Incremental Learning
+---
+이전에 학습되어있던 모델에 새로운 데이터를 추가 학습시키는 것을 말합니다.<br/>
+미니배치로 데이터를 쪼개서 학습시킬 수 있다면 새로운 데이터로 추가학습은 왜 안되겠어요! 가능합니다.<br/>
+
+뉴럴네트워크가 아닌 다른 모델들 중에는 이러한 incremental learning이 안되는 경우가 있습니다.<br/>
+이어서 학습이 안되어서 데이터 A와 새 데이터 B를 합쳐서 아예 새로운 모델을 만들어줘야하는 경우가 있습니다. 꽤 많습니다.<br/>
+하지만 ANN은 Incremental 하게 할 수있습니다.<br/>
+
+심지어 전혀 다른 데이터를 통해 학습한 모델에 대해서도 유의미한 이득을 얻는 사례도 소개된 바가 있습니다. 이를 전이학습(transfer learning)이라고 합니다.<br/>
+
+예를 들어 한국어에서 영어로 번역해주는 신경망을 모델링해서 이미 그 가중치들도 학습이 되어있는 상태라고 합시다.<br/>
+이번엔 한국어에서 프랑스어로 번역해주는 신경망을 새로 만드는 데 이전에 한국어\-영어 번역 신경망에서 학습시켜놓은 가중치정보를 그대로 가져와 초기 가중치값으로 한국어\-프랑스어 신경망에서 사용하는 것이죠. 놀랍게도 더 성능이 높은 결과를 얻기도 한다는 말을 하는 것입니다.<br/>
+
+사람도 그렇잖아요? 다른 곳에서의 지식으로부터 더 잘할수 있는 것이죠.<br/>
+
+Auto Encoder
+---
+Neural Network는 보통 supervise learning으로 학습되지만, AutoEncoder는 unspervised learning입니다.<br/>
+Auto Encoder의 기본구조는 아래와 같습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture93.JPG" alt=""> {% endraw %}
+
+Input을 Label로 활용하는 형태인데요, Input 을 reconstruction하는 목적입니다. 즉 f(x)=x를 학습하는 것인데요, 입력이 출력이 다시 나오게 하는 것이 무슨 의미가 있을까 싶으실 수 있습니다. 힌트는 가운데 층에 있습니다.<br/>
+
+이미지 상의 노이즈를 제공하는 용도 들로 보통 사용이 됩니다.<br/>
+
+Deep Learning
+---
+딥러닝은 '깊은 층'을 가진 neural network로 이론상 모든 종류의 복잡한 비선형 패턴을 잡아낼 수 있다합니다.<br/>
+깊은 층을 가짐으로써 '상위 패턴'들을 모델링하는 것이 가능해집니다.<br/>
+
+은닉층(hidden layer)를 여러개 쌓는 것이 가장 기본적인 딥러닝 모델입니다.<br/>
+
+Deep Neural Network의 기초가 되었던 모델들로는 Restricted Boltzmann Machines(RBM)과 Deep Belief Networks(DBN) 등이 있습니다.<br/>
+RBM은 1986년 Paul Smolensky에 의해 만들어졌으며, DBN은 2009년 Geoffrey Hinton에 의해 만들어졌습니다.<br/>
+
+<br/>
+
+Convolutional Neural Network
+---
+CNN도 '깊은 층'을 가졌지만, convolution에 무게를 둡니다.<br/>
+
+구조상 주된 특징으로는 Convolutional Layer(지역적인 특징을 추출)와 Pooling Layer(주요 특징만 선택하는 용도)가 있습니다.<br/>
+
+CNN에 관련된 설명은 이전에 자세히 정리해두었기때문에 [여기](https://ohjinjin.github.io/machinelearning/CNN/)에 링크를 걸어놓겠습니다.<br/>
+
+<br/>
+
+Recurrent Neural Network
+---
+순차적인 패턴을 잡아내기 위한 모델입니다.<br/>
+구조상 주된 특징으로는 재귀적으로 출력에서 다시 입력으로 간다는 점인데요,
+RNN의 기초가 되었던 모델들은 Elman type과 Jordan type이 있습니다.
+
+최신기법들로는 유명한 LSTM과 GRU 등이 있습니다.<br/>
+
+<br/>
+
+Generative Adversarial Networks(GAN)
+---
+이로적으로 딥러닝 모델에 국한되는 것은 아니지만, 딥러닝 모델에 적용됩니다.<br/>
+
+GAN 모델의 기본 개념은 아래와 같습니다. 예제와 함께 설명해보겠습니다.<br/>
+* Generator : 위조 지폐 생산자에 해당하며 더 잘 속이기 위해 끊임없이 위조방법을 개선합니다.<br/>
+* Discriminator : 위조 지폐 감별사에 해당하며 끊임없이 감별하는 방법을 개선합니다.<br/>
+
+결과적으로 더이상 감별하는 것이 불가능할 만큼 완벽한 위조 지폐가 생산되는 것을 가정합니다.<br/>
+
+<br/><br/>
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
+<br/><br/>
