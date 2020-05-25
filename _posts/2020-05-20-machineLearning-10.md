@@ -2,7 +2,7 @@
 title: "Support Vector Machine_Machine Learning(10)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-20T23:28:00+09:00
+last_modified_at: 2020-05-25T22:23:00+09:00
 toc: true
 ---
 
@@ -135,4 +135,35 @@ loss함수 정의가 특이하지요.<br/>
 
 아직 완전히 이해하지 못해서 더 공부하고 이 포스팅을 갱신해두려고합니다.<br/>
 
+*SVM에서는 Support Vector과 Decision Boundary까지의 거리를 1이라고 가정하고 문제를 살펴보았는데, 어떤 데이터였든 그렇게 거리는 1이라고 가정을 하고 풀게되는지?
+
+그렇다면 support vector가 어디에 있을지 모르는데 어떻게 1로 가정할 수 있는걸까요?
+도대체 support vector가 어떻게 결정되게 되는건지,,*
+
+
+제 생각을 차례로 정리해보았습니다.
+
+강의자료에 의하면 구분선이 될 수 있는 후보는 무수히 많이 존재하지만 max-marginal 선을 찾기 위해 support vector를 두 개 이상 선정할 필요가 있다고 했습니다.
+
+따라서
+support vector를 누구로 할 지 결정해야 decision boundary를 찾을 수 있다
+가 제 머릿속에서의 순서인데,
+
+"support vector라는 애들은 decision boundary로 부터 양옆으로 1만큼 떨어진 애들일거야" 라는 hypothesis에서 출발하면 순서가 맞을까요?
+
+직관적으로는 데이터(vector) 하나하나마다 support vector라고 가정하며 그때마다의 margin이 얼마나 되는지를 구해야하는 건데, margin이 최대가 되도록 하는 w와 b를 찾되, 모든 데이터(vector)에 대해 다 보는 것이 아니라 대적(?)하고 있는 support vector인 애들에 대해서만 max margin인 선을 구할 것이다! 라는 것이 바로 라그랑지(등식에만 적용 가능)이고, 여기서 등식에만 적용 가능하다는 말은 only Support Vector일 때만을 고려해주는 것을 말한다고 이해하였습니다.
+
+그런데 우리가 풀어야 할 문제는 딱 그 support vector들만 고려할 것이 아니라 분류기 구현이므로 그 위쪽과 아래쪽까지 고려해주려고 부등식에서도 사용할 수 있도록 변형된 KKT컨디션 하에서 최적화하겠다는 말을 하는 것 같아요.
+이렇게 최적화 시키게 되면 그야말로 우리가 원하던 결과일 것이라고요.
+
+(근데 데이터가 많아지면 속도가 매우 느려질 것이다라는 설명을 읽다 보면 입력 데이터들의 선형합으로부터 구하니까.. 모든 데이터들에 대해 max margin을 살펴보는 과정이 식에 녹아있는 것 같기도하고..)
+
+*어쨌든 여기서부터 제 궁금즘이 시작되는 것 같아요.
+KKT 컨디션은 αi = 0 unless Yi(W^Txi + b) = 1 인데, 이것도 결국은 support vector에서부터 Decision boundary 까지의 거리가 1씩이라고 가정을 했기 때문에 가능한 식 아닌가요??
+
+그렇다고 하면.. 제 생각은 다시 원점으로 돌아가게 됩니다.ㅎ  ㅎ
+
+svm에서는 Support Vector과 Decision Boundary까지의 거리를 1이라고 가정하고 문제를 살펴보았는데, 어떤 데이터였든 그렇게 거리는 1이라고 가정을 하고 풀게되나요?
+
+그렇다면 support vector가 어디에 있을지 모르는데 어떻게 1로 가정할 수 있는걸까요?*
 (수정중)
