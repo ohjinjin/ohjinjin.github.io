@@ -2,7 +2,7 @@
 title: "Support Vector Machine_Machine Learning(10)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-25T22:23:00+09:00
+last_modified_at: 2020-05-27T23:36:00+09:00
 toc: true
 ---
 
@@ -167,3 +167,6 @@ svm에서는 Support Vector과 Decision Boundary까지의 거리를 1이라고 �
 
 그렇다면 support vector가 어디에 있을지 모르는데 어떻게 1로 가정할 수 있는걸까요?*
 (수정중)
+<br/><br/>
+개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
+<br/><br/>
