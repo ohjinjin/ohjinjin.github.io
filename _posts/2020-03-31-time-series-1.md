@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-05-19T16:56:00+09:00
+last_modified_at: 2020-05-27T10:14:00+09:00
 toc: true
 ---
 
@@ -489,10 +489,15 @@ accuracy() 함수를 이용하여 예측 평가를 위한 함수입니다.<br/>
 여기까지 배우게 되면 ETS까지 추가적으로 배우긴 했지만 우리 커리에서 다루는 고전적 모형은 다 배운 것입니다.
 이동평균을 제외하고 우리가 배웠던 분해분석쪽의 지수 평활법들과 ETS를 최종 비교해보는 실습을 해봅시다.
 
+
 * 실습1 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_1.ipynb)<br/>
 * 실습2 보러가기 링크 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/comparing_all_of_exponential_smoothing_method_wih_ets_2.ipynb)<br/>
 
 <br/>
+이러한 파라메터를 갖는 시계열 모형의 경우에는 모형이 적합한가를 평가할 때에 파라미터들이 0에 가깝다면 RMSE값은 낮다하더라도 적합하지 않을 가능성도 있습니다.<br/>
+그래서 히스토그램을 그렸을 때 정규분포형태로 나와야 잘 적합된 것이라고 확인해볼 수도 있습니다.<br/>
+
+후에 추가적으로 학습할 예정입니다.<br/>
 <br/>
 
 분해법
