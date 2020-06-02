@@ -2,7 +2,7 @@
 title: "Ensemble_Machine Learning(11)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-02T22:34:00+09:00
+last_modified_at: 2020-06-02T23:05:00+09:00
 toc: true
 ---
 
@@ -36,6 +36,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 * [Machine Learning(9) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-9/)<br/>
 
 * [Machine Learning(10) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-10/)<br/>
+
+* [Machine Learning(12) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-12/)<br/>
 
 이번 시간에는 앙상블을 배웁니다.<br/>
 <br/>
