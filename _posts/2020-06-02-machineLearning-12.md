@@ -1,8 +1,8 @@
 ---
-title: "Kmeans_Machine Learning(12)"
+title: "Kmeans & Knn_Machine Learning(12)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-02T23:05:00+09:00
+last_modified_at: 2020-06-03T16:20:00+09:00
 toc: true
 ---
 
@@ -158,7 +158,94 @@ Q 최종 모델은 그럼 누구로 결정하게될까요?<br/>
 
 물론 레이블을 쓰지 않고 measure하는 방법도 있긴하지만 결국 그런 메소드들은 정답 없이 성능을 측정했으니, 결국 진짜 성능이라고 보기 어렵겠지요.<br/>
 
-(수정중, K-means 알고리즘 업데이트 예정)
+
+k\-means
+---
+k\-means 알고리즘은 이름에서도 알 수 있듯이 k개의 mean입니다.<br/>
+mean이 뜻하는 것은 평균값이죠.<br/>
+그 중심을 기준으로 군집화를 하게 됩니다.<br/>
+
+아래 그림을 몇 개의 군집으로 나눠야 잘 나눴다고 할 수 있을까요?<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture147.JPG" alt=""> {% endraw %}
+
+사람들마다 서로 다른 대답을 할 것입니다.<br/>
+이것이 바로 unsupervised learning의 맹점이죠.<br/>
+
+
+Kmeans 알고리즘의 pseudo code는 아래와 같습니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture148.JPG" alt=""> {% endraw %}
+
+임의의 k값을 정하고 군집별 초기 중심위치를 선택해야 합니다.<br/>
+
+데이터i와 1번군집중심의거리, 데이터i와 2번군집중심의거리, … 데이터i와 k번군집중심의거리를 계산해서 가장 가까운 군집쪽으로 할당해줍니다.<br/>
+
+거리를 계산할 때 많이 사용하는 것은 유클리드 거리공식(Euclideandistance)입니다.<br/>
+
+데이터별로 군집 할당을 끝냈으면, 각 군집별 중심을 다시 계산합니다.<br/>
+
+데이터가 할당된 군집이 변경되는 경우가 없어질 때까지 반복합니다.<br/>
+다른 말로는 중심이 바뀌지 않을 때까지 반복합니다!<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture149.JPG" alt=""> {% endraw %}
+
+그런데 kmeans에 의한 군집화가 엉망으로 되는 경우도 있을 수 있습니다.<br/>
+
+왜일까요?<br/>
+
+바로 초기값이 어떻게 정해지느냐에 따라서 결과가 좌지우지될 수 있다는 것이죠.<br/>
+그래서 한 번만 돌려보면 안됩니다.<br/>
+
+초기값을 어떻게 줄지에 대한 연구도 많고 관점에 따라 달라질 수 있는 ‘최적’의 cluster 개수를 정하는 것에 대한 연구도 많습니다.<br/>
+
+Hierarchical clustering 결과를 활용하여 최적의개수를 짐작하는 방법이 있고 rule of thumb나 elbowmethod, Information Criterion Approch 등의 방법도 있습니다.<br/>
+
+Elbow method의 경우 여러 후보 k값들에 대하여, cluster 들의 적절함을 평가하는 것입니다.<br/>
+
+적절함 이란 예를 들어 cluster 중심으로부터의 거리 등을 말합니다.<br/>
+
+결국 elbow method는 여러 후보값들에 대하여 일일이 시행해보고 관찰하는 면에서 일종의 Grid Search 입니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture150.JPG" alt=""> {% endraw %}
+
+팔꿈치라는 이름이 붙은 이유는 k값을 바꿔가면서 데이터 X의 SSE 값을 그래프로 그려주는 함수로 급격하게 기울기가 변하는 곳이 있는데 그 지점이 최적의 k값이며, 전체적인 그래프를 보았을 때 뾰족한게 팔꿈치같다고ㅎㅎ가 이유입니다.<br/>
+
+Information Criterion Approch는 클러스터링모델에 대해 likelihood를 계산하여 활용하는 방법입니다.<br/>
+
+예를 들어 K-means의 경우에는 Gaussian Mixture Model을 활용하여 likelihood를계산합니다.<br/>
+
+K means는 아까 말했듯이 cluster중심 초기위치에 의해 엉터리 결과가 나올 수 l있습니다.<br/>
+구형(normal 분포)이 아닌 클러스터를 찾을때는 부적절한 결과가 나올 수 있는 것이죠.<br/>
+Cluster 초기값을 어떻게 결정할 지에 대한 연구들도 많이 있습니다.<br/>
+
+k\-means는 Outlier에 취약합니다.<br/>
+
+해결법은 outlier 제거를 위한 전처리를 해주는 것이며, 또 다른 해결법으로는 k\-medoids 알고리즘이 있습니다.<br/> 이 방법은 mean을 계산하지 않고, 데이터 중에서 하나를 중심으로 사용하는 방법입니다.<br/>
+
+Q 표본데이터중에 하나를 중심으로 뽑는데 그게 만약 튄 값일수도 있지 않을까요? outlier를 제거하는 효과가 있다고 말할 수 있을까요???
+ 
+
+K\-NN
+---
+k\-nn(nearest neighbor)알고리즘은 군집화를 위한 모델은 아닙니다.<br/>
+이전에 kaggle의 유명한 데이터인 titanic dataset과 관련하여 k\-nn을 설명한 링크를 참고하시라고 [여기](https://ohjinjin.github.io/machinelearning/kNN-titanic/)에 걸어두겠습니다.<br/>
+
+k\-NN 알고리즘은 Instance\-basedlearning에 속합니다.<br/>
+
+Instance\-Based Learning의  또다른 말로는 Memory\-basedLearning라고도 부릅니다.<br/>
+
+Instance\-Based Learning이란 학습 데이터로부터 임의의 모델 파라메터를 학습하는 것이 아닌 학습 데이터와 테스트 데이터를 직접 비교하는 것을 말합니다.<br/>
+그래서 Nonparametric method의 일종이지요.<br/>
+
+학습 데이터의 label을 사용하므로 supervised learning에 해당합니다.<br/>
+
+
+k\-NN알고리즘은 “내가본 것중에 그거랑 제일 비슷하네!”를 취지로 하는 모델입니다.<br/>
+
+이 때 k란 몇 번째로 가까운 데이터까지 살펴볼 지를 의미합니다.<br/>
+ 
+(수정중, K-nn 알고리즘 업데이트 예정)
 <br/><br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
 <br/><br/>
