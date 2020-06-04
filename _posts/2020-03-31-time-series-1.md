@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-06-02T19:29:00+09:00
+last_modified_at: 2020-06-04T21:58:00+09:00
 toc: true
 ---
 
@@ -895,7 +895,7 @@ PACF가 어떤가요? 쟤네들이 지수적으로 감소하죠?
 (식에서의 Random variable, 입실론 : 데이터들 IID 형태로 평균이 0이고 분산이 일정한 데이터)
 식에서의 입실론이 **백색잡음**이에요.
 Rnorm 정규분포 형태의 데이터 50개를 만들어주고 어떤 데이터가 편자기 상관함수랑 자기상관함수로 나오는지 실습을 해보겠습니다.
-실습 링크 :[ https://github.com/ohjinjin/TimeSeries_Lab/blob/master/White_noise.ipynb]( https://github.com/ohjinjin/TimeSeries_Lab/blob/master/White_noise.ipynb
+실습 링크 :[ https://github.com/ohjinjin/TimeSeries_Lab/blob/master/White_noise.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/White_noise.ipynb)<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture61.JPG" alt=""> {% endraw %}
 
@@ -1059,5 +1059,112 @@ Cf) 공분산이 k에만 영향 받는지는 눈으로 어떻게 볼까요?
 보통 차분은 평균의 정상화를 위해 많이 사용되며, 자연로그는 분산의 안정화를 위해 많이 사용됩니다.
 실습링크: [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/stationary_series_diff,log.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/stationary_series_diff,log.ipynb)
 다음 시간엔 얼마나 비정상 경향이 있는가를 보는 방법을 배울 겁니다. 오늘 배운 것에서 중요한 점은 ACF나 PACF 패턴을 보고 어떻게 모형을 고를 것인지 적절하게 변환할 수 있어야 한다는 점입니다.
+
+
+오늘은 정상성을 판단하는 방법과 잔차를 따지는 방법을 보도록 할 거에요.
+
+적합 후에 잔차가 어떻게 나오는 지 보는 것도 박스젠킨스 방법 절차에 있었지요?
+Naïve 방법을 통해 원계열과 적합된 계열 차트로 그리려보는 실습의 링크입니다.
+적합된 모델의 잔차를 평가하기 위해 checkreseiduals(naïve(데이터)) 함수를 활용해본 예제입니다.
+Set.seed(123),400개 데이터 생성을 통해 랜덤워크과정을 보이고, 잔차를 평가했는데요. 히스토그램을 보면 정규분포를 이루며 잘 적합된 것처럼 보입니다. ACF는 왜 보여준걸까요? 시계열데이터다보니까 ACF까지 한번 더 보는거에여. ACF 함수가 앞뒤 시차간의 간격끼리 연관이 있는지 없는지를 모아놓은 그래프니까요!
+
+실습 링크: [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_checkresiduals_of_randomwalks.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_checkresiduals_of_randomwalks.ipynb)<br/>
+
+추세가 있는 데이터도 함께 실습해보았습니다. 드리프트 텀을 가진 random walk 지요.
+
+White noise는 대표적인 강한 정상 시계열이므로 meanf 모형을 통한 예측, random walk는 naïve 모형을 통한 예측이 보다 적합합니다.
+
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture70.JPG" alt=""> {% endraw %}
+
+정상시계열인지를 판단하는 방법으로는 여러가지가 있습니다.
+첫 번째는 ACF함수를 이용하는 방법입니다.
+ACF는 원계열의 정상성 뿐 아니라 위 실습에서처럼 잔차 평가에도 활용할 수 있습니다.
+
+두 번째 시계열이 정상시계열임을 판정하는 방법으로는 통계적 검정을 통한 방법입니다.
+원계열, 잔차 검정에 활용 가능한 Ljung-Box 검정과 KPSS(Kwiatkowski-Philips-Schmidt-Shin test) 검정이 있습니다. 참고로 KPSS는 단위근 검정(Unit Root Tests)법 중 하나입니다.
+저희 수업에서는 Ljung-Box를 잔차 검정에 활용하고 KPSS를 원계열 검정에 활용하겠습니다.
+
+통계적 검정에 있어서 첫번째 할 일은 귀무가설, 대립가설 세우기입니다. 두번째 할일은 유의수준을 결정하는 것이고, 세번째 할일은 귀무가설 및 대립가설을 기각할지 채택할지를 결정하는 것이지요.
+세 순서대로 통계적 검정을 진행하죠.
+
+인과관계를 잘 설명해 보이기 위해서는 ACF를 이용하는 방법을 추천합니다.
+
+시계열 단위근 존재여부를 판정하는 통계적 검정 방법으로 ADF 검정과 Phillips-Peron 검정이 있습니다.
+(시험볼때는 가운데 방법으로 해주시면서 ACF를 보조적인 방법으로 해주려합니다)
+
+정상시계열을 판단하는 방법 실습
+Fpp2 패키지로부터 Goog200(원계열)을 가져와서 goog200을 차분합니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture71.JPG" alt=""> {% endraw %}
+
+차분 후에는 정상성을 갖는 white noise 형태처럼 보여지는 것을 확인하실 수 있습니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture72.JPG" alt=""> {% endraw %}
+
+체크 표시한경우에는 정상성을 갖으므로 ARIMA로 가심 되구
+
+위에 오른쪽 그림처럼 나오면 meanf를 써야 합니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture73.JPG" alt=""> {% endraw %}
+
+KPSS 검정의 귀무가설과 대립가설, 판단기준은 아래와 같습니다.
+귀무가설: 정상시계열이다.
+대립가설: 정상시계열이아니다.
+판단기준 : 검정통계량(test statistic)의 값이 신뢰수준의 임계값(critical values)보다 크면 귀무가설을 기각합니다.
+유의수준을 정하고 임계값을 보게되는 것 입니다.
+
+Null hypothesis가 귀무가설을 말합니다.
+
+귀무가설이란 직접 검증의 대상이 되는 가설로 연구자가 부정하고자 하는 가설입니다.
+
+대립가설이란 귀무가설에 반대되는 사실로 연구자가 주장하고자 하는 가설입니다.
+
+연구자는 귀무가설을 기각하고 대립가설을 채택하고싶어 하지요.
+
+유의확률과 유의수준에 대한 자세한 설명이 되어있는 링크를 [여기]( http://blog.naver.com/PostView.nhn?blogId=jione322&logNo=220903024536)에 걸어두겠습니다.
+
+만약 검정 통계량이 2.7441이 나왔는데, 유의수준 1퍼센트가 말하는 임계값이 0.739라면 임계값 이상이므로 귀무가설을 기각(reject)하고 대립가설을 채택하게됩니다.<br/>
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture74.JPG" alt=""> {% endraw %}
+
+왼쪽에 있으면 귀무가설H0을 채택해야하고 오른쪽에 있으면 H1을 채택해야합니다.
+
+주어진 구글데이터가 정상시계열이 아니다 라고 이야기할 수 있어지는거지요.
+
+Boxpiearce 카이제곱 통계량의 수정된 변형인 륭 박스 통계량(portmanteau 검정이라고도 함) 검정은 pvalue로 평가합니다. 실습에서는 원래 데이터가 잔차라고 생각하고 box.test해보았습니다.
+pvalue가 매우작으면 귀무가설 기각하게 됩니다. 0.05라는 유의수준으로 잡고 그것보다 pvalue가 작으면 기각하는 것입니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture75.JPG" alt=""> {% endraw %}
+
+1. Kpss 검정으로 하던거 마저 다섯가지 경우에 대해 테스트<br/>
+2. 륭박스로 원본계열을 잔차처럼 이용해서 잔차들끼리 상관성있는지 다섯가지에 대해 확인<br/>
+3. ACF함수 원계열로 ACF, PACF로 ggplot 그려서 평가<br/>
+
+크게 위 세가지 내용에 대한 실습을 진행한 링크를 아래에 걸어두겠습니다.<br/>
+* 실습 링크1 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_ACF_PACF.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_ACF_PACF.ipynb)<br/>
+* 실습 링크2 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_kpss.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_kpss.ipynb)<br/>
+* 실습 링크3 : [https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_ljungbox.ipynb](https://github.com/ohjinjin/TimeSeries_Lab/blob/master/lab_ljungbox.ipynb)<br/>
+
+"잔차"에 자기상관성이 있다는 말은 무슨 뜻일까요??<br/>
+
+만약 잔차들이 아래와같이 나왔다고합시다
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/capture76.JPG" alt=""> {% endraw %}
+
+ACF 만 봤을 때 lag1234… 시차별로 쭉나오는거거든요?
+시차 1일 때 0.9, ….k=n일ㄸㅐ 상관계수값이 0,2… 이런식으로요
+잔차에도 이런 패턴들이 나온다는 것은 (시점마다 관계가 있을 것이다)라고 판단을 한다는 것이죠.
+시점마다 !!
+
+잔차는 화이트 노이즈 형태로 나와야 잘 나온 것입니다.
+시점마다 영향력이 있긴 때문에 저렇게 나왔다고 할 수 있는 거에요
+
+정리하자면
+1. 시계열이 정상성을 갖느냐
+2. 만족하면 ARIMA, ACF, PACF 확인해서 어떤 모형 쓸 건지
+3. 모형적합시키고 나서 잔차검정
+1,2,3번 과정에서 오늘 배운 통계적 방법을 함께 사용해주는 것입니다!
+
 
 (수정중)
