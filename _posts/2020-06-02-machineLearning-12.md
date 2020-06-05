@@ -2,7 +2,7 @@
 title: "Kmeans Clustering & Knn & Hierarchical Clustering_Machine Learning(12)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-05T22:26:00+09:00
+last_modified_at: 2020-06-05T22:35:00+09:00
 toc: true
 ---
 
@@ -286,7 +286,10 @@ Euclidean으로 했을 때는 A까지가 4.3, B까지의 거리는 1.6으로 명
 similarity도 distance를 잴 수 있다고 했었는데 코사인 similarity도 쓸 수 있습니다.<br/>
 
 여러 가지가 있으니까 knn, kmeans에 뭘 쓸까 고민되실 때는 찾아보시면 되겠습니다.<br/>
+<br/>
 
+Hierarchical clustering
+---
 K\-means 다음에 hierarchical clustering을 보는 게 순서가 더 맞을 수 있을지도 모르지만 K\-nn이 사이에 낀 이유는 그저 이름이 비슷해서요 ㅎㅎ.<br/>
 
 계층적 클러스터링, Hierarchical clustering을 배웁니다.<br/>
@@ -354,7 +357,10 @@ policy라는 것은 줄자를 뭐로 쓸지 얘기가 아니라 어떻게 두 �
 위쪽은 싱글링크, 아래쪽은 에브리지 링크요<br/>
 
 Distance matric을 어떻게, 어떤 link를 사용하는지에 따라 다른 결과가 나온다는 것을 기억합시다.<br/>
+<br/>
 
+Variant
+---
 흰색 냉장고와 흰색 지우개를 색으로만 distance 구할 경우 distance는 거의 0입니다. 그러나 크기로 distance 구할 경우 distance는 어마어마할 것입니다.<br/>
 그래서 feature engineering이 매우 중요합니다.<br/>
 
