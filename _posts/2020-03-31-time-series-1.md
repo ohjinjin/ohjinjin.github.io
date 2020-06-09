@@ -2,7 +2,7 @@
 title: "Time-Series Analysis(1)"
 categories: 
   - dataAnalysis
-last_modified_at: 2020-06-08T22:19:00+09:00
+last_modified_at: 2020-06-09T11:01:00+09:00
 toc: true
 ---
 
@@ -1168,24 +1168,44 @@ ACF 만 봤을 때 lag1234… 시차별로 쭉나오는거거든요?
 
 실습에 대한 설명을 이미지로 첨부해놓겠습니다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드3.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드4.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드5.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드6.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드7.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드8.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드9.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드10.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드11.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드12.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드13.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드14.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드15.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드16.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드17.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드18.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드19.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드20.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드21.JPG" alt=""> {% endraw %}
+
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드22.JPG" alt=""> {% endraw %}
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드23.JPG" alt=""> 
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200409ts/boxjenkins/슬라이드23.JPG" alt=""> {% endraw %}
 (수정중)
