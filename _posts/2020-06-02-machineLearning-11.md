@@ -2,7 +2,7 @@
 title: "Ensemble_Machine Learning(11)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-02T23:05:00+09:00
+last_modified_at: 2020-06-12T23:53:00+09:00
 toc: true
 ---
 
@@ -269,6 +269,10 @@ randomness를 강화한다는 것 = variance는 약해지고 noise에는 강해�
 
 앙상블 기법은 왜 overfitting에 강하다고 알려져 있을까요? Too strong learner를 만드는 것이 아닌 many weak learner를 만드는 것이고 여러 weak learner들(트레이닝 데이터에 대해 정확도가 높지 않았던 모델 포함)의 결과를 종합하기 때문
 벽이 무너지는 것을 막을 때 모두가 넓게 서서 각 부분을 담당하는 셈이 됩니다.<br/>
+
+지도학습 모델을 위주로 공부하다보니 분류 모델들을 많이 배우게 되었습니다.<br/>
+여태까지 배운 내용을 기반으로 EDA부터 모델링까지 실습해보았습니다.<br/>
+실습 링크 : [https://gitlab.com/ohjinjin/machinelearning/-/blob/master/prac008.ipynb](https://gitlab.com/ohjinjin/machinelearning/-/blob/master/prac008.ipynb)<br/>
 
 <br/><br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
