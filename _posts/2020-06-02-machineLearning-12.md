@@ -39,6 +39,8 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [Machine Learning(11) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-11/)<br/>
 
+* [Machine Learning(13) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-13/)<br/>
+
 이번 시간에는 Kmeans, Knn, Hierarchical Clustering을 배웁니다.<br/>
 <br/>
 
