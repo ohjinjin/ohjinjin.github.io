@@ -2,7 +2,7 @@
 title: "Kmeans Clustering & Knn & Hierarchical Clustering_Machine Learning(12)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-05T22:35:00+09:00
+last_modified_at: 2020-07-03T04:49:00+09:00
 toc: true
 ---
 
@@ -64,13 +64,13 @@ Semi supervised learning은 Unsupervised learing과 supervised learning의 중�
 약하게 레이블링된 트레이닝셋을 이용합니다.<br/>
 훈련데이터는 휴리스틱이나 규칙에 기반하여 자동적으로 레이블되어있는 것이지요.<br/>
 
-데이터 불균형시 또 다른 방법으로는 소개했 듯아 up/down sampling 이 있구요.<br/>
+데이터 불균형시 또 다른 방법으로는 소개했 듯이 up/down sampling 이 있구요.<br/>
 
 GAN을 이용하여 fake data를 생성하여 robustness를 높이기도 합니다.<br/>
 
 두번째 방법은 loss weight control인데요.<br/>
 
-Cost sensitive learning이란 학습 데이터의 label 비율에 반비례하게 loss 함수에 weight 조절을 함으로써, 비교적 적은 비율의 Label에 해당하는 데이터에 더욱 민감하게 학습하는 것을 말합니다.<br/>
+Cost sensitive learning이란 학습 데이터의 label 비율에 비례하게 loss 함수에 weight 조절을 함으로써, 비교적 적은 비율의 Label에 해당하는 데이터에 더욱 민감하게 학습하는 것을 말합니다.<br/>
 
 Focal loss 는 학습 데이터 label 비율이 높아서 상대적으로 쉽게 분류가 가능한 Label에 대한 weight를 작게 조절함으로써, Label 비율이 작은 데이터들에 집중하도록 조절하는 것을 말합니다.<br/>
 
@@ -215,7 +215,7 @@ Information Criterion Approch는 클러스터링모델에 대해 likelihood를 �
 
 예를 들어 K-means의 경우에는 Gaussian Mixture Model을 활용하여 likelihood를계산합니다.<br/>
 
-K means는 아까 말했듯이 cluster중심 초기위치에 의해 엉터리 결과가 나올 수 l있습니다.<br/>
+K means는 아까 말했듯이 cluster중심 초기위치에 의해 엉터리 결과가 나올 수 있습니다.<br/>
 구형(normal 분포)이 아닌 클러스터를 찾을때는 부적절한 결과가 나올 수 있는 것이죠.<br/>
 Cluster 초기값을 어떻게 결정할 지에 대한 연구들도 많이 있습니다.<br/>
 
@@ -337,7 +337,7 @@ ab가 묶였으니까 이건 새로운 클러스터로 취급해주고 다시 �
 저 제일 아래 그림이 덴드로그램입니다. 덴드로그램으로 표현할 줄 알아야해요.<br/>
 
 두 cluster간에 distance를 잴 때, 어떤 방식으로 distance를 재느냐에 따라 여러가지 변형이(variatns)가 존재합니다.<br/>
-이제 Distance function을 고르는 것 중요한 것이 아닙니다.<br/>
+이제 Distance function을 고르는 것이 중요한 것이 아닙니다.<br/>
 distance를 잴 때 policy(정책)이 무엇인가도 정해줄 필요가 있습니다. policy라는 것은 군집과 군집사이의 디스턴스를 재는 방식에 대한 것을 말합니다.<br/>
 
 Step4에서 123,45,6 세 개 군집 사이의 거리를 잴 때 4와 6간에 거리를 할건지, 5와 6사이의 거리를 할건지 애매한거죠. 어느 놈이 우리의 대표냐를 못 정했어요 아직!<br/>
@@ -406,6 +406,7 @@ Short hair 처럼 categorical feature나 누락된 데이터는 어떻게 해주
 
 두 번째 방법은 데이터를 버리는게 아니라 다 안고 가는 거에요.<br/>
 그러려면 채워줘야 하잖아요?<br/>
+구멍을 완벽하게 메꿔준다라고 해서 matrix completion이라고 부릅니다.<br/>
 전체 그 열 값들의 mean값으로 채우는 거에요. 전체 평균치로 넣는거지요. 제일 단순하고 제일 무책임한 방법입니다.<br/>
 
 또 0으로 주는 방법이 있습니다. 그런데 이렇게 0으로 줘버리게 되면 대부분의 경우에는 성능에 악영향을 끼쳐요.<br/>
@@ -423,9 +424,19 @@ Short hair 처럼 categorical feature나 누락된 데이터는 어떻게 해주
 Q 결측치 채울 때 원 데이터를 조작하는 것은 아닐지 고민입니다.<br/>
 A 데이터 조작 아니에요! 명시만 하면요.<br/>
 하지만 데이터를 채워 넣기 위한 imputation이란 기법이 있어요.<br/>
-과연 그런 missing value를 채워넣는 방법이 적절한가에 대한 기준이 있습니다. 너 그거 채워 넣으면 안되는거잖아 하는 기준이 있습니다. <br/>
 
-예를 들어서 아래와 같이 선수에 대한 데이터가 있습니다. 입단을 원해서 이력서를 냈다고 합시다. ㅎㅎ<br/>
+Imputation 알고리즘도 missing value를 채워넣는 방법입니다.<br/>
+Imputation 구현 코드 url: [https://github.com/epsilon-machine/missingpy](https://github.com/epsilon-machine/missingpy)<br/>
+
+Missing value들은 채워 넣는 것이 항상 적절한 걸까요?<br/> 너 그거 채워 넣으면 안되는거잖아 하는 기준이 있습니다. <br/>
+아래는 언제 채워 넣는 것이 좋고 언제 채우면 안되는 것인지에 대한 용어에요. MAR과 MCAR 둘다 imputation해도 되는데 MNAR일 때는 하면 안됩니다.<br/>
+
+* MAR(Missing at Random) : 특정 변수(feature, variable)의 결측치들이 무작위로 발생<br/>
+* MCAR(Missing Completely at Random) : 완전히 무작위로 결측치 발생<br/>
+* MNAR(Missing Not at Random):결측여부가 해당변수의 값에 의해 결정<br/>
+
+
+예를 들어서 아래와 같이 선수에 대한 데이터가 있습니다. <br/>입단을 원해서 이력서를 냈다고 합시다. ㅎㅎ<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture162.JPG" alt=""> {% endraw %}
 
@@ -455,7 +466,6 @@ Mutual Information이란 두 변수 x와 y가 얼마나 독립적인지를 판�
 
 두 변수가 독립이라면 KL-divergence 식의 값은 0이 나옵니다.<br/> 그리고 이 때 I\[x,y\]를 확률변수 x,y간의 mutual information이라고 부릅니다.<br/>
 X만 관찰했을 때의 확률 분포랑 y를 반영한 x의 확률분포간의 차이를 표현한 식인 것이지요.<br/>
-(수정중)
 
 <br/><br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
