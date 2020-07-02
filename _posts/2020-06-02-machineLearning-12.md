@@ -2,7 +2,7 @@
 title: "Kmeans Clustering & Knn & Hierarchical Clustering_Machine Learning(12)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-07-03T04:49:00+09:00
+last_modified_at: 2020-07-03T04:58:00+09:00
 toc: true
 ---
 
@@ -37,13 +37,13 @@ gitlab과 putty를 이용하여 교내 서버 호스트에 접속하여 실습�
 
 * [Machine Learning(10) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-10/)<br/>
 
-* [Machine Learning(11) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-10/)<br/>
+* [Machine Learning(11) 포스트 보러가기](https://ohjinjin.github.io/machinelearning/machineLearning-11/)<br/>
 
-이번 시간에는 Kmeans을 배웁니다.<br/>
+이번 시간에는 Kmeans, Knn, Hierarchical Clustering을 배웁니다.<br/>
 <br/>
 
 
-Semi supervised learning k-means clustering
+Semi supervised learning
 ---
 Semi supervised learning은 Unsupervised learing과 supervised learning의 중간이겠지요.<br/>
 
@@ -104,6 +104,7 @@ Semi supervise learning
 1. Active learning
 2. Self-learning
 3. Co-learning
+<br/>
 
 Semi Supervised Learning\- Active learning
 ---
@@ -245,7 +246,9 @@ k\-NN알고리즘은 “내가본 것중에 그거랑 제일 비슷하네!”를
 
 이 때 k란 몇 번째로 가까운 데이터까지 살펴볼 지를 의미합니다.<br/>
  
- 
+
+Distance function
+---
 심화 질문입니다.<br/>
 k\-means, k\-nn알고리즘을 사용할 때 feature normalization을 해야 할까요?<br/>
 
@@ -357,6 +360,12 @@ policy라는 것은 줄자를 뭐로 쓸지 얘기가 아니라 어떻게 두 �
 위쪽은 싱글링크, 아래쪽은 에브리지 링크요<br/>
 
 Distance matric을 어떻게, 어떤 link를 사용하는지에 따라 다른 결과가 나온다는 것을 기억합시다.<br/>
+<br/>
+
+average link를 사용했을 때 성능이 가장 좋았다는 연구 결과가 있습니다.<br/>
+
+이러한 특징을 갖는 Hierarchical clustering은 덴드로그램을 통한 시각정보를 제공한다는 것과 시각화나 사용에 용이하다는 이유로 널리 사용됩니다.<br/>
+하지만 O(n^2)의 시간 복잡도를 갖고 이전 스텝에서의 실수를 수정할 수 없다는 단점을 갖습니다.<br/>
 <br/>
 
 Variant
