@@ -2,7 +2,7 @@
 title: "Artificial Neural Network LAB_Machine Learning(14)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-06-05T19:36:00+09:00
+last_modified_at: 2020-07-03T08:43:00+09:00
 toc: true
 ---
 
@@ -110,6 +110,25 @@ normalization을 적용해봅니다.<br/>
 
 [실습 소스코드 링크](https://gitlab.com/ohjinjin/machinelearning/-/blob/master/prac005.ipynb)
 <br/>
+
+실습 마지막 부분, Minmaxscaler를 통해 노말라이즈해주는 부분에서 주의할 것이 있습니다.<br/>
+Fit_transform했던 위치와 transform 했던 위치를 잘봐주세요.<br/>
+실습시에 이미 이야기했긴했지만 Fit_transform()은 학습도 하고 학습된걸기준으로 변환도 해주는거거든요?<br/>
+0~1사이로 만들어주는거잖아요?<br/>
+상한선과 하한선을 만들어야 변환이 가능해지겠죠,<br/>
+
+그 상한선 하한선을 구하는 과정을 스케일러입장에서는 학습이라고 부릅니다<br/>
+스케일러 입장에서는 fit 함수에 의해 인자로 들어온 애를 가지고 상한 하한을 두는거고요<br/>
+
+Transform()으로 호출하는 경우는 앞서 만들어놓았던 fit 함수에의해 작업된 상한 하한선을 기준으로 변환만해주는거지요.
+그게 핵심입니다.<br/>
+
+test에서는 fit안하고 transform만해주는 것 말이죠.<br/>
+왜냐면 바로 test이기 때문이죠.<br/>
+Test 데이터는 unseen 데이터여야 하잖아요.<br/>
+학습데이터를 기반으로 성능을 평가해야하기 때문인거지요.<br/>
+Test 데이터의 상한하한선까지 신경을 써서는 절대 안됩니다.<br/>
+
 
 <br/><br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
