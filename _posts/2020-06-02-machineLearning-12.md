@@ -2,7 +2,7 @@
 title: "Kmeans Clustering & Knn & Hierarchical Clustering_Machine Learning(12)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-07-03T04:58:00+09:00
+last_modified_at: 2020-07-03T10:10:00+09:00
 toc: true
 ---
 
@@ -481,3 +481,55 @@ X만 관찰했을 때의 확률 분포랑 y를 반영한 x의 확률분포간의
 <br/><br/>
 개인이 공부하고 포스팅하는 블로그입니다. 작성한 글 중 오류나 틀린 부분이 있을 경우 과감한 지적 환영합니다!
 <br/><br/>
+
+(추가 내용)
+Feature 값의 scaling 방법은 normalization과 standardization이 있습니다.
+
+L1,L2 regularization위해서는 feature normalization을 해줘야합니다.
+Standardization은 Normal 분포의 standard derivation 값을 가지고 변환시키는 방법을 말합니다.
+
+Missing feature value가 있는경우 그들을 다루는 일반적인 방법은 아래와 같습니다.
+Distance 값이 0~1사이라고 가정할 때 Categorical (nominal) feature 두 데이터 중 한쪽이라도 missing이면 1을 주고
+Numerical feature의 경우에는 ㅇㅇㅇ
+
+Imputation algorithm의 한 종류인 KNN은 k값이 성ㄴ능을 좌우하는 알고리즘이져
+
+Entropy 기억나시죠?
+Discrete case가 있고 Continuous case가 있습니다.
+
+KL(Kullback-Leibler) Divergence를 Relative entropy라고도 부릅니다. KL divergence는 두개의 distribution 간의 차이를 measure하는 것으로 같으면 0 다를수록 커집니다.
+차이라는 말이 애매하지만 거리개념은 아니랍니다.
+
+ 
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture195.JPG" alt=""> {% endraw %}
+
+크로스엔트로피에서 자기자신 엔트로피를 뺀다는 것은 얼마나 잘섞여있고 정리되어있는가를 측정할 도구가 되는 것입니다.
+엔트로피가 정보량이 많다 적다를 나타내는 값이었죠?
+식이 저렇게 되다보니까 뭐에서 뭘빼냐는 것에 따라 달라집니다.
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture196.JPG" alt=""> {% endraw %}
+
+그렇기 때문에 거리의 개념으로 보기엔 애매합니다.
+그래서 relative entropy라고 부르는 겁니다
+Mutual information은 두 개의 random variable 들이 얼마나 의존적인지를 measure합니다.
+
+
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture197.JPG" alt=""> {% endraw %}
+
+ 
+얼마나 차이가 나니를 보는 거거였잖아요? 앞에껀 joint probability고 뒤에는 따로따로 존재하는 텀이잖아요? 그럼 결국 의미하는 것은 ‘독립’성에 비해 얼마나 ‘의존’성이 강한지를 측정하고자하는 것이지요.
+
+우리는 kl divergence가 뭐엿는지를 잘 기억해야합니다.
+ 
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture199.JPG" alt=""> {% endraw %}
+
+
+
+ 
+잘 떠올려보세요 EM LDA 이런알고리즘들 사이에서 우린 봤어요 Z라는 variable은 값이 계속 변할 수 있잖아 그건 말 그대로 변수거든여 그런 식으로 샘플링해서 생기는 값을 random variable이라고하는 것입니다.
+
+우리가 Hierarchical Clustering를 정리해봅시다
+이 모델의 장점은 시각적 관점으로 해석하기에 아주 용이한 덴드로그램으로 표현해낼 수 있다는 것입니다. 또한 쉽습니다.
+단점은 O(n^2)의 부담스러운 시간복잡도를 갖는다는 점입니다. 또한 계층적이라는 구조 특성상 앞선 단계에서 오판단을 할 경우 수정할 수 없다는 것입니다.
+
+우리 배웠던 군집별 정책 중 Averagelink 방식이 가장 성능이 좋았다는 연구결과가 있다합니다. 거의 대부분의 군집화 알고리즘들이 겪는 문제로 군집 개수를 결정하는 문제가 있습니다.
