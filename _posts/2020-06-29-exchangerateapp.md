@@ -2,11 +2,13 @@
 title: "Prediction of exchange rate price using artificial intelligence technology on Hadoop distributed system"
 categories: 
   - projects
-last_modified_at: 2020-06-30T00:37:00+09:00
+last_modified_at: 2020-07-11T23:57:00+09:00
 toc: true
 ---
 
 Git Repo URL : [https://github.com/ohjinjin/ai_exchangerate_with_hadoop](https://github.com/ohjinjin/ai_exchangerate_with_hadoop)<br/>
+
+하둡 분산 플랫폼 상에서의 인공지능 머신러닝 선형회귀를 이용한 환율 예측 서비스를 구현하였습니다.<br/>
 
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200629ai_exchangerate/1.JPG" alt=""> {% endraw %}<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200629ai_exchangerate/2.JPG" alt=""> {% endraw %}<br/>
