@@ -2,7 +2,7 @@
 title: "how to build a container contains Anaconda, Python3 on docker"
 categories: 
   - Server
-last_modified_at: 2020-07-16T15:15:00+09:00
+last_modified_at: 2020-07-17T09:16:00+09:00
 toc: true
 ---
 
@@ -15,13 +15,13 @@ toc: true
 
 저는 이 친구를 pull 받아서 사용하겠습니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture2.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture2.png" alt=""> {% endraw %}<br/>
 
 **이미지 확인**
 잘 받아졌는지 확인하기 위해서 이미지들을 출력해봅니다.<br/>
 이미지 리스트들 중 방금 다운받은 civisan...가 보이지요?<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture3.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture3.png" alt=""> {% endraw %}<br/>
 
 **현재 실행중인 도커 프로세스 확인**
 도커의 프로세스들을 모두 확인합니다.<br/>
@@ -32,16 +32,16 @@ toc: true
 pull 받은 civis 이미지를 가지고 docker_for_ohjinjin이라는 이름의 컨테이너를 생성하면서 터미널 배시를 통해 대화할 수 있도록 프로세스를 키면서 실행시키라고.. 도커 명령어를 입력했습니다.<br/>
 포트는 9090을 사용할 것입니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture4.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture4.png" alt=""> {% endraw %}<br/>
 
 python 버전이나 anaconda 버전 확인 명령어등을 입력하게 되면 이미 잘 설치 되어있는 것으로 확인되실 겁니다.<br/>
 
 저는 바로 테스트를 위해 주피터 노트북을 실행해보려고 합니다.<br/>
 
 **Jupyter notebook 실행**
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture5.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture5.png" alt=""> {% endraw %}<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture6.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture6.png" alt=""> {% endraw %}<br/>
 
 네 잘됩니다.<br/>
 <br/>
@@ -59,7 +59,7 @@ ohjinjin 환경 아래에서도 여러 프로젝트를 진행하다보면 프로
 
 따라서 저는 첫 번째 프로젝트를 위한 가상환경을 아나콘다를 이용해 생성해주도록 하겠습니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture7.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture7.png" alt=""> {% endraw %}<br/>
 
 ㅎㅎ 여러분께선 conda update 먼저 하고 진행해주세용.<br/>
 
@@ -67,7 +67,7 @@ ohjinjin 환경 아래에서도 여러 프로젝트를 진행하다보면 프로
 **가상환경 활성화**
 기존에는 base라는 환경에서 실행되고 있었지만 제가 방금 생성한 가상환경을 활성화시켜주겠습니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture8.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture8.png" alt=""> {% endraw %}<br/>
 
 활성화가 잘 되었는지 정확하게 확인하기 위해 conda info \-\-env를 입력하면 * 표시가 제가 방금 생성한 가상환경에 붙어있는 것을 알 수 있습니다.<br/>
 
@@ -85,8 +85,8 @@ ohjinjin 환경 아래에서도 여러 프로젝트를 진행하다보면 프로
 
 따라서 편의를 위하여 pykernel로 등록해줍니다.<br/>
 
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture9.PNG" alt=""> {% endraw %}<br/>
-{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture10.PNG" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture9.png" alt=""> {% endraw %}<br/>
+{% raw %} <img src="https://ohjinjin.github.io/assets/images/20200716docker_env/capture10.png" alt=""> {% endraw %}<br/>
 
 짜잔입니당..!<br/>
 
