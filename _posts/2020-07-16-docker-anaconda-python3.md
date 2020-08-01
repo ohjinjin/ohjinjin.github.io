@@ -2,7 +2,7 @@
 title: "how to build a container contains Anaconda, Python3 on docker"
 categories: 
   - Server
-last_modified_at: 2020-07-17T09:16:00+09:00
+last_modified_at: 2020-08-01T18:23:00+09:00
 toc: true
 ---
 
@@ -79,6 +79,8 @@ ohjinjin 환경 아래에서도 여러 프로젝트를 진행하다보면 프로
 음 네 뭐 거의 아무것도 없네요.<br/>
 
 여기서 머신러닝 프로젝트를 진행하기 위해서는 앞으로 tensorflow라던지 numpy라던지 pands라던지.. pickle.. 뭐 기타 등등의 3rd party library를 설치해줘야하겠지요!<br/>
+
+참고로 tensorflow\-gpu 버전은 그냥 docker말고 nvidia docker로 설치해주셔야합니다!<br/>
 
 **가상환경 커널로 등록**
 아직 해당 프로젝트에 대한 소프트웨어 스택이 확정되지 않아 거기까진 진행하지 않았습니다. 다만 앞으로 내가 이 프로젝트를 할 커다란 통은 이 가상환경이 되는 것입니다. 이 프로젝트는 이 안에서만 놀게 될거에요!<br/>
