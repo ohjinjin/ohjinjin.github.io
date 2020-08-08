@@ -2,7 +2,7 @@
 title: "SVD & PCA & LDA_Machine Learning(6)"
 categories: 
   - MachineLearning
-last_modified_at: 2020-05-15T20:03:00+09:00
+last_modified_at: 2020-08-09T01:54:00+09:00
 toc: true
 ---
 
@@ -220,6 +220,15 @@ feature pair는 다른말로 correlation이라고 합니다.<br/>
 
 핵심은 원점 옮기기와 공분산행렬 구하기, 그리고 그 행렬을 이용해 eigenvalue와 eigenvector를 구하는 것입니다.<br/> 당연히 공분산행렬이 mxm정방행렬이니까 고유벡터는 m개로 나오겠죠?<br/>
 
+PCA 스텝은 아래 순서로 이루어집니다.<br/>
+1. data Matrix X가 주어졌을 때 모든 데이터 샘플에 대한 평균을 구합니다.<br/>
+2. 각 데이터 샘플에서 구했던 평균을 뺀 값들에 대한 매트릭스 D를 정의합니다.<br/>
+3. 1/(N-1)*D*D^T 즉 D와 D의 전치행렬의 곱에 1/(N-1) 스칼라를 곱한 covariance Matrix, 시그마를 구합니다.<br/>
+4. 시그마에 대한 고유값과 고유벡터를 계산합니다.<br/>
+5. 해당하는 고유값을 기준으로 고유벡터를 정렬합니다.<br/>
+6. 가장 큰 고유값을 갖는 고유벡터를 선택합니다. 선택된 고유벡터 W는 PCA projection space를 나타냅니다.<br/>
+7. D를 PCA 아래의 차원공간에 사영시킵니다.<br/>
+
 예시를 봅시다.<br/>
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture44.JPG" alt=""> {% endraw %}
 {% raw %} <img src="https://ohjinjin.github.io/assets/images/20200410ml/capture45.JPG" alt=""> {% endraw %}
@@ -227,7 +236,7 @@ feature pair는 다른말로 correlation이라고 합니다.<br/>
 첫번째꺼가 두번째꺼보다 낫잖아요?<br/>
 예제에서는 한놈만 PCA로 가정하겠어! 하고 1번 축을 선택합니다.<br/>
 
-그 고른 pca를 원 데이터(feature vector)에 곱해줍니다.<br/>
+그 고른 pc를 원 데이터(feature vector)에 곱해줍니다.<br/>
 
 그다음은 고른축으로 각 feature vector들을 사영 시킵니다.(수선의발을 내립니다.)<br/>
 
