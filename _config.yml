@@ -302,3 +302,9 @@ defaults:
       layout: single
       author_profile: true
   # >>>>>>>>>>>>>>>>>>>> 여기까지 추가 됨
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false

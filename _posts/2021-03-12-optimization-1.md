@@ -4,6 +4,8 @@ categories:
   - Optimization
 last_modified_at: 2021-03-12T18:30:00+09:00
 toc: true
+use_math: true
+comments: true
 ---
 
 Basic of Linear Algebra and Calculus
