@@ -10,6 +10,6 @@ comments: true
 
 Basic of Linear Algebra and Calculus
 ---
-Notation : A vector $$a^2$$
+Notation : A vector $a^2$
 
 test
